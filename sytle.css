@@ -471,3 +471,153 @@ footer a:hover {
         padding: 0;
     }
 }
+
+/* 竖向卡片并列 */
+.card-list.vertical {
+    display: flex;
+    flex-direction: row;
+    gap: 2.2rem;
+    justify-content: center;
+    margin-top: 1.2rem;
+}
+.card-list.vertical .card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(34,34,59,0.10);
+    min-width: 340px;
+    max-width: 340px;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: box-shadow 0.22s, transform 0.22s;
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+}
+.card-list.vertical .card-cover {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    margin-bottom: 1rem;
+}
+.card-list.vertical h3 {
+    margin: 0.5rem 0 0.7rem 0;
+    font-size: 1.18rem;
+    color: #4a4e69;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.card-list.vertical p {
+    font-size: 1.01rem;
+    color: #555;
+    margin: 0 1.2rem 1.2rem 1.2rem;
+    flex: 1;
+    text-align: center;
+}
+.card-list.vertical .card-btn {
+    display: inline-block;
+    margin-bottom: 1.2rem;
+    padding: 0.5rem 1.2rem;
+    background: linear-gradient(90deg, #4a90e2 0%, #8f94fb 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(34,34,59,0.07);
+    transition: background 0.18s, color 0.18s;
+    text-decoration: none;
+}
+.card-list.vertical .card-btn:hover {
+    background: #8f94fb;
+    color: #fff;
+}
+
+/* 侧边栏信息优化 */
+.sidebar-list li {
+    font-size: 1.01rem;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+.sidebar-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* 导航栏高光栏目 */
+.nav-links li a[href="life.html"] {
+    color: #ffe082;
+    font-weight: 700;
+}
+.nav-links li a[href="life.html"]:hover {
+    color: #fff;
+    text-shadow: 0 2px 8px #ffe08299;
+}
+
+@media (max-width: 1100px) {
+    .card-list.vertical {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+    }
+    .card-list.vertical .card {
+        min-width: 90vw;
+        max-width: 98vw;
+    }
+}
+
+/* 生活记录相册布局 */
+.life-gallery {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+.life-item {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(34,34,59,0.08);
+    overflow: hidden;
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+    transition: box-shadow 0.18s, transform 0.18s;
+}
+.life-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+.life-desc {
+    padding: 1rem 0.7rem;
+    font-size: 1.05rem;
+    color: #4a4e69;
+    text-align: center;
+    background: #f7f8fa;
+    width: 100%;
+}
+.life-item:hover {
+    box-shadow: 0 8px 24px rgba(34,34,59,0.13);
+    transform: translateY(-4px) scale(1.03);
+}
+@media (max-width: 900px) {
+    .life-gallery {
+        gap: 1rem;
+    }
+    .life-item {
+        width: 90vw;
+    }
+}

@@ -14,6 +14,7 @@
             <li><a href="#projects"><i class="fa-solid fa-layer-group"></i> 项目</a></li>
             <li><a href="#experience"><i class="fa-solid fa-briefcase"></i> 工作经历</a></li>
             <li><a href="#notes"><i class="fa-solid fa-book"></i> 笔记日记</a></li>
+            <li><a href="#life"><i class="fa-solid fa-star"></i> 我的生活记录/高光时刻</a></li>
         </ul>
     </nav>
     <aside class="sidebar">
@@ -23,6 +24,9 @@
             <li><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a></li>
             <li><i class="fa-brands fa-github"></i> <a href="https://github.com/REALROOK1E" target="_blank">GitHub</a></li>
             <li><i class="fa-solid fa-phone"></i> 电话：<a href="tel:123456789">123-456-789</a></li>
+            <li><i class="fa-solid fa-school"></i> 学校：XXX大学</li>
+            <li><i class="fa-solid fa-graduation-cap"></i> 专业：计算机科学与技术</li>
+            <li><i class="fa-solid fa-location-dot"></i> 地点：上海，中国</li>
         </ul>
     </aside>
     <div class="main-content">
@@ -37,29 +41,25 @@
         </section>
         <section class="works" id="projects">
             <h2><i class="fa-solid fa-layer-group" style="margin-right:0.5rem;"></i>我的项目</h2>
-            <div class="project-carousel">
-                <button class="carousel-btn prev"><i class="fa-solid fa-chevron-left"></i></button>
-                <div class="carousel-track">
-                    <div class="project-card">
-                        <img class="card-cover" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="项目A封面">
-                        <h3><i class="fa-solid fa-server"></i> 项目A</h3>
-                        <p>基于Spring Boot的微服务项目，实现高效服务治理和自动化部署。</p>
-                        <a class="card-btn" href="project-a.html">查看详情</a>
-                    </div>
-                    <div class="project-card">
-                        <img class="card-cover" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="项目B封面">
-                        <h3><i class="fa-solid fa-laptop-code"></i> 项目B</h3>
-                        <p>React+TypeScript企业级管理后台，支持动态权限和多主题切换。</p>
-                        <a class="card-btn" href="project-b.html">查看详情</a>
-                    </div>
-                    <div class="project-card">
-                        <img class="card-cover" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="项目C封面">
-                        <h3><i class="fa-solid fa-toolbox"></i> 项目C</h3>
-                        <p>开源工具库，包含常用的JavaScript和Python实用函数，助力开发提效。</p>
-                        <a class="card-btn" href="project-c.html">查看详情</a>
-                    </div>
-                </div>
-                <button class="carousel-btn next"><i class="fa-solid fa-chevron-right"></i></button>
+            <div class="card-list vertical">
+                <a class="card card-link" href="project-a.html">
+                    <img class="card-cover" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="项目A封面">
+                    <h3><i class="fa-solid fa-server"></i> 项目A</h3>
+                    <p>基于Spring Boot的微服务项目，实现高效服务治理和自动化部署。</p>
+                    <span class="card-btn">查看详情</span>
+                </a>
+                <a class="card card-link" href="project-b.html">
+                    <img class="card-cover" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="项目B封面">
+                    <h3><i class="fa-solid fa-laptop-code"></i> 项目B</h3>
+                    <p>React+TypeScript企业级管理后台，支持动态权限和多主题切换。</p>
+                    <span class="card-btn">查看详情</span>
+                </a>
+                <a class="card card-link" href="project-c.html">
+                    <img class="card-cover" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="项目C封面">
+                    <h3><i class="fa-solid fa-toolbox"></i> 项目C</h3>
+                    <p>开源工具库，包含常用的JavaScript和Python实用函数，助力开发提效。</p>
+                    <span class="card-btn">查看详情</span>
+                </a>
             </div>
         </section>
         <section class="about" id="experience">
@@ -73,6 +73,29 @@
                 <li><a href="https://github.com/REALROOK1E/ai-diary" target="_blank"><i class="fa-brands fa-github"></i> AI日记与心得</a></li>
                 <li><a href="https://github.com/REALROOK1E/tech-blog" target="_blank"><i class="fa-brands fa-github"></i> 技术博客</a></li>
             </ul>
+        </section>
+        <section class="works" id="life">
+            <h2><i class="fa-solid fa-star" style="margin-right:0.5rem;"></i>我的生活记录 / 高光时刻</h2>
+            <div class="card-list vertical">
+                <a class="card card-link" href="life-1.html">
+                    <img class="card-cover" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="毕业典礼">
+                    <h3><i class="fa-solid fa-graduation-cap"></i> 毕业典礼</h3>
+                    <p>毕业典礼的喜悦时刻，人生新阶段的开始。</p>
+                    <span class="card-btn">查看详情</span>
+                </a>
+                <a class="card card-link" href="life-2.html">
+                    <img class="card-cover" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="旅行合影">
+                    <h3><i class="fa-solid fa-plane"></i> 旅行合影</h3>
+                    <p>和朋友们的旅行合影，记录青春与友谊。</p>
+                    <span class="card-btn">查看详情</span>
+                </a>
+                <a class="card card-link" href="life-3.html">
+                    <img class="card-cover" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="技术演讲">
+                    <h3><i class="fa-solid fa-microphone"></i> 技术演讲</h3>
+                    <p>第一次技术演讲的舞台，突破自我，收获成长。</p>
+                    <span class="card-btn">查看详情</span>
+                </a>
+            </div>
         </section>
     </main>
     <footer>
