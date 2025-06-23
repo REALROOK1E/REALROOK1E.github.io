@@ -363,7 +363,7 @@ main {
     box-shadow: 0 8px 32px rgba(35,41,70,0.18), 0 0 32px #fff1  inset;
     min-width: 340px;
     max-width: 340px;
-    height: 420px;
+    height: 520px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -754,4 +754,37 @@ footer a:hover {
         right: 1.2rem;
         font-size: 1.5rem;
     }
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 0 1.2rem 1.2rem 1.2rem;
+    z-index: 2;
+}
+.tech-tag {
+    display: inline-block;
+    background: linear-gradient(90deg, #eebbc3 0%, #b8c1ec 100%);
+    color: #232946;
+    font-size: 0.93rem;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 0.22em 0.85em;
+    margin: 0.1em 0;
+    box-shadow: 0 2px 8px #b8c1ec22;
+    letter-spacing: 0.02em;
+    border: none;
+    transition: background 0.18s, color 0.18s, transform 0.18s;
+    cursor: default;
+    user-select: none;
+    opacity: 0.93;
+    text-shadow: 0 1px 8px #fff3;
+}
+.tech-tag:hover {
+    background: linear-gradient(90deg, #b8c1ec 0%, #eebbc3 100%);
+    color: #232946;
+    transform: scale(1.08);
+    opacity: 1;
 }
