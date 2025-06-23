@@ -1,6 +1,8 @@
-/* ====== Modern High-end Glassmorphism Theme (Upgraded) ====== */
+/* ====== Ultra Modern Glassmorphism & Animated Theme ====== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;700&display=swap');
+
 body {
-    font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Inter', 'Poppins', 'Segoe UI', Arial, sans-serif;
     background: linear-gradient(135deg, #232946 0%, #b8c1ec 100%);
     margin: 0;
     color: #eaeaea;
@@ -8,6 +10,13 @@ body {
     letter-spacing: 0.01em;
     overflow-x: hidden;
     animation: fadeInBody 1.2s cubic-bezier(.4,0,.2,1);
+    background-size: 400% 400%;
+    animation: gradientBG 18s ease infinite, fadeInBody 1.2s cubic-bezier(.4,0,.2,1);
+}
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
 }
 @keyframes fadeInBody {
     from { opacity: 0; }
@@ -36,8 +45,9 @@ body {
 }
 
 .nav-logo {
-    font-size: 1.4rem;
-    font-weight: bold;
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -56,36 +66,36 @@ body {
     color: #eebbc3;
     text-decoration: none;
     font-size: 1.08rem;
-    font-weight: 500;
+    font-weight: 600;
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    transition: color 0.18s, text-shadow 0.18s, background 0.22s, box-shadow 0.22s;
+    transition: color 0.18s, text-shadow 0.18s, background 0.22s, box-shadow 0.22s, transform 0.18s;
     padding: 0.2rem 0.7rem;
     border-radius: 8px;
     position: relative;
     overflow: hidden;
+    background: none;
 }
 .nav-links li a::after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0; bottom: 0;
-    width: 100%; height: 2px;
-    background: linear-gradient(90deg, #eebbc3 0%, #b8c1ec 100%);
-    opacity: 0;
-    transition: opacity 0.22s, transform 0.22s;
-    transform: scaleX(0.6);
-}
-.nav-links li a:hover::after, .nav-links li a.active::after {
-    opacity: 1;
-    transform: scaleX(1);
+    display: none;
 }
 .nav-links li a:hover, .nav-links li a.active {
     color: #fff;
     background: linear-gradient(90deg, #eebbc3 0%, #b8c1ec 100%);
-    text-shadow: 0 2px 12px #eebbc399;
+    text-shadow: 0 2px 16px #eebbc399, 0 0 8px #fff;
     box-shadow: 0 2px 16px #b8c1ec33;
+    transform: scale(1.08);
+    font-weight: 700;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: navTextGlow 1.2s linear infinite alternate;
+}
+@keyframes navTextGlow {
+    0% { filter: drop-shadow(0 0 0 #eebbc3); }
+    100% { filter: drop-shadow(0 0 8px #eebbc3); }
 }
 
 .sidebar {
@@ -95,14 +105,14 @@ body {
     width: 240px;
     background: rgba(35,41,70,0.65);
     border-right: 1.5px solid #b8c1ec44;
-    box-shadow: 2px 0 24px rgba(35,41,70,0.10);
+    box-shadow: 2px 0 32px 8px #b8c1ec33, 0 0 32px #fff1  inset;
     padding: 2.2rem 1.2rem 1.2rem 1.2rem;
     z-index: 10;
     min-height: 60vh;
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(14px) saturate(1.2);
     border-top-right-radius: 24px;
     animation: fadeInLeft 1.2s cubic-bezier(.4,0,.2,1);
 }
@@ -112,8 +122,9 @@ body {
 }
 
 .sidebar-title {
+    font-family: 'Poppins', 'Inter', sans-serif;
     font-size: 1.13rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 0.7rem;
     color: #b8c1ec;
     display: flex;
@@ -130,13 +141,14 @@ body {
     gap: 0.7rem;
 }
 .sidebar-list li {
-    font-size: 1.01rem;
+    font-size: 1.05rem;
     color: #eaeaea;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     margin-bottom: 0.2rem;
     filter: drop-shadow(0 2px 8px #b8c1ec22);
+    font-family: 'Inter', sans-serif;
 }
 .sidebar-list li:last-child {
     margin-bottom: 0;
@@ -172,11 +184,20 @@ header {
     backdrop-filter: blur(8px);
     animation: fadeInDown 1.1s cubic-bezier(.4,0,.2,1);
 }
+header h1 {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-size: 2.3rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+}
 .subtitle {
     color: #b8c1ec;
     font-size: 1.13rem;
     margin-top: 0.5rem;
     letter-spacing: 0.2px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
 }
 main {
     max-width: 1200px;
@@ -186,23 +207,24 @@ main {
 .about, .works {
     background: rgba(232,235,241,0.10);
     border-radius: 18px;
-    box-shadow: 0 2px 16px rgba(35,41,70,0.10);
+    box-shadow: 0 2px 16px rgba(35,41,70,0.10), 0 0 32px #fff1  inset;
     margin-bottom: 2.5rem;
     padding: 2.2rem 2rem;
     transition: box-shadow 0.2s, background 0.2s;
     border: 1.5px solid #b8c1ec33;
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(8px) saturate(1.1);
     animation: fadeInMain 1.2s cubic-bezier(.4,0,.2,1);
 }
 .works h2, .about h2 {
     margin-bottom: 1.2rem;
     font-size: 1.3rem;
     color: #eebbc3;
-    font-weight: 600;
+    font-weight: 700;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     text-shadow: 0 2px 12px #b8c1ec33;
+    font-family: 'Poppins', 'Inter', sans-serif;
 }
 
 .about-list {
@@ -338,7 +360,7 @@ main {
 .card-list.vertical .card {
     background: rgba(35,41,70,0.55);
     border-radius: 18px;
-    box-shadow: 0 8px 32px rgba(35,41,70,0.18);
+    box-shadow: 0 8px 32px rgba(35,41,70,0.18), 0 0 32px #fff1  inset;
     min-width: 340px;
     max-width: 340px;
     height: 420px;
@@ -350,12 +372,12 @@ main {
     position: relative;
     padding: 0;
     border: 1.5px solid #b8c1ec33;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px) saturate(1.1);
     animation: floatCard 2.8s ease-in-out infinite alternate;
 }
 @keyframes floatCard {
-    0% { transform: translateY(0) scale(1); box-shadow: 0 8px 32px rgba(35,41,70,0.18); }
-    100% { transform: translateY(-8px) scale(1.025); box-shadow: 0 16px 48px #b8c1ec55; }
+    0% { transform: translateY(0) scale(1); box-shadow: 0 8px 32px rgba(35,41,70,0.18), 0 0 32px #fff1  inset; }
+    100% { transform: translateY(-8px) scale(1.025); box-shadow: 0 16px 48px #b8c1ec55, 0 0 48px #fff2  inset; }
 }
 .card-list.vertical .card::before {
     content: '';
@@ -363,7 +385,7 @@ main {
     inset: 0;
     border-radius: 18px;
     pointer-events: none;
-    box-shadow: 0 0 32px 4px #eebbc355 inset;
+    box-shadow: 0 0 32px 4px #eebbc355 inset, 0 0 0 0 #fff0;
     opacity: 0.18;
     z-index: 1;
 }
@@ -384,11 +406,12 @@ main {
     margin: 0.5rem 0 0.7rem 0;
     font-size: 1.18rem;
     color: #b8c1ec;
-    font-weight: 600;
+    font-weight: 700;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     z-index: 2;
+    font-family: 'Poppins', 'Inter', sans-serif;
 }
 .card-list.vertical p {
     font-size: 1.01rem;
@@ -397,6 +420,7 @@ main {
     flex: 1;
     text-align: center;
     z-index: 2;
+    font-family: 'Inter', sans-serif;
 }
 .card-list.vertical .card-btn {
     display: inline-block;
@@ -407,14 +431,15 @@ main {
     border: none;
     border-radius: 8px;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(35,41,70,0.10);
-    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.18s;
     text-decoration: none;
     position: relative;
     overflow: hidden;
     z-index: 2;
+    font-family: 'Poppins', 'Inter', sans-serif;
 }
 .card-list.vertical .card-btn::after {
     content: '';
@@ -432,13 +457,14 @@ main {
 .card-list.vertical .card-btn:hover {
     background: linear-gradient(90deg, #b8c1ec 0%, #eebbc3 100%);
     color: #232946;
-    box-shadow: 0 4px 16px #eebbc399;
+    box-shadow: 0 4px 16px #eebbc399, 0 0 24px #fff2  inset;
+    transform: scale(1.07);
 }
 .card-list.vertical .card-btn:hover::after {
     opacity: 0.22;
 }
 .card-list.vertical .card:hover {
-    box-shadow: 0 24px 64px #b8c1ec77;
+    box-shadow: 0 24px 64px #b8c1ec77, 0 0 64px #fff3  inset;
     background: rgba(35,41,70,0.85);
     transform: translateY(-12px) scale(1.045);
     border: 1.5px solid #eebbc3;
