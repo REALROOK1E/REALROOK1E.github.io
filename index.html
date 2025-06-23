@@ -51,15 +51,29 @@
                     <img class="card-cover" src="album/Insta.png" alt="Project A Cover">
                     <h3><i class="fa-solid fa-server"></i> InstaVerse</h3>
                     <p>A distributed, highly available large-scale microservices blog system, which covers a wide range of popular technology stacks and personal components.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Java</span>
-                        <span class="tech-tag">Spring Boot</span>
-                        <span class="tech-tag">Spring Cloud</span>
-                        <span class="tech-tag">MySQL</span>
-                        <span class="tech-tag">Redis</span>
-                        <span class="tech-tag">Kafka</span>
-                        <span class="tech-tag">Docker</span>
-                        <span class="tech-tag">Kubernetes</span>
+                    <div class="tech-tags collapsible-tags" data-tags-collapsed="true">
+                        <span class="tech-tag">Spring Boot 3.x</span>
+                        <span class="tech-tag">JDK 17</span>
+                        <span class="tech-tag">MySQL 8.0</span>
+                        <span class="tech-tag">Redis 7.x</span>
+                        <span class="tech-tag">Elasticsearch 7.x</span>
+                        <span class="tech-tag">Spring Cloud Alibaba 2022.x</span>
+                        <span class="tech-tag extra-tag">Nacos</span>
+                        <span class="tech-tag extra-tag">Gateway</span>
+                        <span class="tech-tag extra-tag">Sentinel</span>
+                        <span class="tech-tag extra-tag">RocketMQ</span>
+                        <span class="tech-tag extra-tag">XXL-Job</span>
+                        <span class="tech-tag extra-tag">MyBatis</span>
+                        <span class="tech-tag extra-tag">SaToken</span>
+                        <span class="tech-tag extra-tag">Minio</span>
+                        <span class="tech-tag extra-tag">Cassandra</span>
+                        <span class="tech-tag extra-tag">Zookeeper</span>
+                        <span class="tech-tag extra-tag">Docker</span>
+                        <span class="tech-tag extra-tag">Jmeter</span>
+                        <span class="tech-tag extra-tag">Maven</span>
+                        <span class="tech-tag extra-tag">Vue 3.x</span>
+                        <span class="tech-tag extra-tag">Vite 4</span>
+                        <button class="tags-toggle-btn" type="button">+15 more</button>
                     </div>
                     <span class="card-btn">View Details</span>
                 </a>
@@ -82,15 +96,14 @@
                     <img class="card-cover" src="album/ai.png" alt="Project C Cover">
                     <h3><i class="fa-solid fa-toolbox"></i> Aether X</h3>
                     <p>A full-stack application handcrafted based on the Spring AI framework, encompassing a Q&A chatbot,AI agent, a private knowledge base with RAG, and fine-tuning of LLMs</p>
-                    <div class="tech-tags">
+                    <div class="tech-tags collapsible-tags" data-tags-collapsed="true">
                         <span class="tech-tag">Spring AI</span>
-                        <span class="tech-tag">LangChain</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">OpenAI</span>
-                        <span class="tech-tag">RAG</span>
-                        <span class="tech-tag">LLM</span>
+                        <span class="tech-tag">Spring Boot 3.x</span>
+                        <span class="tech-tag">JDK 21</span>
+                        <span class="tech-tag">MySQL 8.x</span>
+                        <span class="tech-tag">Ollama</span>
+                        <span class="tech-tag">Deepseek</span>
+                        <button class="tags-toggle-btn" type="button">Show more</button>
                     </div>
                     <span class="card-btn">View Details</span>
                 </a>
@@ -183,4 +196,34 @@ nextBtn.onclick = () => {
   updateCarousel();
 };
 updateCarousel();
+
+// 技术栈标签折叠/展开
+function updateTagsDisplay(container) {
+    const collapsed = container.getAttribute('data-tags-collapsed') === 'true';
+    const tags = Array.from(container.querySelectorAll('.tech-tag'));
+    const btn = container.querySelector('.tags-toggle-btn');
+    if (!btn) return;
+    if (collapsed) {
+        tags.forEach((tag, i) => {
+            if (i < 6) tag.style.display = '';
+            else tag.style.display = 'none';
+        });
+        btn.textContent = `+${tags.length - 6} more`;
+    } else {
+        tags.forEach(tag => tag.style.display = '');
+        btn.textContent = 'Show less';
+    }
+}
+document.querySelectorAll('.collapsible-tags').forEach(container => {
+    updateTagsDisplay(container);
+    const btn = container.querySelector('.tags-toggle-btn');
+    if (btn) {
+        btn.onclick = function(e) {
+            e.stopPropagation();
+            const collapsed = container.getAttribute('data-tags-collapsed') === 'true';
+            container.setAttribute('data-tags-collapsed', collapsed ? 'false' : 'true');
+            updateTagsDisplay(container);
+        };
+    }
+});
 </script>
