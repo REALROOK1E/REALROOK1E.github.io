@@ -1,16 +1,15 @@
 // ====== Modern Service Worker for REALROOK1E Website ======
 
-const CACHE_NAME = 'realrook1e-v1.0';
+const CACHE_NAME = 'realrook1e-pixel-v2.0';
 const STATIC_ASSETS = [
     '/',
     '/index.html',
-    '/style-modern.css',
-    '/script-modern.js',
+    '/style-pixel.css',
+    '/script-pixel.js',
     '/album/Insta.png',
     '/album/ai.png',
     '/album/手撕.png',
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css',
-    'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap'
+    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'
 ];
 
 // Install event - cache static assets
