@@ -191,40 +191,83 @@
             <section class="quest-section" id="achievements">
                 <h2 class="section-title">ACHIEVEMENT GALLERY</h2>
                 <div class="achievements-grid">
-                    <div class="achievement-card" onclick="openAchievement('graduation')">
+                    <div class="achievement-card">
                         <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Graduation Achievement" class="achievement-image">
                         <div class="achievement-title">🎓 GRADUATION MASTER</div>
                         <div class="achievement-desc">Successfully completed 4-year software engineering campaign with honors!</div>
+                        <div class="achievement-details">
+                            After countless coding sessions, debugging marathons, and project deployments, mastered the fundamentals of software engineering.
+                        </div>
+                        <div class="achievement-stats">
+                            <span class="stat-badge">Experience: +2000 XP</span>
+                            <span class="stat-badge">Skills: +50 Points</span>
+                        </div>
                     </div>
 
-                    <div class="achievement-card" onclick="openAchievement('travel')">
+                    <div class="achievement-card">
                         <img src="album/Insta.png" alt="Travel Achievement" class="achievement-image">
                         <div class="achievement-title">🌍 WORLD EXPLORER</div>
                         <div class="achievement-desc">Discovered 20+ cities across multiple continents. Epic adventure stories unlocked!</div>
+                        <div class="achievement-details">
+                            From the northern lights of Sweden to bustling European capitals, travel adventures expanded worldview and cultural understanding.
+                        </div>
+                        <div class="achievement-stats">
+                            <span class="stat-badge">Cities: 20+</span>
+                            <span class="stat-badge">Countries: 8</span>
+                            <span class="stat-badge">Languages: Swedish +1</span>
+                        </div>
                     </div>
 
-                    <div class="achievement-card" onclick="openAchievement('tech-talk')">
+                    <div class="achievement-card">
                         <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Tech Talk Achievement" class="achievement-image">
                         <div class="achievement-title">🎤 TECH SPEAKER</div>
                         <div class="achievement-desc">First public speaking quest completed! Knowledge sharing skill activated.</div>
+                        <div class="achievement-details">
+                            Stepped onto the stage and shared knowledge with fellow developers. Evolution from code consumer to knowledge creator.
+                        </div>
+                        <div class="achievement-stats">
+                            <span class="stat-badge">Confidence: +100</span>
+                            <span class="stat-badge">Communication: +75</span>
+                        </div>
                     </div>
 
-                    <div class="achievement-card" onclick="openAchievement('music')">
+                    <div class="achievement-card">
                         <img src="album/ai.png" alt="Music Achievement" class="achievement-image">
                         <div class="achievement-title">🎸 BAND MEMBER</div>
                         <div class="achievement-desc">Former guitarist & keyboardist. Music creation abilities unlocked!</div>
+                        <div class="achievement-details">
+                            Mastered the art of creating harmony in both music and code. Creative skills enhance problem-solving and team collaboration.
+                        </div>
+                        <div class="achievement-stats">
+                            <span class="stat-badge">Creativity: +80</span>
+                            <span class="stat-badge">Team Harmony: +60</span>
+                        </div>
                     </div>
 
-                    <div class="achievement-card" onclick="openAchievement('coding')">
+                    <div class="achievement-card">
                         <img src="album/手撕.png" alt="Coding Achievement" class="achievement-image">
                         <div class="achievement-title">⚡ CODE MASTER</div>
                         <div class="achievement-desc">Algorithm and data structure mastery achieved through intensive training!</div>
+                        <div class="achievement-details">
+                            Through intensive training and countless practice sessions, unlocked the deepest secrets of computational thinking.
+                        </div>
+                        <div class="achievement-stats">
+                            <span class="stat-badge">Algorithm Mastery: MAX</span>
+                            <span class="stat-badge">Problem Solving: +150</span>
+                        </div>
                     </div>
 
-                    <div class="achievement-card" onclick="openAchievement('transformers')">
+                    <div class="achievement-card">
                         <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=400&q=80" alt="Transformers Achievement" class="achievement-image">
                         <div class="achievement-title">🤖 TRANSFORMERS EXPERT</div>
                         <div class="achievement-desc">Complete knowledge of Japanese Transformers series. Ultra Magnus pricing database included!</div>
+                        <div class="achievement-details">
+                            Encyclopedic knowledge of The Headmasters and Super-God Masterforce series, including second-hand model pricing.
+                        </div>
+                        <div class="achievement-stats">
+                            <span class="stat-badge">Attention to Detail: +200</span>
+                            <span class="stat-badge">Passion Index: MAX</span>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -239,14 +282,6 @@
             <a href="https://github.com/REALROOK1E" target="_blank">VIEW SOURCE CODE</a>
         </div>
     </footer>
-
-    <!-- Achievement Modal -->
-    <div id="achievement-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1000; display: flex; align-items: center; justify-content: center;">
-        <div style="background: var(--bg-ui); border: 3px solid var(--accent-neon); border-radius: 15px; padding: 2rem; max-width: 500px; text-align: center; position: relative;">
-            <button onclick="closeAchievement()" style="position: absolute; top: 10px; right: 15px; background: none; border: none; color: var(--accent-pixel); font-size: 1.5rem; cursor: pointer;">✕</button>
-            <div id="achievement-content"></div>
-        </div>
-    </div>
 
     <!-- Pixel Game Scripts -->
     <script src="script-pixel.js"></script>

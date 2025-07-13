@@ -123,24 +123,35 @@ function showLoadingScreen() {
 
     document.body.appendChild(loadingOverlay);
 
-    // Animate loading bar
+    // Function to close loading screen
+    function closeLoading() {
+        loadingOverlay.style.opacity = '0';
+        setTimeout(() => {
+            if (document.body.contains(loadingOverlay)) {
+                document.body.removeChild(loadingOverlay);
+            }
+            soundManager.playSuccess();
+        }, 500);
+    }
+
+    // Auto close after 2 seconds
+    setTimeout(closeLoading, 2000);
+
+    // Animate loading bar to complete in 2 seconds
     const loadingFill = loadingOverlay.querySelector('.loading-fill');
     let progress = 0;
+    const totalTime = 2000; // 2 seconds
+    const updateInterval = 50; // Update every 50ms
+    const increment = 100 / (totalTime / updateInterval); // Calculate increment for smooth animation
+    
     const loadingInterval = setInterval(() => {
-        progress += Math.random() * 15;
+        progress += increment;
         if (progress >= 100) {
             progress = 100;
             clearInterval(loadingInterval);
-            setTimeout(() => {
-                loadingOverlay.style.opacity = '0';
-                setTimeout(() => {
-                    document.body.removeChild(loadingOverlay);
-                    soundManager.playSuccess();
-                }, 1000);
-            }, 500);
         }
         loadingFill.style.width = progress + '%';
-    }, 100);
+    }, updateInterval);
 }
 
 // ====== NAVIGATION EFFECTS ======
@@ -292,74 +303,6 @@ function setupAchievements() {
             card.style.transform = '';
         });
     });
-}
-
-// Achievement Modal Functions
-function openAchievement(achievementType) {
-    const modal = document.getElementById('achievement-modal');
-    const content = document.getElementById('achievement-content');
-    
-    const achievements = {
-        graduation: {
-            title: '🎓 GRADUATION MASTER',
-            description: 'Quest Completed: Four-year Software Engineering campaign successfully finished!',
-            details: 'After countless coding sessions, debugging marathons, and project deployments, you have mastered the fundamentals of software engineering. This achievement unlocks advanced career opportunities and proves your dedication to continuous learning.',
-            stats: 'Experience Gained: +2000 XP | Skill Points: +50 | New Abilities: Professional Development'
-        },
-        travel: {
-            title: '🌍 WORLD EXPLORER',
-            description: 'Epic Achievement: 20+ cities discovered across multiple continents!',
-            details: 'From the northern lights of Sweden to bustling European capitals, your travel adventures have expanded your worldview. Each city visited has added cultural understanding and global perspective to your character build.',
-            stats: 'Cities Visited: 20+ | Countries Explored: 8 | Cultural XP: +1500 | Languages: Swedish +1'
-        },
-        'tech-talk': {
-            title: '🎤 TECH SPEAKER',
-            description: 'First Boss Battle: Public speaking challenge conquered!',
-            details: 'Stepped onto the stage and shared knowledge with fellow developers. This achievement marks your evolution from code consumer to knowledge creator, unlocking the teacher class abilities.',
-            stats: 'Confidence Boost: +100 | Communication Skills: +75 | Community Impact: +50'
-        },
-        music: {
-            title: '🎸 BAND MEMBER',
-            description: 'Side Quest Completed: Musical talents developed and performed!',
-            details: 'As guitarist and keyboardist, you have mastered the art of creating harmony in both music and code. This creative skill enhances problem-solving abilities and team collaboration.',
-            stats: 'Creativity: +80 | Team Harmony: +60 | Artistic Expression: +90'
-        },
-        coding: {
-            title: '⚡ CODE MASTER',
-            description: 'Ultimate Skill: Algorithm and data structure mastery achieved!',
-            details: 'Through intensive training and countless practice sessions, you have unlocked the deepest secrets of computational thinking. Your problem-solving abilities are now legendary.',
-            stats: 'Algorithm Mastery: MAX | Problem Solving: +150 | Interview Prep: COMPLETE'
-        },
-        transformers: {
-            title: '🤖 TRANSFORMERS EXPERT',
-            description: 'Hidden Achievement: Complete Japanese Transformers series knowledge!',
-            details: 'Your encyclopedic knowledge of The Headmasters and Super-God Masterforce series, including second-hand model pricing, demonstrates your passion for detail and dedication to interests.',
-            stats: 'Attention to Detail: +200 | Passion Index: MAX | Collector Knowledge: LEGENDARY'
-        }
-    };
-
-    const achievement = achievements[achievementType];
-    content.innerHTML = `
-        <h2 style="color: var(--accent-neon); font-family: var(--font-title); margin-bottom: 1rem;">${achievement.title}</h2>
-        <p style="color: var(--accent-pixel); font-weight: bold; margin-bottom: 1rem;">${achievement.description}</p>
-        <p style="color: var(--text-bright); line-height: 1.6; margin-bottom: 1.5rem;">${achievement.details}</p>
-        <div style="background: rgba(0, 255, 65, 0.1); border: 1px solid var(--accent-neon); border-radius: 5px; padding: 1rem;">
-            <strong style="color: var(--accent-neon);">ACHIEVEMENT STATS:</strong><br>
-            <span style="color: var(--text-bright);">${achievement.stats}</span>
-        </div>
-    `;
-
-    modal.style.display = 'flex';
-    soundManager.playSuccess();
-    
-    // Add achievement unlock animation
-    content.style.animation = 'achievementUnlock 0.8s ease-out';
-}
-
-function closeAchievement() {
-    const modal = document.getElementById('achievement-modal');
-    modal.style.display = 'none';
-    soundManager.playBeep(400, 200, 'square');
 }
 
 // ====== TERMINAL EFFECTS ======
