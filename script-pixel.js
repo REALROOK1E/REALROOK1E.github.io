@@ -779,3 +779,10 @@ function initializeMiniGame() {
 }
 
 console.log('🎮 PIXEL GAME PORTFOLIO LOADED SUCCESSFULLY! 🎮');
+
+// Ensure game initializes even if DOMContentLoaded already fired
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeMiniGame);
+} else {
+    initializeMiniGame();
+}

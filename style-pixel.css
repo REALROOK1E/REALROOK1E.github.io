@@ -7,17 +7,22 @@
     --bg-game: #1a1a2e;
     --bg-ui: #16213e;
     --accent-cyan: #00ffff;
-    --accent-magenta: #ff0080;
+    --accent-magenta: #9d4edd;
     --accent-purple: #9d4edd;
-    --accent-yellow: #ffff00;
+    --accent-yellow: #00ff41;
     --text-bright: #ffffff;
     --text-cyan: #00e5ff;
-    --text-pink: #ff1493;
+    --text-pink: #00ffff;
     --text-purple: #da70d6;
     --border-cyan: #00ffff;
     --shadow-cyan: 0 0 20px #00ffff, 0 0 40px #00ffff;
-    --shadow-magenta: 0 0 20px #ff0080, 0 0 40px #ff0080;
+    --shadow-magenta: 0 0 20px #9d4edd, 0 0 40px #9d4edd;
     --shadow-purple: 0 0 15px #9d4edd;
+    
+    /* Additional cyber colors */
+    --accent-pixel: #00ffff;
+    --accent-neon: #00ff41;
+    --accent-blue: #0099ff;
     
     /* Pixel sizes */
     --pixel-size: 4px;
@@ -449,7 +454,7 @@ body::before {
     border-radius: 50%;
 }
 
-.terminal-dot.red { background: #ff5f57; }
+.terminal-dot.red { background: #00ffff; }
 .terminal-dot.yellow { background: #ffbd2e; }
 .terminal-dot.green { background: #28ca42; }
 
@@ -696,13 +701,15 @@ body::before {
 }
 
 .tech-badge {
-    background: var(--accent-pixel);
+    background: var(--accent-cyan);
     color: var(--bg-dark);
     padding: 0.2rem 0.6rem;
     border-radius: 3px;
     font-size: 0.7rem;
     font-weight: bold;
     text-transform: uppercase;
+    border: 1px solid var(--accent-cyan);
+    text-shadow: none;
 }
 
 .quest-button {
