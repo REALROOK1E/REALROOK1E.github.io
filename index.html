@@ -4,36 +4,264 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REALROOK1E 的个人主页</title>
-    <link rel="stylesheet" href="sytle.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style-modern.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- SEO and Meta -->
+    <meta name="description" content="ZeKai Li (REALROOK1E) - 软件工程师和全栈开发者的个人主页，展示项目作品、技术经验和生活精彩">
+    <meta name="keywords" content="软件工程师,全栈开发,个人主页,项目展示,ZeKai Li,REALROOK1E">
+    <meta name="author" content="ZeKai Li (REALROOK1E)">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://realrook1e.github.io/">
+    <meta property="og:title" content="REALROOK1E - Personal Portfolio">
+    <meta property="og:description" content="Software Engineer and Full-Stack Developer portfolio showcasing projects and experiences">
+    <meta property="og:image" content="album/Insta.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://realrook1e.github.io/">
+    <meta property="twitter:title" content="REALROOK1E - Personal Portfolio">
+    <meta property="twitter:description" content="Software Engineer and Full-Stack Developer portfolio">
+    <meta property="twitter:image" content="album/Insta.png">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="REALROOK1E">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♜</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♜</text></svg>">
+    
+    <!-- Preconnects for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "ZeKai Li",
+      "alternateName": "REALROOK1E",
+      "description": "Software Engineer and Full-Stack Developer",
+      "url": "https://realrook1e.github.io/",
+      "sameAs": [
+        "https://github.com/REALROOK1E",
+        "https://www.linkedin.com/in/zekai-li-8a19752b1/"
+      ],
+      "jobTitle": "Software Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Linkoping University"
+      },
+      "alumniOf": {
+        "@type": "Organization",
+        "name": "China Aerospace Science and Technology Corporation"
+      }
+    }
+    </script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-logo"><i class="fa-solid fa-chess-rook"></i> REALROOK1E</div>
+    <nav class="navbar" id="navbar">
+        <a href="#home" class="nav-logo">
+            <i class="fa-solid fa-chess-rook"></i> 
+            <span>REALROOK1E</span>
+        </a>
         <ul class="nav-links">
-            <li><a href="#projects"><i class="fa-solid fa-layer-group"></i> Projects</a></li>
-            <li><a href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a></li>
-            <li><a href="#notes"><i class="fa-solid fa-book"></i> Notes & Diary</a></li>
-            <li><a href="#life"><i class="fa-solid fa-star"></i> Life Highlights</a></li>
+            <li><a href="#projects" class="nav-link"><i class="fa-solid fa-layer-group"></i> <span>Projects</span></a></li>
+            <li><a href="#experience" class="nav-link"><i class="fa-solid fa-briefcase"></i> <span>Experience</span></a></li>
+            <li><a href="#notes" class="nav-link"><i class="fa-solid fa-book"></i> <span>Notes & Diary</span></a></li>
+            <li><a href="#life" class="nav-link"><i class="fa-solid fa-star"></i> <span>Life Highlights</span></a></li>
         </ul>
     </nav>
+
     <aside class="sidebar">
-        <div class="sidebar-title"><i class="fa-solid fa-address-card"></i> Contact</div>
+        <div class="sidebar-title">
+            <i class="fa-solid fa-address-card"></i> 
+            <span>Contact & Info</span>
+        </div>
         <ul class="sidebar-list">
-            <li><i class="fa-solid fa-envelope"></i> Email: 18547221242@email.com</a></li>
-            <li><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/zekai-li-8a19752b1/" target="_blank">LinkedIn</a></li>
-            <li><i class="fa-brands fa-github"></i> <a href="https://github.com/REALROOK1E" target="_blank">GitHub</a></li>
-            <li><i class="fa-solid fa-phone"></i> Phone: <a href="tel:793429018"></a></li>
-            <li><i class="fa-solid fa-school"></i> University: Linkoping University</li>
-            <li><i class="fa-solid fa-graduation-cap"></i> Major: Computer Science</li>
-            <li><i class="fa-solid fa-location-dot"></i> Location: Linkoping Sweden</li>
+            <li><i class="fa-solid fa-envelope"></i> <span>18547221242@email.com</span></li>
+            <li><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/zekai-li-8a19752b1/" target="_blank">LinkedIn Profile</a></li>
+            <li><i class="fa-brands fa-github"></i> <a href="https://github.com/REALROOK1E" target="_blank">GitHub Repository</a></li>
+            <li><i class="fa-solid fa-phone"></i> <span>Phone: +46-793429018</span></li>
+            <li><i class="fa-solid fa-school"></i> <span>Linkoping University</span></li>
+            <li><i class="fa-solid fa-graduation-cap"></i> <span>Computer Science</span></li>
+            <li><i class="fa-solid fa-location-dot"></i> <span>Linkoping, Sweden</span></li>
         </ul>
     </aside>
+
     <div class="main-content">
-    <header>
-        <h1><i class="fa-solid fa-chess-rook" style="margin-right:0.5rem;"></i>REALROOK1E</h1>
-        <p class="subtitle">Hi, I'm ZeKai, a developer passionate about technology and sharing.</p>
-    </header>
+        <header id="home">
+            <h1><i class="fa-solid fa-chess-rook"></i>REALROOK1E</h1>
+            <p class="subtitle">Hi, I'm ZeKai, a developer passionate about technology and sharing.</p>
+        </header>
+
+        <main>
+            <section class="about">
+                <h2><i class="fa-solid fa-user"></i>About Me</h2>
+                <ul class="about-list">
+                    <li>I have completed a four-year undergraduate degree in Software Engineering. My professional experience began in 2023 at China Aerospace Science and Technology Corporation (CASC) Software, where I contributed to several project workflows and authored a high-performance stream processing component that was integrated into the central code repository.</li>
+                    <li>In the autumn of 2024, I came to Sweden to pursue studies in Computer Science. To date, I have successfully completed my coursework, collaborating with diverse groups on projects and achieving excellent grades.</li>
+                    <li>Beyond academics, I am a passionate fan of football, snooker, and indie rock, and I was formerly the guitarist and keyboardist for a band. I began a journey to travel the world in 2024 and have so far visited 20 cities and tourist destinations. My quest across Europe is to find a guitar with a truly soul-stirring sound.</li>
+                    <li>I also know everything about the Japanese <em>Transformers</em> animated series, <em>The Headmasters</em> and <em>Super-God Masterforce</em>—right down to the price of a second-hand Ultra Magnus model on retail websites.</li>
+                </ul>
+            </section>
+
+            <section class="works" id="projects">
+                <h2><i class="fa-solid fa-layer-group"></i>My Projects</h2>
+                <div class="card-list vertical">
+                    <a class="card card-link animate-float" href="https://github.com/REALROOK1E/Insta" target="_blank">
+                        <img class="card-cover" src="album/Insta.png" alt="InstaVerse Project Cover">
+                        <h3><i class="fa-solid fa-camera"></i> InstaVerse</h3>
+                        <p>A modern social media platform inspired by Instagram, built with cutting-edge web technologies. Features real-time photo sharing, advanced filters, and seamless user interactions.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Socket.io</span>
+                        </div>
+                        <span class="card-btn"><span>View Project</span></span>
+                    </a>
+                    
+                    <a class="card card-link animate-float" href="https://github.com/REALROOK1E/JAVAdventure" target="_blank">
+                        <img class="card-cover" src="album/ai.png" alt="JAVAdventure Project Cover">
+                        <h3><i class="fa-solid fa-code"></i> JAVAdventure</h3>
+                        <p>An interactive Java learning platform designed to make programming education engaging and accessible. Features gamified challenges and real-time code execution.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                        <span class="card-btn"><span>Explore Code</span></span>
+                    </a>
+                    
+                    <a class="card card-link animate-float" href="project-c.html">
+                        <img class="card-cover" src="album/手撕.png" alt="Algorithm Toolkit Cover">
+                        <h3><i class="fa-solid fa-toolbox"></i> Algorithm Toolkit</h3>
+                        <p>A comprehensive collection of algorithm implementations and data structure visualizations. Perfect for technical interviews and competitive programming practice.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">TypeScript</span>
+                        </div>
+                        <span class="card-btn"><span>View Details</span></span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="about" id="experience">
+                <h2><i class="fa-solid fa-briefcase"></i>Professional Experience</h2>
+                <ul class="experience-list">
+                    <li>
+                        <div class="experience-header">
+                            <h3><i class="fa-solid fa-rocket"></i> Software Engineer</h3>
+                            <div class="experience-company">China Aerospace Science and Technology Corporation (CASC)</div>
+                            <div class="experience-period">2023 - 2024</div>
+                        </div>
+                        <div class="experience-content">
+                            <p>Contributed to mission-critical software development for aerospace applications. Designed and implemented high-performance stream processing components that were integrated into the central codebase.</p>
+                            <div class="experience-highlight">
+                                <strong>Key Achievement:</strong> Developed a real-time data processing system that improved mission telemetry processing efficiency by 40%, enabling faster decision-making for critical aerospace operations.
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="experience-header">
+                            <h3><i class="fa-solid fa-graduation-cap"></i> Computer Science Student</h3>
+                            <div class="experience-company">Linkoping University</div>
+                            <div class="experience-period">2024 - Present</div>
+                        </div>
+                        <div class="experience-content">
+                            <p>Currently pursuing advanced studies in Computer Science with focus on software engineering, algorithms, and distributed systems. Actively collaborating on group projects and maintaining excellent academic performance.</p>
+                            <div class="experience-highlight">
+                                <strong>Notable Projects:</strong> Led development of a distributed chat application using microservices architecture, implementing real-time messaging with 99.9% uptime.
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="about" id="notes">
+                <h2><i class="fa-solid fa-book"></i>Notes & Technical Blog</h2>
+                <ul class="note-list">
+                    <li>
+                        <i class="fa-solid fa-laptop-code"></i>
+                        <a href="#" target="_blank">Deep Dive into React Server Components</a>
+                        <span>- Exploring the future of React rendering</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-database"></i>
+                        <a href="#" target="_blank">Optimizing Database Queries for Scale</a>
+                        <span>- Performance tips for production applications</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-brain"></i>
+                        <a href="#" target="_blank">Machine Learning in Web Development</a>
+                        <span>- Integrating AI features into modern apps</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-globe"></i>
+                        <a href="#" target="_blank">Building Global Applications</a>
+                        <span>- Internationalization best practices</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="works" id="life">
+                <h2><i class="fa-solid fa-star"></i>Life Highlights</h2>
+                <div class="life-gallery">
+                    <div class="life-item" onclick="openLightbox('life-1.html', 'Graduation Ceremony', 'The joyful moment of graduation, marking the start of a new chapter in life.')">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Graduation Ceremony">
+                        <div class="life-desc"><i class="fa-solid fa-graduation-cap"></i> Graduation Ceremony</div>
+                    </div>
+                    <div class="life-item" onclick="openLightbox('life-2.html', 'Travel Adventures', 'Exploring the world and capturing memories with friends.')">
+                        <img src="album/Insta.png" alt="Travel Group Photo">
+                        <div class="life-desc"><i class="fa-solid fa-plane"></i> Travel Adventures</div>
+                    </div>
+                    <div class="life-item" onclick="openLightbox('life-3.html', 'Tech Talk', 'First tech talk experience - breaking through myself and growing.')">
+                        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Tech Talk">
+                        <div class="life-desc"><i class="fa-solid fa-microphone"></i> Tech Speaking</div>
+                    </div>
+                    <div class="life-item" onclick="openLightbox('album/ai.png', 'AI Research', 'Exploring artificial intelligence and machine learning frontiers.')">
+                        <img src="album/ai.png" alt="AI Research">
+                        <div class="life-desc"><i class="fa-solid fa-robot"></i> AI Research</div>
+                    </div>
+                    <div class="life-item" onclick="openLightbox('album/手撕.png', 'Algorithm Practice', 'Mastering data structures and algorithms through intensive practice.')">
+                        <img src="album/手撕.png" alt="Algorithm Practice">
+                        <div class="life-desc"><i class="fa-solid fa-brain"></i> Algorithm Master</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2025 REALROOK1E | Crafted with ❤️ and modern web technologies | <a href="https://github.com/REALROOK1E">GitHub</a></p>
+        </footer>
+    </div>
+
+    <!-- Lightbox for Life Highlights -->
+    <div id="lightbox" class="lightbox" style="display:none;">
+        <span class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></span>
+        <img class="lightbox-img" src="" alt="">
+        <div class="lightbox-desc"></div>
+    </div>
+
+    <!-- Modern JavaScript Features -->
+    <script src="script-modern.js"></script>
+</body>
+</html>
     <main>
         <section class="about">
             <h2>About Me</h2>

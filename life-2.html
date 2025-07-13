@@ -3,88 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Group Photo - Highlight - REALROOK1E</title>
-    <link rel="stylesheet" href="sytle.css">
+    <title>Travel Adventures - Life Highlight - REALROOK1E</title>
+    <link rel="stylesheet" href="style-modern.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <meta name="description" content="Travel adventures and memories captured around the world">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-logo"><i class="fa-solid fa-chess-rook"></i> REALROOK1E</div>
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="nav-logo">
+            <i class="fa-solid fa-chess-rook"></i> 
+            <span>REALROOK1E</span>
+        </a>
         <ul class="nav-links">
-            <li><a href="index.html#projects"><i class="fa-solid fa-layer-group"></i> Projects</a></li>
-            <li><a href="index.html#experience"><i class="fa-solid fa-briefcase"></i> Experience</a></li>
-            <li><a href="index.html#notes"><i class="fa-solid fa-book"></i> Notes & Diary</a></li>
-            <li><a href="index.html#life" class="active"><i class="fa-solid fa-star"></i> Life Highlights</a></li>
+            <li><a href="index.html#projects" class="nav-link"><i class="fa-solid fa-layer-group"></i> <span>Projects</span></a></li>
+            <li><a href="index.html#experience" class="nav-link"><i class="fa-solid fa-briefcase"></i> <span>Experience</span></a></li>
+            <li><a href="index.html#notes" class="nav-link"><i class="fa-solid fa-book"></i> <span>Notes & Diary</span></a></li>
+            <li><a href="index.html#life" class="nav-link active"><i class="fa-solid fa-star"></i> <span>Life Highlights</span></a></li>
         </ul>
     </nav>
-    <div class="main-content">
-    <header>
-        <h1><i class="fa-solid fa-plane" style="margin-right:0.5rem;color:#ffe082;"></i>Travel Group Photo</h1>
-        <p class="subtitle">Traveling with friends, capturing youth and friendship in every photo.</p>
-    </header>
-    <main>
-        <section class="about">
-            <h2><i class="fa-solid fa-camera-retro" style="margin-right:0.5rem;"></i>Travel Album</h2>
-            <div class="life-gallery travel-album">
-                <div class="life-item album-item">
-                    <img src="album/Insta.png" alt="Friends at the Beach" class="album-img">
-                    <div class="life-desc"><i class="fa-solid fa-umbrella-beach"></i> Sun, sea, and laughter with friends</div>
+
+    <div class="main-content" style="margin-left: 0;">
+        <header>
+            <h1><i class="fa-solid fa-plane"></i>Travel Adventures</h1>
+            <p class="subtitle">Exploring the world and capturing memories with friends across 20+ destinations</p>
+        </header>
+
+        <main>
+            <section class="about">
+                <h2><i class="fa-solid fa-camera-retro"></i>Travel Gallery</h2>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">A collection of my favorite moments from travels around Europe and beyond. Each photo tells a story of adventure, friendship, and discovery.</p>
+                
+                <div class="life-gallery travel-album" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div class="life-item album-item" onclick="openLightbox('album/Insta.png', 'Friends at the Beach', 'Sun, sea, and endless laughter with amazing friends on the Swedish coast')">
+                        <img src="album/Insta.png" alt="Friends at the Beach" class="album-img">
+                        <div class="life-desc">
+                            <i class="fa-solid fa-umbrella-beach"></i> 
+                            <span>Sun, sea, and laughter with friends</span>
+                        </div>
+                    </div>
+                    
+                    <div class="life-item album-item" onclick="openLightbox('album/ai.png', 'Mountain Adventure', 'Hiking through Scandinavian mountains, reaching new heights both literally and metaphorically')">
+                        <img src="album/ai.png" alt="Mountain Adventure" class="album-img">
+                        <div class="life-desc">
+                            <i class="fa-solid fa-mountain-sun"></i> 
+                            <span>Hiking to new heights</span>
+                        </div>
+                    </div>
+                    
+                    <div class="life-item album-item" onclick="openLightbox('album/手撕.png', 'City Exploration', 'Discovering vibrant European cities, from Stockholm to Copenhagen')">
+                        <img src="album/手撕.png" alt="City Exploration" class="album-img">
+                        <div class="life-desc">
+                            <i class="fa-solid fa-city"></i> 
+                            <span>Exploring vibrant city streets</span>
+                        </div>
+                    </div>
+                    
+                    <div class="life-item album-item" onclick="openLightbox('https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80', 'Group Photo', 'Cherished moments with the international student community at Linkoping University')">
+                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Group Photo" class="album-img">
+                        <div class="life-desc">
+                            <i class="fa-solid fa-users"></i> 
+                            <span>Cherished group moments</span>
+                        </div>
+                    </div>
+                    
+                    <div class="life-item album-item" onclick="openLightbox('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80', 'Graduation Trip', 'Celebrating the completion of my undergraduate studies with a memorable European adventure')">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Graduation Trip" class="album-img">
+                        <div class="life-desc">
+                            <i class="fa-solid fa-graduation-cap"></i> 
+                            <span>Graduation trip memories</span>
+                        </div>
+                    </div>
+                    
+                    <div class="life-item album-item" onclick="openLightbox('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80', 'Northern Lights', 'Witnessing the magical aurora borealis during winter nights in Sweden')">
+                        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Northern Lights" class="album-img">
+                        <div class="life-desc">
+                            <i class="fa-solid fa-moon"></i> 
+                            <span>Northern lights adventure</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="life-item album-item">
-                    <img src="album/ai.png" alt="Mountain Adventure" class="album-img">
-                    <div class="life-desc"><i class="fa-solid fa-mountain-sun"></i> Hiking to new heights</div>
+                
+                <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--bg-glass); border-radius: var(--radius-xl); border: 1px solid var(--border-primary);">
+                    <h3 style="color: var(--accent-primary); margin: 0 0 1rem 0;">
+                        <i class="fa-solid fa-map-marked-alt"></i> 
+                        Travel Statistics
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-primary);">20+</div>
+                            <div style="color: var(--text-secondary);">Cities Visited</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-secondary);">8</div>
+                            <div style="color: var(--text-secondary);">Countries Explored</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-tertiary);">500+</div>
+                            <div style="color: var(--text-secondary);">Photos Captured</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-warm);">∞</div>
+                            <div style="color: var(--text-secondary);">Memories Made</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="life-item album-item">
-                    <img src="album/手撕.png" alt="City Exploration" class="album-img">
-                    <div class="life-desc"><i class="fa-solid fa-city"></i> Exploring vibrant city streets</div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <p style="color: var(--text-secondary); font-size: 1.1rem;">
+                        <i class="fa-solid fa-mouse-pointer"></i> 
+                        Click any photo to view in full size!
+                    </p>
                 </div>
-                <div class="life-item album-item">
-                    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Group Photo" class="album-img">
-                    <div class="life-desc"><i class="fa-solid fa-users"></i> Cherished group moments</div>
-                </div>
-                <div class="life-item album-item">
-                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Graduation Trip" class="album-img">
-                    <div class="life-desc"><i class="fa-solid fa-graduation-cap"></i> Graduation trip memories</div>
-                </div>
-                <div class="life-item album-item">
-                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Night Adventure" class="album-img">
-                    <div class="life-desc"><i class="fa-solid fa-moon"></i> Night adventures under the stars</div>
-                </div>
+            </section>
+
+            <div style="text-align: center; margin: 3rem 0;">
+                <a href="index.html#life" class="card-btn">
+                    <span><i class="fa-solid fa-arrow-left"></i> Back to Life Highlights</span>
+                </a>
             </div>
-            <p style="text-align:center;margin-top:2rem;color:#b8c1ec;font-size:1.08rem;">Click any photo to view in full size!</p>
-        </section>
-        <a href="index.html#life" class="card card-link" style="display:inline-block;margin:2rem auto 0 auto;"><i class="fa-solid fa-arrow-left" style="margin-right:0.4rem;"></i>Back to Life Highlights</a>
-    </main>
+        </main>
+
+        <footer>
+            <p>© 2025 REALROOK1E | Travel Adventures | <a href="https://github.com/REALROOK1E">GitHub</a></p>
+        </footer>
+    </div>
+
+    <!-- Enhanced Lightbox -->
     <div id="lightbox" class="lightbox" style="display:none;">
-        <span class="lightbox-close"><i class="fa-solid fa-xmark"></i></span>
-        <img class="lightbox-img" src="" alt="Preview">
+        <span class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></span>
+        <img class="lightbox-img" src="" alt="">
         <div class="lightbox-desc"></div>
     </div>
-    <script>
-    // Lightbox JS
-    document.querySelectorAll('.album-img').forEach(function(img) {
-        img.addEventListener('click', function() {
-            document.querySelector('.lightbox-img').src = img.src;
-            document.querySelector('.lightbox-img').alt = img.alt;
-            document.querySelector('.lightbox-desc').innerHTML = img.parentElement.querySelector('.life-desc').innerHTML;
-            document.getElementById('lightbox').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        });
-    });
-    document.querySelector('.lightbox-close').onclick = function() {
-        document.getElementById('lightbox').style.display = 'none';
-        document.body.style.overflow = '';
-    };
-    document.getElementById('lightbox').onclick = function(e) {
-        if(e.target === this) {
-            this.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-    };
-    </script>
-    <footer>
-        <p>© 2025 REALROOK1E | <a href="https://github.com/REALROOK1E">GitHub</a></p>
-    </footer>
-    </div>
+
+    <script src="script-modern.js"></script>
 </body>
 </html> 
