@@ -516,6 +516,12 @@ function initializeMiniGame() {
     const startBtn = document.getElementById('startGame');
     const scoreElement = document.getElementById('score');
     
+    // Check if elements exist
+    if (!canvas || !startBtn || !scoreElement) {
+        console.warn('Game elements not found, skipping game initialization');
+        return;
+    }
+    
     let gameRunning = false;
     let score = 0;
     let player = { x: 150, y: 180, width: 20, height: 15, speed: 3 };
@@ -707,8 +713,11 @@ function initializeMiniGame() {
         player.x = Math.max(0, Math.min(canvas.width - player.width, player.x));
     });
     
-    // Start game button
+    // Start game button (remove any existing listeners first)
+    startBtn.removeEventListener('click', startGame);
     startBtn.addEventListener('click', startGame);
+    
+    console.log('🎮 Mini game initialized successfully!');
     
     // Draw initial state
     ctx.fillStyle = 'rgba(0, 20, 40, 0.8)';
@@ -723,9 +732,5 @@ function initializeMiniGame() {
 
 console.log('🎮 PIXEL GAME PORTFOLIO LOADED SUCCESSFULLY! 🎮');
 
-// Ensure game initializes even if DOMContentLoaded already fired
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeMiniGame);
-} else {
-    initializeMiniGame();
-}
+// Game initialization is handled by the main DOMContentLoaded event
+// No need for duplicate initialization here
