@@ -511,14 +511,23 @@ window.addEventListener('scroll', throttle(() => {
 
 // ====== CYBERPUNK MINI GAME ======
 function initializeMiniGame() {
+    console.log('🎮 Initializing mini game...');
+    
     const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas ? canvas.getContext('2d') : null;
     const startBtn = document.getElementById('startGame');
     const scoreElement = document.getElementById('score');
+    
+    console.log('Game elements found:', { canvas: !!canvas, startBtn: !!startBtn, scoreElement: !!scoreElement });
     
     // Check if elements exist
     if (!canvas || !startBtn || !scoreElement) {
         console.warn('Game elements not found, skipping game initialization');
+        console.log('Missing elements:', { 
+            canvas: !canvas, 
+            startBtn: !startBtn, 
+            scoreElement: !scoreElement 
+        });
         return;
     }
     
@@ -556,6 +565,7 @@ function initializeMiniGame() {
     }
     
     function startGame() {
+        console.log('🎮 Starting game...');
         gameRunning = true;
         score = 0;
         targets = [];
@@ -564,6 +574,8 @@ function initializeMiniGame() {
         scoreElement.textContent = score;
         startBtn.textContent = 'PLAYING...';
         startBtn.disabled = true;
+        
+        console.log('🎮 Game state initialized, starting game loop...');
         
         // Spawn targets periodically
         const targetInterval = setInterval(() => {
@@ -713,9 +725,12 @@ function initializeMiniGame() {
         player.x = Math.max(0, Math.min(canvas.width - player.width, player.x));
     });
     
-    // Start game button (remove any existing listeners first)
-    startBtn.removeEventListener('click', startGame);
-    startBtn.addEventListener('click', startGame);
+    // Start game button
+    console.log('🎮 Adding click listener to start button...');
+    startBtn.addEventListener('click', () => {
+        console.log('🎮 Start button clicked!');
+        startGame();
+    });
     
     console.log('🎮 Mini game initialized successfully!');
     
