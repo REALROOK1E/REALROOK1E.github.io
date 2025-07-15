@@ -1,6 +1,6 @@
 // ====== Modern Service Worker for REALROOK1E Website ======
 
-const CACHE_NAME = 'realrook1e-pixel-v2.0';
+const CACHE_NAME = 'realrook1e-pixel-v2.1';
 const STATIC_ASSETS = [
     '/',
     '/index.html',
