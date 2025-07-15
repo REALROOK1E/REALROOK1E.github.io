@@ -64,6 +64,7 @@ const soundManager = new PixelSoundManager();
 
 // Initialize Game on Load
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('🎮 DOM Content Loaded - Starting initialization...');
     initializePixelGame();
     setupNavigationEffects();
     setupTypingAnimation();
@@ -727,10 +728,29 @@ function initializeMiniGame() {
     
     // Start game button
     console.log('🎮 Adding click listener to start button...');
-    startBtn.addEventListener('click', () => {
-        console.log('🎮 Start button clicked!');
+    
+    // Test button accessibility
+    console.log('Button element:', startBtn);
+    console.log('Button disabled?', startBtn.disabled);
+    console.log('Button style display:', window.getComputedStyle(startBtn).display);
+    console.log('Button style pointer-events:', window.getComputedStyle(startBtn).pointerEvents);
+    
+    // Add multiple event listeners for debugging
+    startBtn.addEventListener('click', (e) => {
+        console.log('🎮 Start button clicked!', e);
         startGame();
     });
+    
+    // Also add mousedown for debugging
+    startBtn.addEventListener('mousedown', (e) => {
+        console.log('🎮 Start button mousedown!', e);
+    });
+    
+    // Test if we can trigger click programmatically
+    setTimeout(() => {
+        console.log('🎮 Testing programmatic click...');
+        // We won't actually click, just test the setup
+    }, 1000);
     
     console.log('🎮 Mini game initialized successfully!');
     
@@ -743,6 +763,14 @@ function initializeMiniGame() {
     ctx.textAlign = 'center';
     ctx.fillText('CYBER MATRIX', canvas.width / 2, canvas.height / 2 - 10);
     ctx.fillText('Click START to begin', canvas.width / 2, canvas.height / 2 + 10);
+    
+    // Backup: Also add global click listener for debugging
+    document.addEventListener('click', (e) => {
+        if (e.target && e.target.id === 'startGame') {
+            console.log('🎮 Global click listener caught start button!');
+            startGame();
+        }
+    });
 }
 
 console.log('🎮 PIXEL GAME PORTFOLIO LOADED SUCCESSFULLY! 🎮');
