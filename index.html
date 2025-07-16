@@ -1,17 +1,39 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REALROOK1E - Pixel Adventure Portfolio</title>
     
-    <!-- Pixel Game Styles -->
+                                    <div class="game-features" style="margin-top: 10px; font-size: 0.9em;">
+                                    🌙 Lunar Environment | 🔄 Phase Switching | ⚡ Energy Puzzles | 🚀 Low Gravity Physics | 🌀 Teleportation | 🔮 Dimensional Exploration
+                                </div>
+                            </div>
+                            
+                            <div id="iwbtgControls" class="control-info" style="display: none;">
+                                <strong>🍎 I WANNA BE THE GUY - Extreme Challenge Platformer</strong><br>
+                                <div class="controls-grid">
+                                    <span><strong>Arrow Keys:</strong> Move Left/Right</span> | 
+                                    <span><strong>Shift:</strong> Jump</span> | 
+                                    <span><strong>Z:</strong> Shoot</span><br>
+                                    <span><strong>R:</strong> Restart Level</span> | 
+                                    <span><strong>S:</strong> Save Game</span> | 
+                                    <span><strong>ESC:</strong> Pause Menu</span>
+                                </div>
+                                <div class="game-features" style="margin-top: 10px; font-size: 0.9em;">
+                                    🍎 Falling Apples | 🔥 Surprise Traps | ⚡ Pixel Perfect Jumps | 💀 Countless Deaths | 🎯 Frame Perfect Timing | 😤 Rage Inducing Fun
+                                </div>
+                            </div>                          <div class="game-features" style="margin-top: 10px; font-size: 0.9em;">
+                                    🌙 Lunar Environment | 🔄 Phase Switching | ⚡ Energy Puzzles | 🚀 Low Gravity Physics | 🌀 Teleportation | 🔮 Dimensional Exploration
+                                </div>                           <div class="game-features" style="margin-top: 10px; font-size: 0.9em;">
+                                    🌙 Lunar Environment | 🔄 Phase Switching | ⚡ Energy Puzzles | 🚀 Low Gravity Physics | 🌀 Teleportation | 🔮 Dimensional Exploration
+                                </div> <!-- Pixel Game Styles -->
     <link rel="stylesheet" href="style-pixel.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
     <!-- SEO and Meta -->
-    <meta name="description" content="REALROOK1E的像素风游戏式个人作品集 - 探索我的编程冒险旅程">
-    <meta name="keywords" content="像素风,游戏,个人网站,程序员,作品集,REALROOK1E">
+    <meta name="description" content="REALROOK1E's pixel-style gaming portfolio - Explore my programming adventure journey">
+    <meta name="keywords" content="pixel style,gaming,personal website,programmer,portfolio,REALROOK1E">
     
     <!-- Game-style Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
@@ -61,32 +83,204 @@
                 </p>
                 
                 <!-- Mini Game Widget -->
-                <div class="mini-game-widget">                <div class="game-header">
-                    <i class="fas fa-gamepad"></i> CYBER WARRIOR
-                    <button id="startGame" class="game-btn">START</button>
-                </div>
-                <div class="game-controls-info">
-                    <div class="control-hint">
-                        <i class="fas fa-keyboard"></i> Side-scrolling Action Game
+                <div class="mini-game-widget">
+                    <div class="game-header">
+                        <div class="game-selector">
+                            <select id="gameSelector" class="game-select">
+                                <option value="moonwalker">🌙 MOON WALKER</option>
+                                <option value="iwbtg">🍎 I WANNA BE THE GUY</option>
+                            </select>
+                        </div>
+                        <div class="game-buttons">
+                            <button id="startGame" class="game-btn">START GAME</button>
+                            <button id="gameInfoToggle" class="game-btn">GAME INFO</button>
+                        </div>
                     </div>
-                </div>
+                    
+                    <!-- Game Layout: Canvas + Sidebar -->
+                    <div class="game-layout">
+                        <!-- Main Game Area -->
+                        <div class="game-main">
+                            <div class="game-controls-info">
+                                <div class="control-hint">
+                                    <i class="fas fa-keyboard"></i> Strategic Phase-Shifting Puzzle Platformer
+                                </div>
+                            </div>
+                            <div class="game-board" id="gameBoard">
+                                <div class="game-score">Score: <span id="score">0</span> | Lives: <span id="lives">3</span> | Level: <span id="level">1</span></div>
+                                <canvas id="gameCanvas" width="900" height="300"></canvas>
+                                <div class="game-controls">
+                                    <div id="moonwalkerControls" class="control-info">
+                                        <strong>🌙 MOON WALKER - Phase Exploration Game</strong><br>
+                                        <div class="controls-grid">
+                                            <span><strong>WASD:</strong> Move & Low-Gravity Jump</span> | 
+                                            <span><strong>E:</strong> Phase Shift</span> | 
+                                            <span><strong>Q:</strong> Energy Pulse</span><br>
+                                            <span><strong>Space:</strong> Space Jump</span> | 
+                                            <span><strong>R:</strong> Reset Phase</span> | 
+                                            <span><strong>F:</strong> Activate Devices</span>
+                                        </div>
+                                        <div class="game-features" style="margin-top: 10px; font-size: 0.9em;">
+                                            🌙 Lunar Environment | 🔄 Phase Switching | ⚡ Energy Puzzles | 🚀 Low Gravity Physics | 🌀 Teleportation | 🔮 Dimensional Exploration
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="iwbtgControls" class="control-info" style="display: none;">
+                                        <strong>🍎 I WANNA BE THE GUY - Extreme Challenge Platformer</strong><br>
+                                        <div class="controls-grid">
+                                            <span><strong>Arrow Keys:</strong> Move Left/Right</span> | 
+                                            <span><strong>Shift:</strong> Jump</span> | 
+                                            <span><strong>Z:</strong> Shoot</span><br>
+                                            <span><strong>R:</strong> Restart Level</span> | 
+                                            <span><strong>S:</strong> Save Game</span> | 
+                                            <span><strong>ESC:</strong> Pause Menu</span>
+                                        </div>
+                                        <div class="game-features" style="margin-top: 10px; font-size: 0.9em;">
+                                            🍎 Falling Apples | 🔥 Surprise Traps | ⚡ Pixel Perfect Jumps | 💀 Countless Deaths | 🎯 Frame Perfect Timing | 😤 Rage Inducing Fun
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Game Info Sidebar -->
+                        <div class="game-sidebar">
+                            <div id="gameInfoPanel" class="game-info-panel" style="display: none;">
+                                <!-- Moon Walker Game Info -->
+                        <div id="moonwalkerInfo" class="game-specific-info">
+                            <div class="game-info-header">
+                                <h3><i class="fas fa-moon"></i> MOON WALKER - Phase Exploration Game</h3>
+                                <button id="closeGameInfo" class="close-btn">&times;</button>
+                            </div>
+                            
+                            <div class="game-info-content">
+                                <div class="info-section">
+                                    <h4><i class="fas fa-gamepad"></i> Game Overview</h4>
+                                    <p>A unique phase-shifting puzzle platformer set in a mysterious lunar environment. Master the art of dimensional manipulation to navigate through complex mazes and solve intricate puzzles.</p>
+                                </div>
+                                
+                                <div class="info-section">
+                                    <h4><i class="fas fa-keyboard"></i> Controls</h4>
+                                    <div class="controls-grid">
+                                        <div class="control-item"><strong>WASD:</strong> Move & Low-Gravity Jump</div>
+                                        <div class="control-item"><strong>E:</strong> Phase Shift Cycle</div>
+                                        <div class="control-item"><strong>Q:</strong> Energy Pulse</div>
+                                        <div class="control-item"><strong>F:</strong> Activate Devices</div>
+                                        <div class="control-item"><strong>R:</strong> Reset/Restart</div>
+                                        <div class="control-item"><strong>Space:</strong> Jump (Alternative)</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="info-section">
+                                    <h4><i class="fas fa-trophy"></i> Victory Conditions</h4>
+                                    <ul class="victory-list">
+                                        <li><i class="fas fa-flag-checkered"></i> Reach the final rainbow platform</li>
+                                        <li><i class="fas fa-key"></i> Collect Shadow Key & Energy Core</li>
+                                        <li><i class="fas fa-exchange-alt"></i> Master all 5+ teleporter networks</li>
+                                        <li><i class="fas fa-puzzle-piece"></i> Solve the main phase sequence puzzle</li>
+                                        <li><i class="fas fa-bolt"></i> Accumulate 300+ energy points</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="info-section">
+                                    <h4><i class="fas fa-magic"></i> Game Features</h4>
+                                    <div class="features-grid">
+                                        <span><i class="fas fa-moon"></i> Lunar Environment</span>
+                                        <span><i class="fas fa-exchange-alt"></i> Phase Switching</span>
+                                        <span><i class="fas fa-bolt"></i> Energy Puzzles</span>
+                                        <span><i class="fas fa-feather-alt"></i> Low Gravity Physics</span>
+                                        <span><i class="fas fa-portal"></i> Teleportation Network</span>
+                                        <span><i class="fas fa-cube"></i> Dimensional Exploration</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="info-section">
+                                    <h4><i class="fas fa-lightbulb"></i> Strategy Tips</h4>
+                                    <ul class="tips-list">
+                                        <li>Different phases reveal different platforms - explore all dimensions</li>
+                                        <li>Energy pulse can activate distant devices and collect remote orbs</li>
+                                        <li>Teleporters require specific phases and energy costs - plan your route</li>
+                                        <li>The main puzzle requires precise phase sequence: Normal → Shadow → Energy → Shadow</li>
+                                        <li>Secret areas unlock with 100+ energy teleporter usage</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- I Wanna Be The Guy Game Info -->
+                        <div id="iwbtgInfo" class="game-specific-info" style="display: none;">
+                            <div class="game-info-header">
+                                <h3><i class="fas fa-apple-alt"></i> I WANNA BE THE GUY - Extreme Platformer</h3>
+                                <button id="closeGameInfo" class="close-btn">&times;</button>
+                            </div>
+                            
+                            <div class="game-info-content">
+                                <div class="info-section">
+                                    <h4><i class="fas fa-gamepad"></i> Game Overview</h4>
+                                    <p>An extremely challenging platformer inspired by the classic IWBTG. Expect surprise traps, pixel-perfect jumps, and countless deaths. This game will test your patience and skills to the limit!</p>
+                                </div>
+                                
+                                <div class="info-section">
+                                    <h4><i class="fas fa-keyboard"></i> Controls</h4>
+                                    <div class="controls-grid">
+                                        <div class="control-item"><strong>A/D:</strong> Move Left/Right</div>
+                                        <div class="control-item"><strong>W:</strong> Jump</div>
+                                        <div class="control-item"><strong>S:</strong> Double Jump</div>
+                                        <div class="control-item"><strong>R:</strong> Restart (You'll need this!)</div>
+                                        <div class="control-item"><strong>Space:</strong> Save State</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="info-section">
+                                    <h4><i class="fas fa-skull"></i> Survival Tips</h4>
+                                    <ul class="tips-list">
+                                        <li><strong>Death is Normal:</strong> You WILL die hundreds of times - that's the point!</li>
+                                        <li><strong>Trust Nothing:</strong> Apples fall, spikes appear, platforms disappear</li>
+                                        <li><strong>Save Often:</strong> Use save points wisely - they're your lifeline</li>
+                                        <li><strong>Pixel Perfect:</strong> Most jumps require frame-perfect timing</li>
+                                        <li><strong>Stay Calm:</strong> Rage quitting is part of the experience</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="info-section">
+                                    <h4><i class="fas fa-trophy"></i> Victory Conditions</h4>
+                                    <ul class="victory-list">
+                                        <li><i class="fas fa-crown"></i> Survive all the traps and reach the end</li>
+                                        <li><i class="fas fa-target"></i> Master the art of frame-perfect jumps</li>
+                                        <li><i class="fas fa-apple-alt"></i> Avoid falling apples and surprise spikes</li>
+                                        <li><i class="fas fa-heart"></i> Keep your sanity intact (optional)</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="info-section">
+                                    <h4><i class="fas fa-exclamation-triangle"></i> Warning</h4>
+                                    <p style="color: #ff4444; font-weight: bold;">This game is intentionally frustrating and designed to be extremely difficult. Play at your own risk of controller-throwing rage!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="game-controls-info">
+                        <div class="control-hint">
+                            <i class="fas fa-keyboard"></i> Strategic Phase-Shifting Puzzle Platformer
+                        </div>
+                    </div>
                     <div class="game-board" id="gameBoard">
                         <div class="game-score">Score: <span id="score">0</span> | Lives: <span id="lives">3</span> | Level: <span id="level">1</span></div>
-                        <canvas id="pixelCanvas" width="900" height="300"></canvas>
+                        <canvas id="gameCanvas" width="900" height="300"></canvas>
                         <div class="game-controls">
-                            <div class="control-info">
-                                <strong>🥊 CYBER BRAWLERS - Enhanced Fighting System</strong><br>
+                            <div id="moonwalkerControls" class="control-info">
+                                <strong>🌙 MOON WALKER - Phase Exploration Game</strong><br>
                                 <div class="controls-grid">
-                                    <span><strong>WASD:</strong> Move & Jump</span> | 
-                                    <span><strong>J/K:</strong> Light Punch/Kick</span> | 
-                                    <span><strong>L/U:</strong> Heavy Punch/Kick</span><br>
-                                    <span><strong>I:</strong> Special Fireball</span> | 
-                                    <span><strong>O:</strong> Ultimate Combo</span> | 
-                                    <span><strong>P:</strong> Block</span> | 
-                                    <span><strong>Space:</strong> Dash</span>
+                                    <span><strong>WASD:</strong> Move & Low-Gravity Jump</span> | 
+                                    <span><strong>E:</strong> Phase Shift</span> | 
+                                    <span><strong>Q:</strong> Energy Pulse</span><br>
+                                    <span><strong>Space:</strong> Space Jump</span> | 
+                                    <span><strong>R:</strong> Reset Phase</span> | 
+                                    <span><strong>F:</strong> Activate Devices</span>
                                 </div>
                                 <div class="game-features" style="margin-top: 10px; font-size: 0.9em;">
-                                    🔥 连贯攻击动作 | ⚡ 连击系统 | 🛡️ 格挡反击 | 🌟 冲刺技能 | 💥 4种资源管理 | 🎯 智能AI
+                                    🌙 月球环境 | � 相位切换 | ⚡ 能量谜题 | � 低重力物理 | � 时空传送 | � 维度探索
                                 </div>
                             </div>
                         </div>
@@ -321,6 +515,16 @@
     </footer>
 
     <!-- Pixel Game Scripts -->
-    <script src="script-pixel.js"></script>
+    <script src="script-moon-walker.js"></script>
+    <script src="script-iwbtg-style.js"></script>
+    <script src="script-game-manager.js"></script>
+    <script>
+        // Game Manager will handle game initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('� Game Manager initialized!');
+            console.log('Available games: Moon Walker, I Wanna Be The Guy');
+            console.log('Use the selector to switch between games!');
+        });
+    </script>
 </body>
 </html>

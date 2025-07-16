@@ -252,6 +252,8 @@ body::before {
     font-size: 0.65rem;
     line-height: 1.2;
     font-family: var(--font-pixel);
+    position: relative;
+    z-index: 10;
 }
 
 .character-stats div {
@@ -259,11 +261,65 @@ body::before {
     color: var(--text-cyan);
     display: flex;
     justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* 🌟 超炫霓虹文字效果 */
+.character-stats div:hover {
+    background: linear-gradient(90deg, 
+        rgba(0, 255, 255, 0.1), 
+        rgba(255, 20, 147, 0.1), 
+        rgba(0, 255, 255, 0.1)
+    );
+    background-size: 200% 100%;
+    animation: neonSweep 1.5s ease-in-out infinite;
+    border-left: 2px solid var(--accent-cyan);
+    padding-left: 8px;
+    transform: translateX(5px) scale(1.02);
+    box-shadow: 
+        0 0 10px rgba(0, 255, 255, 0.4),
+        inset 0 0 10px rgba(255, 20, 147, 0.2);
+}
+
+@keyframes neonSweep {
+    0% { background-position: -200% 0; }
+    50% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
 
 .character-stats .stat-label {
     color: var(--text-cyan);
     font-size: 0.65rem;
+    position: relative;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+/* 🎯 标签悬浮效果 */
+.character-stats div:hover .stat-label {
+    color: var(--accent-yellow);
+    text-shadow: 
+        0 0 5px var(--accent-yellow),
+        0 0 10px var(--accent-yellow),
+        0 0 15px var(--accent-yellow);
+    animation: labelPulse 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes labelPulse {
+    0% { 
+        text-shadow: 
+            0 0 5px var(--accent-yellow),
+            0 0 10px var(--accent-yellow),
+            0 0 15px var(--accent-yellow);
+    }
+    100% { 
+        text-shadow: 
+            0 0 8px var(--accent-yellow),
+            0 0 16px var(--accent-yellow),
+            0 0 24px var(--accent-yellow);
+    }
 }
 
 .character-stats .stat-value {
@@ -271,6 +327,123 @@ body::before {
     font-weight: bold;
     text-shadow: 0 0 5px var(--accent-magenta);
     font-size: 0.65rem;
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+/* 🔥 数值超炫发光效果 */
+.character-stats div:hover .stat-value {
+    color: #ffffff;
+    text-shadow: 
+        0 0 5px var(--accent-red),
+        0 0 10px var(--accent-red),
+        0 0 20px var(--accent-red),
+        0 0 30px var(--accent-red);
+    animation: valueGlow 1.2s ease-in-out infinite alternate;
+    transform: scale(1.1);
+}
+
+@keyframes valueGlow {
+    0% { 
+        text-shadow: 
+            0 0 5px var(--accent-red),
+            0 0 10px var(--accent-red),
+            0 0 20px var(--accent-red);
+        filter: brightness(1);
+    }
+    50% {
+        text-shadow: 
+            0 0 8px var(--accent-red),
+            0 0 16px var(--accent-red),
+            0 0 32px var(--accent-red),
+            0 0 48px var(--accent-red);
+        filter: brightness(1.3);
+    }
+    100% { 
+        text-shadow: 
+            0 0 10px var(--accent-red),
+            0 0 20px var(--accent-red),
+            0 0 40px var(--accent-red),
+            0 0 60px var(--accent-red);
+        filter: brightness(1.5);
+    }
+}
+
+/* 💫 特殊技能指示器 */
+.character-stats div:nth-child(6):hover,
+.character-stats div:nth-child(7):hover {
+    background: linear-gradient(45deg,
+        rgba(255, 215, 0, 0.1),
+        rgba(255, 20, 147, 0.1),
+        rgba(138, 43, 226, 0.1)
+    );
+    border-left-color: var(--accent-yellow);
+}
+
+.character-stats div:nth-child(6):hover .stat-value,
+.character-stats div:nth-child(7):hover .stat-value {
+    background: linear-gradient(45deg, #ffd700, #ff1493, #8a2be2);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: skillShimmer 2s ease-in-out infinite;
+}
+
+@keyframes skillShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* ⚡ 电流动画背景 */
+.character-stats::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(0, 255, 255, 0.1),
+        transparent
+    );
+    animation: electricScan 3s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes electricScan {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: -100%; }
+}
+
+/* 🎮 玩家名称特别效果 */
+.character-stats div:first-child {
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 4px;
+    padding: 4px 8px;
+    background: rgba(0, 255, 255, 0.05);
+    margin-bottom: 8px;
+}
+
+.character-stats div:first-child:hover {
+    border-color: var(--accent-red);
+    background: rgba(255, 20, 147, 0.1);
+    animation: playerNameGlow 1s ease-in-out infinite alternate;
+}
+
+@keyframes playerNameGlow {
+    0% { 
+        box-shadow: 
+            0 0 10px rgba(0, 255, 255, 0.5),
+            inset 0 0 10px rgba(0, 255, 255, 0.1);
+    }
+    100% { 
+        box-shadow: 
+            0 0 20px rgba(255, 20, 147, 0.8),
+            inset 0 0 20px rgba(255, 20, 147, 0.2);
+    }
 }
 
 /* ====== MAIN GAME AREA ====== */
@@ -349,7 +522,7 @@ body::before {
 
 /* ====== MINI GAME WIDGET ====== */
 .mini-game-widget {
-    max-width: 950px; /* Expanded to accommodate 900px canvas */
+    max-width: 1200px; /* Expanded to accommodate layout + sidebar */
     margin: 2rem auto;
     background: var(--bg-ui);
     border: 2px solid var(--accent-purple);
@@ -366,6 +539,84 @@ body::before {
     color: var(--accent-cyan);
     font-weight: bold;
     font-size: 0.9rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Game Layout: Main + Sidebar */
+.game-layout {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.game-main {
+    flex: 1;
+    min-width: 0; /* Allow flex shrinkage */
+}
+
+.game-sidebar {
+    width: 300px;
+    flex-shrink: 0;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 1024px) {
+    .game-layout {
+        flex-direction: column;
+    }
+    
+    .game-sidebar {
+        width: 100%;
+        order: -1; /* Show sidebar above game on mobile */
+    }
+    
+    .mini-game-widget {
+        max-width: 950px;
+    }
+}
+
+.game-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.game-select {
+    background: var(--bg-ui);
+    border: 2px solid var(--accent-cyan);
+    border-radius: 4px;
+    color: var(--text-cyan);
+    font-family: var(--font-pixel);
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+}
+
+.game-select:hover {
+    border-color: var(--accent-magenta);
+    box-shadow: 0 0 10px var(--accent-cyan);
+    background: rgba(26, 26, 46, 0.9);
+}
+
+.game-select:focus {
+    border-color: var(--accent-magenta);
+    box-shadow: var(--shadow-cyan);
+}
+
+.game-select option {
+    background: var(--bg-ui);
+    color: var(--text-cyan);
+    padding: 0.5rem;
+}
+
+.game-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .game-controls-info {
@@ -448,6 +699,205 @@ body::before {
     color: var(--text-cyan);
     font-size: 0.8rem;
     opacity: 0.8;
+}
+
+.game-specific-controls {
+    transition: opacity 0.3s ease, height 0.3s ease;
+}
+
+.game-specific-controls.hidden {
+    display: none;
+}
+
+/* Game Info Panel Styling - Sidebar Layout */
+.game-info-panel {
+    background: rgba(26, 26, 46, 0.95);
+    border: 2px solid var(--accent-cyan);
+    border-radius: 8px;
+    height: 100%;
+    overflow-y: auto;
+    box-shadow: var(--shadow-cyan);
+    animation: slideInRight 0.3s ease;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Mobile responsive animation */
+@media (max-width: 1024px) {
+    .game-info-panel {
+        animation: slideIn 0.3s ease;
+        height: auto;
+        max-height: 400px;
+    }
+    
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+.game-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--accent-purple);
+    background: rgba(16, 33, 62, 0.8);
+}
+
+.game-info-header h3 {
+    margin: 0;
+    color: var(--accent-cyan);
+    font-size: 1rem; /* Smaller for sidebar */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1.2;
+}
+
+/* Sidebar-specific adjustments */
+.game-sidebar .game-info-content {
+    padding: 0.8rem;
+}
+
+.game-sidebar .info-section {
+    margin-bottom: 1rem;
+}
+
+.game-sidebar .info-section h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+}
+
+.game-sidebar .controls-grid {
+    grid-template-columns: 1fr; /* Single column for sidebar */
+    gap: 0.3rem;
+}
+
+.game-sidebar .control-item {
+    padding: 0.4rem;
+    font-size: 0.8rem;
+}
+
+.game-sidebar .features-grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for features */
+    gap: 0.3rem;
+}
+
+.game-sidebar .features-grid span {
+    padding: 0.3rem;
+    font-size: 0.75rem;
+}
+
+.close-btn {
+    background: var(--accent-red);
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: var(--accent-magenta);
+    box-shadow: 0 0 10px var(--accent-red);
+}
+
+.game-info-content {
+    padding: 1rem;
+}
+
+.info-section {
+    margin-bottom: 1.5rem;
+}
+
+.info-section h4 {
+    color: var(--accent-magenta);
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-section p {
+    color: var(--text-cyan);
+    line-height: 1.6;
+    margin: 0.5rem 0;
+}
+
+.controls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+.control-item {
+    background: rgba(0, 255, 255, 0.1);
+    padding: 0.5rem;
+    border-radius: 4px;
+    color: var(--text-cyan);
+    font-size: 0.9rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+.features-grid span {
+    background: rgba(235, 67, 151, 0.1);
+    padding: 0.5rem;
+    border-radius: 4px;
+    color: var(--text-pink);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.victory-list, .tips-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+}
+
+.victory-list li, .tips-list li {
+    background: rgba(150, 72, 214, 0.1);
+    padding: 0.5rem;
+    margin: 0.3rem 0;
+    border-radius: 4px;
+    color: var(--text-cyan);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.victory-list li i, .tips-list li i {
+    color: var(--accent-yellow);
 }
 
 /* ====== CYBER EXPERIENCE SECTION ====== */
@@ -2222,4 +2672,235 @@ body::before {
     .node-stats {
         font-size: 0.6rem;
     }
+}
+
+/* ====== ENHANCED FIGHTING GAME STYLES ====== */
+
+/* Enhanced game controls styling */
+.controls-grid {
+    display: inline-block;
+    line-height: 1.4;
+    color: var(--text-cyan);
+}
+
+.game-features {
+    color: var(--accent-neon);
+    font-size: 0.85em;
+    margin-top: 8px;
+    text-align: center;
+    opacity: 0.9;
+    text-shadow: 0 0 10px var(--accent-neon);
+}
+
+.control-info {
+    padding: 12px 20px;
+    background: rgba(0, 255, 255, 0.08);
+    border: 2px solid var(--accent-cyan);
+    border-radius: 10px;
+    text-align: center;
+    line-height: 1.8;
+    box-shadow: 
+        0 0 15px rgba(0, 255, 255, 0.3),
+        inset 0 0 15px rgba(0, 255, 255, 0.05);
+}
+
+.control-info strong {
+    color: var(--accent-magenta);
+    text-shadow: 0 0 8px var(--accent-magenta);
+}
+
+/* Enhanced canvas styling for better visual appeal */
+#pixelCanvas {
+    border: 3px solid var(--accent-cyan);
+    border-radius: 12px;
+    box-shadow: 
+        0 0 30px var(--accent-cyan),
+        0 0 60px rgba(0, 255, 255, 0.3),
+        inset 0 0 30px rgba(0, 255, 255, 0.1);
+    background: linear-gradient(135deg, #0a0815, #1a1530, #0f0a20);
+    transition: all 0.3s ease;
+}
+
+/* Game board enhancements */
+.game-board {
+    background: rgba(0, 20, 40, 0.95);
+    border: 3px solid var(--accent-cyan);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 
+        0 0 40px var(--accent-cyan),
+        0 0 80px rgba(0, 255, 255, 0.2),
+        inset 0 0 40px rgba(0, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+.game-score {
+    background: linear-gradient(90deg, 
+        rgba(255, 102, 0, 0.2), 
+        rgba(0, 255, 255, 0.1), 
+        rgba(255, 102, 0, 0.2));
+    border: 2px solid var(--accent-magenta);
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--accent-magenta);
+    text-shadow: 0 0 10px var(--accent-magenta);
+    box-shadow: 0 0 20px rgba(235, 67, 151, 0.3);
+}
+
+/* Pulsing animation for important elements */
+@keyframes pulse-glow {
+    0%, 100% { 
+        box-shadow: 
+            0 0 30px var(--accent-cyan),
+            0 0 60px rgba(0, 255, 255, 0.3),
+            inset 0 0 30px rgba(0, 255, 255, 0.1);
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 
+            0 0 50px var(--accent-cyan),
+            0 0 100px rgba(0, 255, 255, 0.5),
+            inset 0 0 50px rgba(0, 255, 255, 0.2);
+        transform: scale(1.02);
+    }
+}
+
+@keyframes combat-ready {
+    0%, 100% { 
+        border-color: var(--accent-cyan);
+        box-shadow: 0 0 30px var(--accent-cyan);
+    }
+    25% { 
+        border-color: var(--accent-magenta);
+        box-shadow: 0 0 30px var(--accent-magenta);
+    }
+    50% { 
+        border-color: var(--accent-purple);
+        box-shadow: 0 0 30px var(--accent-purple);
+    }
+    75% { 
+        border-color: var(--accent-yellow);
+        box-shadow: 0 0 30px var(--accent-yellow);
+    }
+}
+
+#pixelCanvas:hover {
+    animation: combat-ready 3s infinite;
+    cursor: crosshair;
+}
+
+.game-board:hover {
+    animation: pulse-glow 2s infinite;
+}
+
+/* Enhanced game title effects */
+.game-controls .control-info strong:first-child {
+    font-size: 1.2em;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-magenta), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: rainbow-text 4s ease-in-out infinite;
+}
+
+@keyframes rainbow-text {
+    0%, 100% { filter: hue-rotate(0deg); }
+    33% { filter: hue-rotate(120deg); }
+    66% { filter: hue-rotate(240deg); }
+}
+
+/* Responsive enhancements for fighting game */
+@media (max-width: 1024px) {
+    .control-info {
+        padding: 10px 15px;
+        line-height: 1.6;
+    }
+    
+    .controls-grid {
+        font-size: 0.9em;
+    }
+    
+    .game-features {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 768px) {
+    #pixelCanvas {
+        border-width: 2px;
+        border-radius: 8px;
+    }
+    
+    .game-board {
+        padding: 15px;
+        border-width: 2px;
+    }
+    
+    .control-info {
+        padding: 8px 12px;
+        line-height: 1.5;
+    }
+    
+    .game-score {
+        padding: 8px 15px;
+        margin-bottom: 15px;
+    }
+}
+
+/* Combat UI enhancements */
+.combat-ui-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Loading screen for enhanced game */
+.enhanced-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--bg-dark), var(--bg-game));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: var(--accent-cyan);
+}
+
+.loading-title {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 20px var(--accent-cyan);
+    animation: pulse-glow 2s infinite;
+}
+
+.loading-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    color: var(--accent-magenta);
+    text-shadow: 0 0 10px var(--accent-magenta);
+}
+
+/* Game ready indicator */
+.game-ready {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 255, 255, 0.1);
+    border: 2px solid var(--accent-cyan);
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: var(--accent-cyan);
+    text-shadow: 0 0 10px var(--accent-cyan);
+    animation: pulse-glow 1.5s infinite;
 }

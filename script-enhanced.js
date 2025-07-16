@@ -11,14 +11,38 @@ class EnhancedFightingGame {
     }
     
     setupCanvas() {
-        // High DPI support
+        // Ultra High DPI support - 4x resolution
+        const baseWidth = 900;
+        const baseHeight = 300;
+        const superSampleRatio = 4; // 4倍超采样
         const dpr = window.devicePixelRatio || 1;
-        this.canvas.width = 900 * dpr;
-        this.canvas.height = 300 * dpr;
-        this.canvas.style.width = '900px';
-        this.canvas.style.height = '300px';
-        this.ctx.scale(dpr, dpr);
+        
+        // Set actual canvas size to 4x for ultra-high quality
+        this.canvas.width = baseWidth * superSampleRatio * dpr;
+        this.canvas.height = baseHeight * superSampleRatio * dpr;
+        
+        // Keep display size normal
+        this.canvas.style.width = baseWidth + 'px';
+        this.canvas.style.height = baseHeight + 'px';
+        
+        // Scale context for ultra-high quality rendering
+        this.ctx.scale(superSampleRatio * dpr, superSampleRatio * dpr);
+        
+        // Ultra-crisp pixel rendering settings
         this.ctx.imageSmoothingEnabled = false;
+        this.ctx.webkitImageSmoothingEnabled = false;
+        this.ctx.mozImageSmoothingEnabled = false;
+        this.ctx.msImageSmoothingEnabled = false;
+        this.ctx.oImageSmoothingEnabled = false;
+        
+        // High-quality text rendering
+        this.ctx.textRenderingOptimization = 'optimizeQuality';
+        this.ctx.fontKerning = 'normal';
+        
+        // Store scaling factors for calculations
+        this.scaleFactor = superSampleRatio;
+        this.renderWidth = baseWidth;
+        this.renderHeight = baseHeight;
     }
     
     initGame() {
@@ -524,6 +548,25 @@ class EnhancedFightingGame {
                 });
             }
         }
+        
+        // Create projectile for special fireball
+        if (attackType === 'special_fireball') {
+            setTimeout(() => {
+                this.projectiles.push({
+                    x: this.player.x + (this.player.facing > 0 ? this.player.width : -8),
+                    y: this.player.y + this.player.height/2,
+                    velocityX: this.player.facing * 12,
+                    velocityY: 0,
+                    width: 10,
+                    height: 10,
+                    damage: 50,
+                    life: 120,
+                    type: 'player',
+                    color: '#ff9900',
+                    trail: true
+                });
+            }, 200); // Delay to match attack animation
+        }
     }
     
     createScreenShake(intensity) {
@@ -631,6 +674,81 @@ class EnhancedFightingGame {
         });
     }
     
+    hitEnvironmentObject(obj) {
+        obj.health--;
+        
+        // Create destruction effect
+        for (let i = 0; i < 8; i++) {
+            this.particles.push({
+                x: obj.x + obj.width/2,
+                y: obj.y + obj.height/2,
+                velocityX: (Math.random() - 0.5) * 10,
+                velocityY: (Math.random() - 0.5) * 10,
+                life: 30,
+                maxLife: 30,
+                color: obj.type === 'barrel' ? '#ff6600' : '#8b4513',
+                size: Math.random() * 3 + 2
+            });
+        }
+        
+        // Object-specific effects
+        if (obj.health <= 0) {
+            if (obj.explosive) {
+                this.createExplosion(obj.x + obj.width/2, obj.y + obj.height/2);
+                // Damage nearby enemies
+                this.enemies.forEach(enemy => {
+                    const distance = Math.sqrt(
+                        Math.pow(enemy.x - obj.x, 2) + Math.pow(enemy.y - obj.y, 2)
+                    );
+                    if (distance < 80) {
+                        this.hitEnemy(enemy, 'explosion');
+                    }
+                });
+            }
+            
+            if (obj.loot) {
+                this.spawnLoot(obj.x + obj.width/2, obj.y + obj.height/2, obj.loot);
+            }
+            
+            // Remove destroyed object
+            const index = this.environmentObjects.indexOf(obj);
+            if (index > -1) {
+                this.environmentObjects.splice(index, 1);
+            }
+        }
+        
+        this.playSound('hit');
+    }
+    
+    spawnLoot(x, y, type) {
+        this.powerups.push({
+            x: x - 8,
+            y: y - 8,
+            type: type,
+            value: type === 'health' ? 25 : 20,
+            collected: false
+        });
+    }
+    
+    createExplosion(x, y) {
+        // Large explosion effect
+        for (let i = 0; i < 20; i++) {
+            this.particles.push({
+                x: x,
+                y: y,
+                velocityX: (Math.random() - 0.5) * 20,
+                velocityY: (Math.random() - 0.5) * 20,
+                life: 40,
+                maxLife: 40,
+                color: ['#ff6600', '#ff3300', '#ffff00'][Math.floor(Math.random() * 3)],
+                size: Math.random() * 6 + 4
+            });
+        }
+        
+        this.createScreenShake(12);
+        this.playSound('ultimate', 0.5);
+    }
+    
     hitEnemy(enemy, attackType) {
         const attack = this.player.attacks[attackType];
         
@@ -692,6 +810,20 @@ class EnhancedFightingGame {
             if (enemy.health <= 0) {
                 this.createExplosion(enemy.x + enemy.width/2, enemy.y + enemy.height/2);
                 this.score += enemy.maxHealth * 2;
+                
+                // Special rewards for boss
+                if (enemy.type === 'boss') {
+                    this.score += 1000;
+                    // Spawn multiple powerups
+                    for (let i = 0; i < 3; i++) {
+                        this.spawnLoot(
+                            enemy.x + enemy.width/2 + (i - 1) * 20, 
+                            enemy.y + enemy.height/2, 
+                            ['health', 'energy_orb', 'ultimate_charge'][i]
+                        );
+                    }
+                }
+                
                 this.enemies.splice(index, 1);
                 return;
             }
@@ -702,9 +834,76 @@ class EnhancedFightingGame {
                 return;
             }
             
+            // Update special boss states
+            if (enemy.type === 'boss') {
+                this.updateBossSpecialStates(enemy);
+            }
+            
             // AI behavior
             this.updateEnemyAI(enemy);
         });
+    }
+    
+    updateBossSpecialStates(boss) {
+        // Handle charging state
+        if (boss.charging && boss.chargeTimer > 0) {
+            boss.chargeTimer--;
+            boss.x += boss.velocityX || 0;
+            
+            // Charge trail effects
+            if (boss.chargeTimer % 3 === 0) {
+                this.particles.push({
+                    x: boss.x + boss.width/2,
+                    y: boss.y + boss.height/2,
+                    velocityX: -(boss.velocityX || 0) * 0.5,
+                    velocityY: (Math.random() - 0.5) * 6,
+                    life: 15,
+                    maxLife: 15,
+                    color: '#ff0000',
+                    size: 4
+                });
+            }
+            
+            if (boss.chargeTimer <= 0) {
+                boss.charging = false;
+                boss.velocityX = 0;
+            }
+        }
+        
+        // Phase transition effects
+        if (boss.health < boss.maxHealth * 0.66 && boss.phase === 1) {
+            boss.phase = 2;
+            this.createPhaseTransition(boss, 2);
+        } else if (boss.health < boss.maxHealth * 0.33 && boss.phase === 2) {
+            boss.phase = 3;
+            this.createPhaseTransition(boss, 3);
+        }
+    }
+    
+    createPhaseTransition(boss, newPhase) {
+        this.createScreenShake(20);
+        
+        // Phase transition explosion
+        for (let i = 0; i < 50; i++) {
+            this.particles.push({
+                x: boss.x + boss.width/2,
+                y: boss.y + boss.height/2,
+                velocityX: (Math.random() - 0.5) * 30,
+                velocityY: (Math.random() - 0.5) * 30,
+                life: 60,
+                maxLife: 60,
+                color: newPhase === 3 ? '#9900ff' : '#ffff00',
+                size: Math.random() * 8 + 6
+            });
+        }
+        
+        // Temporary invulnerability
+        boss.invulnerable = 60;
+        
+        // Heal boss slightly on phase transition
+        boss.health = Math.min(boss.maxHealth, boss.health + 20);
+        
+        this.playSound('ultimate', 1.0);
     }
     
     updateEnemyAI(enemy) {
@@ -803,6 +1002,160 @@ class EnhancedFightingGame {
         }
     }
     
+    bossSpecialAttack(boss, attackType) {
+        boss.specialTimer = 0;
+        boss.attackCooldown = 120; // 2 second cooldown after special
+        
+        switch (attackType) {
+            case 'ground_slam':
+                this.bossGroundSlam(boss);
+                break;
+            case 'fireball_barrage':
+                this.bossFireballBarrage(boss);
+                break;
+            case 'charge_attack':
+                this.bossChargeAttack(boss);
+                break;
+            case 'energy_wave':
+                this.bossEnergyWave(boss);
+                break;
+        }
+        
+        this.playSound('ultimate', 0.7);
+        this.createScreenShake(12);
+    }
+    
+    bossGroundSlam(boss) {
+        // Create shockwave effect
+        for (let i = 0; i < 30; i++) {
+            this.particles.push({
+                x: boss.x + boss.width/2,
+                y: boss.y + boss.height,
+                velocityX: (Math.random() - 0.5) * 25,
+                velocityY: -Math.random() * 15,
+                life: 45,
+                maxLife: 45,
+                color: '#8B4513',
+                size: Math.random() * 8 + 4
+            });
+        }
+        
+        // Damage player if on ground and within range
+        const distance = Math.abs(this.player.x - boss.x);
+        if (distance < 150 && this.player.onGround) {
+            this.takeDamage(25);
+            this.player.velocityY = -10; // Knockup
+        }
+        
+        // Create temporary platforms destruction
+        this.platforms.forEach(platform => {
+            if (platform.type === 'breakable' && 
+                Math.abs(platform.x - boss.x) < 200) {
+                platform.health = Math.max(0, platform.health - 1);
+            }
+        });
+    }
+    
+    bossFireballBarrage(boss) {
+        // Launch multiple fireballs
+        const fireballCount = 5 + boss.phase;
+        
+        for (let i = 0; i < fireballCount; i++) {
+            setTimeout(() => {
+                const angle = (Math.PI / 6) * (i - fireballCount/2); // Spread pattern
+                const speed = 8;
+                
+                this.projectiles.push({
+                    x: boss.x + boss.width/2,
+                    y: boss.y + boss.height/2,
+                    velocityX: Math.cos(angle) * speed * boss.facing,
+                    velocityY: Math.sin(angle) * speed,
+                    width: 12,
+                    height: 12,
+                    damage: 20 + boss.phase * 5,
+                    life: 180,
+                    type: 'enemy',
+                    color: '#ff6600',
+                    trail: true
+                });
+            }, i * 100); // Staggered launch
+        }
+    }
+    
+    bossChargeAttack(boss) {
+        // Fast charge toward player
+        const chargeSpeed = 15;
+        const direction = Math.sign(this.player.x - boss.x);
+        
+        boss.velocityX = direction * chargeSpeed;
+        boss.charging = true;
+        boss.chargeTimer = 30; // Duration of charge
+        
+        // Charge trail effect
+        for (let i = 0; i < 15; i++) {
+            this.particles.push({
+                x: boss.x + boss.width/2,
+                y: boss.y + boss.height/2,
+                velocityX: -direction * (Math.random() * 8 + 4),
+                velocityY: (Math.random() - 0.5) * 8,
+                life: 25,
+                maxLife: 25,
+                color: '#ff0000',
+                size: Math.random() * 6 + 3
+            });
+        }
+        
+        // Check for collision with player during charge
+        setTimeout(() => {
+            if (this.checkCollision(boss, this.player)) {
+                this.takeDamage(30 + boss.phase * 10);
+                this.player.velocityX = direction * 12; // Heavy knockback
+            }
+            boss.charging = false;
+            boss.velocityX = 0;
+        }, 500);
+    }
+    
+    bossEnergyWave(boss) {
+        // Create expanding energy wave
+        const waveCount = 3;
+        
+        for (let wave = 0; wave < waveCount; wave++) {
+            setTimeout(() => {
+                // Create wave particles
+                for (let angle = 0; angle < Math.PI * 2; angle += 0.2) {
+                    this.particles.push({
+                        x: boss.x + boss.width/2,
+                        y: boss.y + boss.height/2,
+                        velocityX: Math.cos(angle) * (8 + wave * 2),
+                        velocityY: Math.sin(angle) * (8 + wave * 2),
+                        life: 60,
+                        maxLife: 60,
+                        color: boss.phase >= 3 ? '#9900ff' : '#ffff00',
+                        size: 4 + wave,
+                        isWave: true
+                    });
+                }
+                
+                // Check damage to player
+                setTimeout(() => {
+                    const distance = Math.sqrt(
+                        Math.pow(this.player.x - boss.x, 2) + 
+                        Math.pow(this.player.y - boss.y, 2)
+                    );
+                    const waveRadius = 50 + wave * 30;
+                    
+                    if (distance < waveRadius && distance > waveRadius - 20) {
+                        if (!this.player.isBlocking) {
+                            this.takeDamage(15 + wave * 5);
+                        }
+                    }
+                }, 200);
+                
+            }, wave * 300);
+        }
+    }
+    
     enemyAttack(enemy) {
         const attacks = enemy.attacks || ['punch'];
         const attackType = attacks[Math.floor(Math.random() * attacks.length)];
@@ -874,9 +1227,37 @@ class EnhancedFightingGame {
             
             // Check collisions
             if (projectile.type === 'player') {
+                // Player projectiles hit enemies
                 this.enemies.forEach(enemy => {
                     if (this.checkCollision(projectile, enemy)) {
                         this.hitEnemy(enemy, 'special_fireball');
+                        this.projectiles.splice(index, 1);
+                    }
+                });
+            } else if (projectile.type === 'enemy') {
+                // Enemy projectiles hit player
+                if (this.checkCollision(projectile, this.player)) {
+                    if (this.player.isBlocking && this.player.facing !== Math.sign(projectile.velocityX)) {
+                        // Blocked projectile
+                        this.playSound('block');
+                        this.player.canCounter = true;
+                        setTimeout(() => this.player.canCounter = false, 300);
+                        
+                        // Reflect projectile
+                        projectile.velocityX *= -0.5;
+                        projectile.type = 'player';
+                        projectile.color = '#00ffff';
+                    } else {
+                        // Hit player
+                        this.takeDamage(projectile.damage || 15);
+                        this.projectiles.splice(index, 1);
+                    }
+                }
+                
+                // Enemy projectiles can hit environment
+                this.environmentObjects.forEach(obj => {
+                    if (obj.health && this.checkCollision(projectile, obj)) {
+                        this.hitEnvironmentObject(obj);
                         this.projectiles.splice(index, 1);
                     }
                 });
@@ -1099,52 +1480,327 @@ class EnhancedFightingGame {
     
     renderEnemies() {
         this.enemies.forEach(enemy => {
-            // Enemy color based on type and health
-            const colors = {
-                brawler: '#ff6666',
-                martial_artist: '#66ff66',
-                heavy_fighter: '#6666ff',
-                ninja: '#ff66ff',
-                boss: '#ff0000'
-            };
+            // Ultra-high detail enemy rendering (4x pixel density)
+            this.renderUltraDetailedEnemy(enemy);
             
-            const baseColor = colors[enemy.type] || '#ff6666';
-            const healthRatio = enemy.health / enemy.maxHealth;
-            
-            // Flashing when hit
-            if (enemy.hitstun > 0 && enemy.hitstun % 4 < 2) {
-                this.ctx.fillStyle = '#ffffff';
-            } else {
-                this.ctx.fillStyle = baseColor;
+            // Health bar for bosses and damaged enemies
+            if (enemy.type === 'boss' || enemy.health < enemy.maxHealth) {
+                this.renderEnemyHealthBar(enemy);
             }
-            
-            // Transparency for ninja
-            if (enemy.alpha) {
-                this.ctx.globalAlpha = enemy.alpha;
-            }
-            
-            this.ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
-            
-            // Enemy details
-            this.ctx.fillStyle = '#000000';
-            this.ctx.fillRect(enemy.x + 4, enemy.y + 3, 4, 4); // Eyes
-            
-            // Health bar for bosses
-            if (enemy.type === 'boss') {
-                this.ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-                this.ctx.fillRect(enemy.x - 5, enemy.y - 15, enemy.width + 10, 8);
-                this.ctx.fillStyle = '#ff0000';
-                this.ctx.fillRect(enemy.x - 4, enemy.y - 14, (enemy.width + 8) * healthRatio, 6);
-            }
-            
-            this.ctx.globalAlpha = 1;
         });
+    }
+    
+    renderUltraDetailedEnemy(enemy) {
+        const healthRatio = enemy.health / enemy.maxHealth;
+        
+        // Flashing when hit
+        const isFlashing = enemy.hitstun > 0 && enemy.hitstun % 4 < 2;
+        
+        // Transparency for ninja
+        if (enemy.alpha) {
+            this.ctx.globalAlpha = enemy.alpha;
+        }
+        
+        // Render based on enemy type with ultra detail
+        switch (enemy.type) {
+            case 'brawler':
+                this.renderBrawler(enemy, isFlashing, healthRatio);
+                break;
+            case 'martial_artist':
+                this.renderMartialArtist(enemy, isFlashing, healthRatio);
+                break;
+            case 'heavy_fighter':
+                this.renderHeavyFighter(enemy, isFlashing, healthRatio);
+                break;
+            case 'ninja':
+                this.renderNinja(enemy, isFlashing, healthRatio);
+                break;
+            case 'boss':
+                this.renderBoss(enemy, isFlashing, healthRatio);
+                break;
+        }
+        
+        this.ctx.globalAlpha = 1;
+    }
+    
+    renderBrawler(enemy, isFlashing, healthRatio) {
+        const x = enemy.x;
+        const y = enemy.y;
+        const w = enemy.width;
+        const h = enemy.height;
+        
+        // Base color with health indication
+        const baseColor = isFlashing ? '#ffffff' : 
+            `rgb(${255 * healthRatio}, ${100 + 100 * healthRatio}, ${100 + 100 * healthRatio})`;
+        
+        // Muscular torso
+        this.ctx.fillStyle = '#8B4513'; // Brown shirt
+        this.ctx.fillRect(x + 4, y + 8, w - 8, h - 16);
+        
+        // Detailed head
+        this.ctx.fillStyle = '#FFDBAC'; // Skin
+        this.ctx.fillRect(x + 6, y, w - 12, 10);
+        
+        // Hair
+        this.ctx.fillStyle = '#654321';
+        this.ctx.fillRect(x + 7, y, w - 14, 4);
+        
+        // Detailed eyes
+        this.ctx.fillStyle = '#000000';
+        this.ctx.fillRect(x + 8, y + 3, 2, 2);
+        this.ctx.fillRect(x + w - 10, y + 3, 2, 2);
+        
+        // Scars and details
+        this.ctx.fillStyle = '#AA6644';
+        this.ctx.fillRect(x + 7, y + 6, 3, 1); // Scar
+        
+        // Arms with muscles
+        this.ctx.fillStyle = '#FFDBAC';
+        this.ctx.fillRect(x + 2, y + 10, 4, 8); // Left arm
+        this.ctx.fillRect(x + w - 6, y + 10, 4, 8); // Right arm
+        
+        // Muscle definition
+        this.ctx.fillStyle = '#DDB584';
+        this.ctx.fillRect(x + 3, y + 11, 2, 3);
+        this.ctx.fillRect(x + w - 5, y + 11, 2, 3);
+        
+        // Legs
+        this.ctx.fillStyle = '#2F2F2F'; // Dark pants
+        this.ctx.fillRect(x + 6, y + h - 8, w - 12, 8);
+        
+        // Combat stance
+        if (enemy.attacking) {
+            this.renderEnemyAttackEffect(x, y, w, h, '#ff6666');
+        }
+    }
+    
+    renderMartialArtist(enemy, isFlashing, healthRatio) {
+        const x = enemy.x;
+        const y = enemy.y;
+        const w = enemy.width;
+        const h = enemy.height;
+        
+        // Gi (martial arts uniform)
+        this.ctx.fillStyle = isFlashing ? '#ffffff' : '#ffffff';
+        this.ctx.fillRect(x + 3, y + 6, w - 6, h - 12);
+        
+        // Belt
+        this.ctx.fillStyle = '#000000';
+        this.ctx.fillRect(x + 3, y + h - 10, w - 6, 2);
+        
+        // Head
+        this.ctx.fillStyle = '#FFDBAC';
+        this.ctx.fillRect(x + 5, y, w - 10, 8);
+        
+        // Hair
+        this.ctx.fillStyle = '#2F2F2F';
+        this.ctx.fillRect(x + 6, y, w - 12, 3);
+        
+        // Eyes
+        this.ctx.fillStyle = '#000000';
+        this.ctx.fillRect(x + 7, y + 2, 1, 1);
+        this.ctx.fillRect(x + w - 8, y + 2, 1, 1);
+        
+        // Arms in fighting stance
+        this.ctx.fillStyle = '#FFDBAC';
+        this.ctx.fillRect(x + 1, y + 8, 3, 6); // Left arm
+        this.ctx.fillRect(x + w - 4, y + 8, 3, 6); // Right arm
+        
+        // Hands
+        this.ctx.fillStyle = '#DDB584';
+        this.ctx.fillRect(x + 1, y + 14, 3, 3);
+        this.ctx.fillRect(x + w - 4, y + 14, 3, 3);
+        
+        // Legs
+        this.ctx.fillStyle = '#ffffff';
+        this.ctx.fillRect(x + 5, y + h - 6, w - 10, 6);
+        
+        // Martial arts aura
+        if (enemy.canBlock) {
+            this.ctx.fillStyle = '#66ff66';
+            this.ctx.globalAlpha = 0.3;
+            this.ctx.fillRect(x - 2, y - 2, w + 4, h + 4);
+            this.ctx.globalAlpha = 1;
+        }
+    }
+    
+    renderHeavyFighter(enemy, isFlashing, healthRatio) {
+        const x = enemy.x;
+        const y = enemy.y;
+        const w = enemy.width;
+        const h = enemy.height;
+        
+        // Large muscular frame
+        this.ctx.fillStyle = isFlashing ? '#ffffff' : '#4169E1';
+        this.ctx.fillRect(x + 2, y + 4, w - 4, h - 8);
+        
+        // Head
+        this.ctx.fillStyle = '#FFDBAC';
+        this.ctx.fillRect(x + 4, y, w - 8, 6);
+        
+        // Bald head
+        this.ctx.fillStyle = '#DDB584';
+        this.ctx.fillRect(x + 5, y, w - 10, 3);
+        
+        // Eyes
+        this.ctx.fillStyle = '#FF0000';
+        this.ctx.fillRect(x + 6, y + 2, 2, 1);
+        this.ctx.fillRect(x + w - 8, y + 2, 2, 1);
+        
+        // Massive arms
+        this.ctx.fillStyle = '#FFDBAC';
+        this.ctx.fillRect(x, y + 6, 5, 10); // Left arm
+        this.ctx.fillRect(x + w - 5, y + 6, 5, 10); // Right arm
+        
+        // Armor details
+        this.ctx.fillStyle = '#708090';
+        this.ctx.fillRect(x + 3, y + 5, w - 6, 2); // Chest armor
+        this.ctx.fillRect(x + 4, y + 8, w - 8, 1); // Armor line
+        
+        // Legs
+        this.ctx.fillStyle = '#2F2F2F';
+        this.ctx.fillRect(x + 4, y + h - 6, w - 8, 6);
+        
+        // Armor glow
+        if (enemy.armor > 0) {
+            this.ctx.fillStyle = '#0099ff';
+            this.ctx.globalAlpha = 0.4;
+            this.ctx.fillRect(x - 1, y - 1, w + 2, h + 2);
+            this.ctx.globalAlpha = 1;
+        }
+    }
+    
+    renderNinja(enemy, isFlashing, healthRatio) {
+        const x = enemy.x;
+        const y = enemy.y;
+        const w = enemy.width;
+        const h = enemy.height;
+        
+        // Black ninja outfit
+        this.ctx.fillStyle = isFlashing ? '#ffffff' : '#1a1a1a';
+        this.ctx.fillRect(x + 3, y + 2, w - 6, h - 4);
+        
+        // Ninja mask
+        this.ctx.fillStyle = '#000000';
+        this.ctx.fillRect(x + 4, y, w - 8, 6);
+        
+        // Eyes
+        this.ctx.fillStyle = '#ff0000';
+        this.ctx.fillRect(x + 6, y + 2, 1, 1);
+        this.ctx.fillRect(x + w - 7, y + 2, 1, 1);
+        
+        // Arms
+        this.ctx.fillStyle = '#1a1a1a';
+        this.ctx.fillRect(x + 1, y + 6, 3, 8);
+        this.ctx.fillRect(x + w - 4, y + 6, 3, 8);
+        
+        // Legs
+        this.ctx.fillRect(x + 4, y + h - 6, w - 8, 6);
+        
+        // Ninja weapons
+        this.ctx.fillStyle = '#c0c0c0';
+        this.ctx.fillRect(x + 2, y + 8, 1, 4); // Sword handle
+        this.ctx.fillRect(x + w - 3, y + 8, 1, 4);
+        
+        // Stealth effect
+        if (enemy.invisibleTimer > 0) {
+            this.ctx.fillStyle = '#9400d3';
+            this.ctx.globalAlpha = 0.5;
+            this.ctx.fillRect(x - 3, y - 3, w + 6, h + 6);
+        }
+    }
+    
+    renderBoss(enemy, isFlashing, healthRatio) {
+        const x = enemy.x;
+        const y = enemy.y;
+        const w = enemy.width;
+        const h = enemy.height;
+        
+        // Imposing boss frame
+        this.ctx.fillStyle = isFlashing ? '#ffffff' : '#8B0000';
+        this.ctx.fillRect(x + 5, y + 8, w - 10, h - 16);
+        
+        // Large head
+        this.ctx.fillStyle = '#FFDBAC';
+        this.ctx.fillRect(x + 8, y, w - 16, 12);
+        
+        // Boss hair/helmet
+        this.ctx.fillStyle = '#FFD700';
+        this.ctx.fillRect(x + 9, y, w - 18, 5);
+        
+        // Menacing eyes
+        this.ctx.fillStyle = '#FF0000';
+        this.ctx.fillRect(x + 12, y + 4, 3, 2);
+        this.ctx.fillRect(x + w - 15, y + 4, 3, 2);
+        
+        // Boss armor
+        this.ctx.fillStyle = '#708090';
+        this.ctx.fillRect(x + 4, y + 10, w - 8, h - 20);
+        
+        // Armor details
+        this.ctx.fillStyle = '#C0C0C0';
+        this.ctx.fillRect(x + 6, y + 12, w - 12, 2);
+        this.ctx.fillRect(x + 8, y + 16, w - 16, 2);
+        
+        // Massive arms
+        this.ctx.fillStyle = '#8B0000';
+        this.ctx.fillRect(x, y + 12, 8, 12);
+        this.ctx.fillRect(x + w - 8, y + 12, 8, 12);
+        
+        // Legs
+        this.ctx.fillStyle = '#2F2F2F';
+        this.ctx.fillRect(x + 10, y + h - 8, w - 20, 8);
+        
+        // Boss aura based on phase
+        const auraColors = ['#ff0000', '#ff6600', '#ffff00'];
+        const auraColor = auraColors[Math.min(enemy.phase - 1, 2)];
+        this.ctx.fillStyle = auraColor;
+        this.ctx.globalAlpha = 0.3 + Math.sin(Date.now() * 0.01) * 0.2;
+        this.ctx.fillRect(x - 4, y - 4, w + 8, h + 8);
+        this.ctx.globalAlpha = 1;
+        
+        // Special attack charging
+        if (enemy.specialTimer > 120) {
+            this.ctx.fillStyle = '#ffffff';
+            this.ctx.globalAlpha = 0.8;
+            this.ctx.fillRect(x - 2, y - 2, w + 4, h + 4);
+        }
+    }
+    
+    renderEnemyAttackEffect(x, y, w, h, color) {
+        this.ctx.fillStyle = color;
+        this.ctx.globalAlpha = 0.6;
+        this.ctx.fillRect(x - 4, y - 4, w + 8, h + 8);
+        this.ctx.globalAlpha = 1;
+    }
+    
+    renderEnemyHealthBar(enemy) {
+        const barWidth = enemy.width + 10;
+        const barHeight = 4;
+        const barX = enemy.x - 5;
+        const barY = enemy.y - 10;
+        
+        // Background
+        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+        this.ctx.fillRect(barX, barY, barWidth, barHeight);
+        
+        // Health
+        const healthRatio = enemy.health / enemy.maxHealth;
+        const healthColor = healthRatio > 0.6 ? '#00ff00' : 
+                           healthRatio > 0.3 ? '#ffff00' : '#ff0000';
+        this.ctx.fillStyle = healthColor;
+        this.ctx.fillRect(barX + 1, barY + 1, (barWidth - 2) * healthRatio, barHeight - 2);
+        
+        // Border
+        this.ctx.strokeStyle = '#ffffff';
+        this.ctx.lineWidth = 1;
+        this.ctx.strokeRect(barX, barY, barWidth, barHeight);
     }
     
     renderPlayer() {
         const p = this.player;
         
-        // Player base
+        // Ultra-high detail player rendering (4x pixel density)
         let playerColor = p.colors.shirt;
         
         // Flashing when invulnerable
@@ -1156,45 +1812,677 @@ class EnhancedFightingGame {
         if (p.energy >= p.maxEnergy) {
             this.ctx.fillStyle = p.colors.aura;
             this.ctx.globalAlpha = 0.5;
-            this.ctx.fillRect(p.x - 5, p.y - 5, p.width + 10, p.height + 10);
+            this.ctx.fillRect(p.x - 8, p.y - 8, p.width + 16, p.height + 16);
             this.ctx.globalAlpha = 1;
         }
         
-        this.ctx.fillStyle = playerColor;
-        this.ctx.fillRect(p.x, p.y, p.width, p.height);
-        
-        // Player details
-        this.ctx.fillStyle = p.colors.skin;
-        this.ctx.fillRect(p.x + 4, p.y + 2, 24, 12); // Head
-        this.ctx.fillRect(p.x + 6, p.y + 18, 8, 12); // Left arm
-        this.ctx.fillRect(p.x + 18, p.y + 18, 8, 12); // Right arm
-        
-        this.ctx.fillStyle = p.colors.pants;
-        this.ctx.fillRect(p.x + 8, p.y + 32, 16, 16); // Legs
-        
-        this.ctx.fillStyle = p.colors.hair;
-        this.ctx.fillRect(p.x + 6, p.y + 2, 20, 6); // Hair
-        
-        this.ctx.fillStyle = p.colors.shoes;
-        this.ctx.fillRect(p.x + 6, p.y + 44, 20, 6); // Shoes
-        
-        // Eyes
-        this.ctx.fillStyle = '#000000';
-        this.ctx.fillRect(p.x + 8 + (p.facing > 0 ? 4 : 0), p.y + 6, 2, 2);
-        this.ctx.fillRect(p.x + 18 + (p.facing > 0 ? 4 : 0), p.y + 6, 2, 2);
+        // Ultra-detailed character rendering with 4x pixel density
+        this.renderUltraDetailedPlayer(p, playerColor);
         
         // Attack effects
         if (p.isAttacking) {
             this.renderAttackAnimation();
         }
         
-        // Blocking effect
+        // Blocking effect with high detail
         if (p.isBlocking) {
-            this.ctx.fillStyle = '#00ffff';
-            this.ctx.globalAlpha = 0.5;
-            this.ctx.fillRect(p.x + (p.facing > 0 ? p.width : -8), p.y, 8, p.height);
+            this.renderBlockingEffect();
+        }
+    }
+    
+    renderUltraDetailedPlayer(p, baseColor) {
+        // 🎌 日系动漫风格超高清渲染
+        this.renderAnimePlayerHead(p);
+        this.renderAnimePlayerTorso(p, baseColor);
+        this.renderAnimePlayerArms(p);
+        this.renderAnimePlayerLegs(p);
+        this.renderAnimePlayerEffects(p);
+    }
+    
+    renderAnimePlayerHead(p) {
+        const headX = p.x + 6;
+        const headY = p.y + 1;
+        const headW = 20;
+        const headH = 16;
+        
+        // 动漫风格脸部基础形状 - 更大的头部比例
+        const faceGradient = this.ctx.createRadialGradient(
+            headX + headW/2, headY + headH/2, 0,
+            headX + headW/2, headY + headH/2, headW/2
+        );
+        faceGradient.addColorStop(0, '#ffe4c4');
+        faceGradient.addColorStop(0.7, '#ffd7b3');
+        faceGradient.addColorStop(1, '#e6b899');
+        
+        this.ctx.fillStyle = faceGradient;
+        // 椭圆形脸型
+        this.ctx.beginPath();
+        this.ctx.ellipse(headX + headW/2, headY + headH/2, headW/2, headH/2, 0, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // 动漫风格大眼睛
+        this.renderAnimeEyes(headX, headY, headW, headH, p.facing);
+        
+        // 动漫风格头发 - 锋利的发丝
+        this.renderAnimeHair(headX, headY, headW, headH);
+        
+        // 表情细节
+        this.renderFacialDetails(headX, headY, headW, headH, p.facing);
+    }
+    
+    renderAnimeEyes(headX, headY, headW, headH, facing) {
+        const eyeY = headY + headH * 0.35;
+        const eyeW = 4;
+        const eyeH = 5;
+        
+        if (facing > 0) {
+            // 左眼 (更大更闪亮)
+            const leftEyeX = headX + headW * 0.25;
+            this.ctx.fillStyle = '#ffffff';
+            this.ctx.fillRect(leftEyeX, eyeY, eyeW, eyeH);
+            
+            // 虹膜 - 蓝绿色
+            this.ctx.fillStyle = '#00b8d4';
+            this.ctx.fillRect(leftEyeX + 1, eyeY + 1, 2, 3);
+            
+            // 瞳孔
+            this.ctx.fillStyle = '#000000';
+            this.ctx.fillRect(leftEyeX + 1.5, eyeY + 1.5, 1, 2);
+            
+            // 高光点
+            this.ctx.fillStyle = '#ffffff';
+            this.ctx.fillRect(leftEyeX + 1, eyeY + 1, 1, 1);
+            
+            // 右眼 (侧面视角)
+            const rightEyeX = headX + headW * 0.65;
+            this.ctx.fillStyle = '#ffffff';
+            this.ctx.fillRect(rightEyeX, eyeY, eyeW - 1, eyeH);
+            this.ctx.fillStyle = '#00b8d4';
+            this.ctx.fillRect(rightEyeX + 1, eyeY + 1, 1, 3);
+            this.ctx.fillStyle = '#000000';
+            this.ctx.fillRect(rightEyeX + 1, eyeY + 2, 1, 1);
+        } else {
+            // 面向左时的眼睛渲染 (镜像)
+            const rightEyeX = headX + headW * 0.65;
+            this.ctx.fillStyle = '#ffffff';
+            this.ctx.fillRect(rightEyeX, eyeY, eyeW, eyeH);
+            this.ctx.fillStyle = '#00b8d4';
+            this.ctx.fillRect(rightEyeX + 1, eyeY + 1, 2, 3);
+            this.ctx.fillStyle = '#000000';
+            this.ctx.fillRect(rightEyeX + 1.5, eyeY + 1.5, 1, 2);
+            this.ctx.fillStyle = '#ffffff';
+            this.ctx.fillRect(rightEyeX + 2, eyeY + 1, 1, 1);
+            
+            const leftEyeX = headX + headW * 0.25;
+            this.ctx.fillStyle = '#ffffff';
+            this.ctx.fillRect(leftEyeX, eyeY, eyeW - 1, eyeH);
+            this.ctx.fillStyle = '#00b8d4';
+            this.ctx.fillRect(leftEyeX + 1, eyeY + 1, 1, 3);
+            this.ctx.fillStyle = '#000000';
+            this.ctx.fillRect(leftEyeX + 1, eyeY + 2, 1, 1);
+        }
+        
+        // 睫毛
+        this.ctx.fillStyle = '#2c1810';
+        this.ctx.fillRect(headX + headW * 0.25, eyeY - 1, eyeW, 1);
+        this.ctx.fillRect(headX + headW * 0.65, eyeY - 1, eyeW - 1, 1);
+    }
+    
+    renderAnimeHair(headX, headY, headW, headH) {
+        // 动漫风格尖锐头发
+        const hairGradient = this.ctx.createLinearGradient(headX, headY, headX, headY + headH);
+        hairGradient.addColorStop(0, '#4a5568');
+        hairGradient.addColorStop(0.5, '#2d3748');
+        hairGradient.addColorStop(1, '#1a202c');
+        
+        this.ctx.fillStyle = hairGradient;
+        
+        // 主要头发形状
+        this.ctx.fillRect(headX + 2, headY - 2, headW - 4, 8);
+        
+        // 尖锐的发丝效果
+        const spikes = [
+            {x: headX + 3, y: headY - 4, w: 2, h: 4},
+            {x: headX + 7, y: headY - 5, w: 3, h: 5},
+            {x: headX + 12, y: headY - 4, w: 2, h: 4},
+            {x: headX + 16, y: headY - 3, w: 2, h: 3}
+        ];
+        
+        spikes.forEach(spike => {
+            this.ctx.fillRect(spike.x, spike.y, spike.w, spike.h);
+        });
+        
+        // 侧边头发
+        this.ctx.fillRect(headX, headY + 2, 3, headH - 4);
+        this.ctx.fillRect(headX + headW - 3, headY + 2, 3, headH - 4);
+    }
+    
+    renderFacialDetails(headX, headY, headW, headH, facing) {
+        // 鼻子 (简约线条)
+        this.ctx.fillStyle = '#d4a574';
+        this.ctx.fillRect(headX + headW/2, headY + headH * 0.55, 1, 2);
+        
+        // 嘴巴 (根据动作状态变化)
+        this.ctx.fillStyle = '#ff6b7a';
+        if (this.player.isAttacking) {
+            // 攻击时的坚毅表情
+            this.ctx.fillRect(headX + headW * 0.4, headY + headH * 0.7, 4, 1);
+        } else {
+            // 平常的微笑
+            this.ctx.fillRect(headX + headW * 0.4, headY + headH * 0.72, 3, 1);
+            this.ctx.fillRect(headX + headW * 0.38, headY + headH * 0.73, 1, 1);
+            this.ctx.fillRect(headX + headW * 0.44, headY + headH * 0.73, 1, 1);
+        }
+        
+        // 脸部轮廓阴影
+        this.ctx.fillStyle = '#e6b899';
+        this.ctx.fillRect(headX + 1, headY + headH * 0.8, 2, 2);
+        this.ctx.fillRect(headX + headW - 3, headY + headH * 0.8, 2, 2);
+    }
+    
+    
+    renderAnimePlayerTorso(p, baseColor) {
+        const torsoX = p.x + 4;
+        const torsoY = p.y + 16;
+        const torsoW = 24;
+        const torsoH = 20;
+        
+        // 动漫风格战斗服装 - 未来科技感
+        const jacketGradient = this.ctx.createLinearGradient(torsoX, torsoY, torsoX + torsoW, torsoY + torsoH);
+        jacketGradient.addColorStop(0, '#1e3a8a');  // 深蓝色
+        jacketGradient.addColorStop(0.3, '#3b82f6'); // 蓝色
+        jacketGradient.addColorStop(0.7, '#1e40af'); // 中蓝色
+        jacketGradient.addColorStop(1, '#1e3a8a');   // 深蓝色
+        
+        this.ctx.fillStyle = jacketGradient;
+        this.ctx.fillRect(torsoX, torsoY, torsoW, torsoH);
+        
+        // 科技纹路装饰
+        this.ctx.fillStyle = '#00d4ff';
+        this.ctx.fillRect(torsoX + 2, torsoY + 3, torsoW - 4, 1); // 上装饰线
+        this.ctx.fillRect(torsoX + 4, torsoY + 8, torsoW - 8, 1); // 中装饰线
+        this.ctx.fillRect(torsoX + 2, torsoY + 15, torsoW - 4, 1); // 下装饰线
+        
+        // 胸前徽章/Logo
+        this.ctx.fillStyle = '#ffd700';
+        this.ctx.fillRect(torsoX + torsoW/2 - 2, torsoY + 5, 4, 4);
+        this.ctx.fillStyle = '#ff6b7a';
+        this.ctx.fillRect(torsoX + torsoW/2 - 1, torsoY + 6, 2, 2);
+        
+        // 侧面高光
+        this.ctx.fillStyle = '#60a5fa';
+        this.ctx.fillRect(torsoX + 1, torsoY + 1, 1, torsoH - 2);
+        this.ctx.fillRect(torsoX + torsoW - 2, torsoY + 1, 1, torsoH - 2);
+        
+        // 战斗护具细节
+        this.ctx.fillStyle = '#374151';
+        this.ctx.fillRect(torsoX + 3, torsoY + 12, 3, 4); // 左护具
+        this.ctx.fillRect(torsoX + torsoW - 6, torsoY + 12, 3, 4); // 右护具
+    }
+    
+    renderAnimePlayerArms(p) {
+        const armW = 6;
+        const armH = 16;
+        const shoulderY = p.y + 18;
+        
+        // 动画状态相关的手臂位置
+        let leftArmX, rightArmX, leftArmY, rightArmY;
+        let leftArmAngle = 0, rightArmAngle = 0;
+        
+        if (p.isAttacking) {
+            // 攻击动作
+            switch (p.attackType) {
+                case 'light_punch':
+                case 'heavy_punch':
+                    leftArmX = p.x + (p.facing > 0 ? 26 : -8);
+                    leftArmY = shoulderY - 2;
+                    rightArmX = p.x + (p.facing > 0 ? -2 : 28);
+                    rightArmY = shoulderY + 2;
+                    rightArmAngle = p.facing * 0.5;
+                    break;
+                case 'light_kick':
+                case 'heavy_kick':
+                    leftArmX = p.x + (p.facing > 0 ? -4 : 30);
+                    leftArmY = shoulderY - 4;
+                    rightArmX = p.x + (p.facing > 0 ? 28 : -6);
+                    rightArmY = shoulderY - 2;
+                    leftArmAngle = -p.facing * 0.3;
+                    rightArmAngle = p.facing * 0.7;
+                    break;
+                default:
+                    leftArmX = p.x + (p.facing > 0 ? 24 : 2);
+                    leftArmY = shoulderY;
+                    rightArmX = p.x + (p.facing > 0 ? 2 : 24);
+                    rightArmY = shoulderY;
+            }
+        } else if (p.state === 'walking') {
+            // 行走动画
+            const walkCycle = Math.sin(p.animFrame * 0.3);
+            leftArmX = p.x + (p.facing > 0 ? -1 : 27);
+            leftArmY = shoulderY + walkCycle * 2;
+            rightArmX = p.x + (p.facing > 0 ? 27 : -1);
+            rightArmY = shoulderY - walkCycle * 2;
+            leftArmAngle = walkCycle * 0.3;
+            rightArmAngle = -walkCycle * 0.3;
+        } else {
+            // 待机状态
+            leftArmX = p.x + (p.facing > 0 ? -1 : 27);
+            leftArmY = shoulderY;
+            rightArmX = p.x + (p.facing > 0 ? 27 : -1);
+            rightArmY = shoulderY;
+        }
+        
+        // 渲染手臂
+        this.renderDetailedArm(leftArmX, leftArmY, armW, armH, leftArmAngle, 'left');
+        this.renderDetailedArm(rightArmX, rightArmY, armW, armH, rightArmAngle, 'right');
+    }
+    
+    renderDetailedArm(x, y, w, h, angle, side) {
+        this.ctx.save();
+        this.ctx.translate(x + w/2, y + h/2);
+        this.ctx.rotate(angle);
+        
+        // 皮肤渐变
+        const armGradient = this.ctx.createLinearGradient(-w/2, -h/2, w/2, h/2);
+        armGradient.addColorStop(0, '#ffe4c4');
+        armGradient.addColorStop(0.5, '#ffd7b3');
+        armGradient.addColorStop(1, '#e6b899');
+        
+        this.ctx.fillStyle = armGradient;
+        this.ctx.fillRect(-w/2, -h/2, w, h);
+        
+        // 肌肉线条
+        this.ctx.fillStyle = '#d4a574';
+        this.ctx.fillRect(-w/2 + 1, -h/2 + 3, 1, h - 6);
+        this.ctx.fillRect(w/2 - 2, -h/2 + 2, 1, h - 4);
+        
+        // 护具/手套
+        this.ctx.fillStyle = side === 'left' ? '#1e40af' : '#dc2626';
+        this.ctx.fillRect(-w/2, h/2 - 4, w, 3);
+        
+        // 科技发光线条
+        this.ctx.fillStyle = '#00d4ff';
+        this.ctx.fillRect(-w/2 + 1, h/2 - 3, w - 2, 1);
+        
+        this.ctx.restore();
+    }
+    
+    renderAnimePlayerLegs(p) {
+        const legW = 8;
+        const legH = 18;
+        const hipY = p.y + 34;
+        
+        let leftLegX, rightLegX, leftLegY, rightLegY;
+        let leftLegAngle = 0, rightLegAngle = 0;
+        
+        if (p.state === 'walking') {
+            // 行走动画
+            const walkCycle = Math.sin(p.animFrame * 0.4);
+            leftLegX = p.x + 8;
+            leftLegY = hipY + Math.abs(walkCycle);
+            rightLegX = p.x + 16;
+            rightLegY = hipY + Math.abs(-walkCycle);
+            leftLegAngle = walkCycle * 0.2;
+            rightLegAngle = -walkCycle * 0.2;
+        } else if (p.state === 'jumping') {
+            // 跳跃姿势
+            leftLegX = p.x + 6;
+            leftLegY = hipY;
+            rightLegX = p.x + 18;
+            rightLegY = hipY;
+            leftLegAngle = -0.3;
+            rightLegAngle = 0.2;
+        } else {
+            // 待机状态
+            leftLegX = p.x + 8;
+            leftLegY = hipY;
+            rightLegX = p.x + 16;
+            rightLegY = hipY;
+        }
+        
+        this.renderDetailedLeg(leftLegX, leftLegY, legW, legH, leftLegAngle, 'left');
+        this.renderDetailedLeg(rightLegX, rightLegY, legW, legH, rightLegAngle, 'right');
+    }
+    
+    renderDetailedLeg(x, y, w, h, angle, side) {
+        this.ctx.save();
+        this.ctx.translate(x + w/2, y + w/2);
+        this.ctx.rotate(angle);
+        
+        // 裤子渐变
+        const pantGradient = this.ctx.createLinearGradient(-w/2, -w/2, w/2, h - w/2);
+        pantGradient.addColorStop(0, '#374151');
+        pantGradient.addColorStop(0.5, '#1f2937');
+        pantGradient.addColorStop(1, '#111827');
+        
+        this.ctx.fillStyle = pantGradient;
+        this.ctx.fillRect(-w/2, -w/2, w, h);
+        
+        // 护膝装备
+        this.ctx.fillStyle = '#6b7280';
+        this.ctx.fillRect(-w/2 + 1, h/3, w - 2, 4);
+        
+        // 科技线条
+        this.ctx.fillStyle = '#00d4ff';
+        this.ctx.fillRect(-w/2 + 2, h/3 + 1, w - 4, 1);
+        
+        // 战斗靴
+        this.ctx.fillStyle = '#000000';
+        this.ctx.fillRect(-w/2, h - 6, w + 2, 5);
+        this.ctx.fillStyle = '#1e40af';
+        this.ctx.fillRect(-w/2, h - 5, w + 2, 2);
+        
+        this.ctx.restore();
+    }
+    
+    renderAnimePlayerEffects(p) {
+        // 能量光环效果
+        if (p.energy > 80) {
+            const auraIntensity = (p.energy - 80) / 20;
+            this.ctx.globalAlpha = 0.3 * auraIntensity;
+            
+            const auraGradient = this.ctx.createRadialGradient(
+                p.x + p.width/2, p.y + p.height/2, 0,
+                p.x + p.width/2, p.y + p.height/2, 40
+            );
+            auraGradient.addColorStop(0, 'rgba(0, 212, 255, 0.8)');
+            auraGradient.addColorStop(0.5, 'rgba(59, 130, 246, 0.4)');
+            auraGradient.addColorStop(1, 'rgba(0, 212, 255, 0)');
+            
+            this.ctx.fillStyle = auraGradient;
+            this.ctx.fillRect(p.x - 20, p.y - 20, p.width + 40, p.height + 40);
             this.ctx.globalAlpha = 1;
         }
+        
+        // 攻击特效
+        if (p.isAttacking) {
+            const effectOpacity = 1 - (p.attackFrame / 30);
+            this.ctx.globalAlpha = effectOpacity;
+            
+            const effectX = p.x + (p.facing > 0 ? p.width : -20);
+            const effectY = p.y + p.height/2 - 10;
+            
+            // 攻击能量波纹
+            this.ctx.strokeStyle = '#00d4ff';
+            this.ctx.lineWidth = 2;
+            for (let i = 0; i < 3; i++) {
+                this.ctx.beginPath();
+                this.ctx.arc(effectX + 10, effectY + 10, 5 + i * 8 + p.attackFrame, 0, Math.PI * 2);
+                this.ctx.stroke();
+            }
+            
+            this.ctx.globalAlpha = 1;
+        }
+    }
+}
+        const leftEyeX = headX + 3;
+        const rightEyeX = headX + 10;
+        
+        // Eye whites
+        this.ctx.fillStyle = '#ffffff';
+        this.ctx.fillRect(leftEyeX, eyeY, 3, 2);
+        this.ctx.fillRect(rightEyeX, eyeY, 3, 2);
+        
+        // Pupils (direction based on facing)
+        this.ctx.fillStyle = '#000000';
+        const pupilOffset = p.facing > 0 ? 1 : 0;
+        this.ctx.fillRect(leftEyeX + pupilOffset, eyeY, 1, 2);
+        this.ctx.fillRect(rightEyeX + pupilOffset, eyeY, 1, 2);
+        
+        // Eye highlights
+        this.ctx.fillStyle = '#ffffff';
+        this.ctx.fillRect(leftEyeX + 1, eyeY, 1, 1);
+        this.ctx.fillRect(rightEyeX + 1, eyeY, 1, 1);
+        
+        // Nose and mouth details
+        this.ctx.fillStyle = '#cc9966';
+        this.ctx.fillRect(headX + 7, headY + 6, 2, 1); // Nose
+        this.ctx.fillStyle = '#aa6644';
+        this.ctx.fillRect(headX + 6, headY + 8, 4, 1); // Mouth
+        
+        // Facial shading
+        this.ctx.fillStyle = '#cc9966';
+        this.ctx.globalAlpha = 0.6;
+        this.ctx.fillRect(headX + headW - 3, headY + 2, 2, headH - 4);
+        this.ctx.globalAlpha = 1;
+    }
+    
+    renderDetailedTorso(p, baseColor) {
+        const torsoX = p.x + 4;
+        const torsoY = p.y + 14;
+        const torsoW = 24;
+        const torsoH = 20;
+        
+        // Shirt with detailed shading and highlights
+        const shirtGradient = this.ctx.createLinearGradient(torsoX, torsoY, torsoX + torsoW, torsoY + torsoH);
+        shirtGradient.addColorStop(0, '#5588ff');
+        shirtGradient.addColorStop(0.5, baseColor);
+        shirtGradient.addColorStop(1, '#2244aa');
+        this.ctx.fillStyle = shirtGradient;
+        this.ctx.fillRect(torsoX, torsoY, torsoW, torsoH);
+        
+        // Shirt details and texture
+        this.ctx.fillStyle = '#7799ff';
+        this.ctx.fillRect(torsoX + 2, torsoY + 2, torsoW - 4, 2); // Collar
+        this.ctx.fillRect(torsoX + 8, torsoY + 4, 8, 1); // Chest line
+        
+        // Shirt shadows and highlights
+        this.ctx.fillStyle = '#2244aa';
+        this.ctx.fillRect(torsoX + torsoW - 3, torsoY + 2, 2, torsoH - 4); // Right shadow
+        this.ctx.fillStyle = '#7799ff';
+        this.ctx.fillRect(torsoX + 1, torsoY + 2, 2, torsoH - 4); // Left highlight
+        
+        // Belt with metallic details
+        const beltY = torsoY + torsoH - 4;
+        this.ctx.fillStyle = '#654321';
+        this.ctx.fillRect(torsoX, beltY, torsoW, 4);
+        
+        // Belt buckle
+        this.ctx.fillStyle = '#ffd700';
+        this.ctx.fillRect(torsoX + 10, beltY + 1, 4, 2);
+        this.ctx.fillStyle = '#ffff99';
+        this.ctx.fillRect(torsoX + 11, beltY + 1, 2, 1);
+    }
+    
+    renderDetailedArms(p) {
+        const armOffset = this.getArmOffset(p);
+        
+        // Left arm with detailed shading
+        this.renderDetailedArm(p.x + 2, p.y + 16, armOffset.left, p.colors.skin, p.colors.shirt);
+        
+        // Right arm with detailed shading
+        this.renderDetailedArm(p.x + 26, p.y + 16, armOffset.right, p.colors.skin, p.colors.shirt);
+    }
+    
+    renderDetailedArm(x, y, offset, skinColor, shirtColor) {
+        // Upper arm (shirt sleeve)
+        this.ctx.fillStyle = shirtColor;
+        this.ctx.fillRect(x + offset.x, y + offset.y, 6, 8);
+        
+        // Sleeve shading
+        this.ctx.fillStyle = '#2244aa';
+        this.ctx.fillRect(x + offset.x + 4, y + offset.y + 1, 1, 6);
+        
+        // Forearm (skin)
+        const forearmGradient = this.ctx.createLinearGradient(x, y + 8, x + 6, y + 16);
+        forearmGradient.addColorStop(0, '#ffeaa7');
+        forearmGradient.addColorStop(1, skinColor);
+        this.ctx.fillStyle = forearmGradient;
+        this.ctx.fillRect(x + offset.x, y + offset.y + 8, 6, 8);
+        
+        // Arm muscle definition
+        this.ctx.fillStyle = '#cc9966';
+        this.ctx.fillRect(x + offset.x + 1, y + offset.y + 9, 4, 2);
+        
+        // Hand with detailed fingers
+        this.renderDetailedHand(x + offset.x + 1, y + offset.y + 16, skinColor, offset.attacking);
+    }
+    
+    renderDetailedHand(x, y, skinColor, isAttacking) {
+        // Palm
+        this.ctx.fillStyle = skinColor;
+        this.ctx.fillRect(x, y, 4, 4);
+        
+        // Fingers based on attack state
+        if (isAttacking) {
+            // Fist
+            this.ctx.fillStyle = '#cc9966';
+            this.ctx.fillRect(x, y, 4, 3);
+            this.ctx.fillStyle = skinColor;
+            this.ctx.fillRect(x + 1, y + 1, 2, 2);
+        } else {
+            // Open hand
+            this.ctx.fillStyle = skinColor;
+            this.ctx.fillRect(x, y - 1, 1, 2); // Thumb
+            this.ctx.fillRect(x + 1, y - 2, 3, 2); // Fingers
+        }
+        
+        // Hand details
+        this.ctx.fillStyle = '#cc9966';
+        this.ctx.fillRect(x + 1, y + 2, 2, 1); // Palm line
+    }
+    
+    getArmOffset(p) {
+        let leftOffset = { x: 0, y: 0, attacking: false };
+        let rightOffset = { x: 0, y: 0, attacking: false };
+        
+        if (p.isAttacking) {
+            const progress = p.attackFrame / (p.attacks[p.attackType].startup + p.attacks[p.attackType].active + p.attacks[p.attackType].recovery);
+            const animOffset = Math.sin(progress * Math.PI) * 12;
+            
+            switch (p.attackType) {
+                case 'light_punch':
+                case 'heavy_punch':
+                    if (p.facing > 0) {
+                        rightOffset = { x: animOffset, y: -animOffset * 0.3, attacking: true };
+                    } else {
+                        leftOffset = { x: -animOffset, y: -animOffset * 0.3, attacking: true };
+                    }
+                    break;
+                    
+                case 'uppercut':
+                    if (p.facing > 0) {
+                        rightOffset = { x: animOffset * 0.5, y: -animOffset, attacking: true };
+                    } else {
+                        leftOffset = { x: -animOffset * 0.5, y: -animOffset, attacking: true };
+                    }
+                    break;
+                    
+                case 'ultimate_combo':
+                    leftOffset = { x: -animOffset * 0.7, y: -animOffset * 0.5, attacking: true };
+                    rightOffset = { x: animOffset * 0.7, y: -animOffset * 0.5, attacking: true };
+                    break;
+            }
+        } else if (p.state === 'walking') {
+            const walkCycle = Math.sin(p.animFrame * 0.5) * 4;
+            leftOffset = { x: 0, y: walkCycle, attacking: false };
+            rightOffset = { x: 0, y: -walkCycle, attacking: false };
+        }
+        
+        return { left: leftOffset, right: rightOffset };
+    }
+    
+    renderDetailedLegs(p) {
+        const legX = p.x + 8;
+        const legY = p.y + 34;
+        const legW = 8;
+        const legH = 14;
+        
+        const walkOffset = p.state === 'walking' ? 
+            Math.sin(p.animFrame * Math.PI / 2) * 3 : 0;
+        
+        // Left leg with detailed pants
+        this.renderDetailedLeg(legX, legY, legW, legH, walkOffset, p.colors.pants);
+        
+        // Right leg with detailed pants  
+        this.renderDetailedLeg(legX + 8, legY, legW, legH, -walkOffset, p.colors.pants);
+        
+        // Detailed shoes
+        this.renderDetailedShoes(legX, legY + legH, p.colors.shoes);
+    }
+    
+    renderDetailedLeg(x, y, w, h, offset, pantsColor) {
+        // Pants with gradient and details
+        const pantsGradient = this.ctx.createLinearGradient(x, y, x + w, y + h);
+        pantsGradient.addColorStop(0, '#444444');
+        pantsGradient.addColorStop(0.5, pantsColor);
+        pantsGradient.addColorStop(1, '#1a1a1a');
+        this.ctx.fillStyle = pantsGradient;
+        this.ctx.fillRect(x, y + offset, w, h);
+        
+        // Pants seam
+        this.ctx.fillStyle = '#555555';
+        this.ctx.fillRect(x + 1, y + offset + 1, 1, h - 2);
+        
+        // Pants shadow
+        this.ctx.fillStyle = '#1a1a1a';
+        this.ctx.fillRect(x + w - 1, y + offset + 1, 1, h - 2);
+    }
+    
+    renderDetailedShoes(x, y, shoeColor) {
+        // Left shoe
+        this.ctx.fillStyle = shoeColor;
+        this.ctx.fillRect(x - 1, y, 10, 4);
+        
+        // Shoe details
+        this.ctx.fillStyle = '#2a1810';
+        this.ctx.fillRect(x, y + 1, 8, 2);
+        this.ctx.fillStyle = '#8B4513';
+        this.ctx.fillRect(x + 1, y + 2, 6, 1);
+        
+        // Right shoe
+        this.ctx.fillStyle = shoeColor;
+        this.ctx.fillRect(x + 7, y, 10, 4);
+        
+        // Shoe details
+        this.ctx.fillStyle = '#2a1810';
+        this.ctx.fillRect(x + 8, y + 1, 8, 2);
+        this.ctx.fillStyle = '#8B4513';
+        this.ctx.fillRect(x + 9, y + 2, 6, 1);
+    }
+    
+    renderPlayerDetails(p) {
+        // Character shadow
+        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+        this.ctx.fillRect(p.x + 4, p.y + p.height, p.width - 8, 3);
+        
+        // Character outline for depth
+        this.ctx.strokeStyle = '#000000';
+        this.ctx.lineWidth = 0.5;
+        this.ctx.strokeRect(p.x, p.y, p.width, p.height);
+        
+        // Health indicator
+        if (p.health < p.maxHealth * 0.3) {
+            // Red glow when low health
+            this.ctx.fillStyle = 'rgba(255, 0, 0, 0.3)';
+            this.ctx.fillRect(p.x - 2, p.y - 2, p.width + 4, p.height + 4);
+        }
+        
+        // Breathing animation
+        const breathOffset = Math.sin(Date.now() * 0.003) * 0.5;
+        this.ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+        this.ctx.fillRect(p.x + 12, p.y + 18 + breathOffset, 8, 2);
+    }
+    
+    renderBlockingEffect() {
+        const p = this.player;
+        // Ultra-detailed blocking shield effect
+        this.ctx.fillStyle = '#00ffff';
+        this.ctx.globalAlpha = 0.7;
+        this.ctx.fillRect(p.x + (p.facing > 0 ? p.width : -12), p.y - 4, 12, p.height + 8);
+        
+        // Shield pattern details
+        this.ctx.fillStyle = '#ffffff';
+        this.ctx.globalAlpha = 0.9;
+        for (let i = 0; i < 5; i++) {
+            this.ctx.fillRect(
+                p.x + (p.facing > 0 ? p.width + 2 : -10), 
+                p.y + i * 10, 
+                8, 
+                2
+            );
+        }
+        this.ctx.globalAlpha = 1;
     }
     
     renderAttackAnimation() {
@@ -1240,19 +2528,47 @@ class EnhancedFightingGame {
     
     renderProjectiles() {
         this.projectiles.forEach(projectile => {
+            // Main projectile
             this.ctx.fillStyle = projectile.color || '#ffff00';
-            this.ctx.fillRect(projectile.x, projectile.y, projectile.width || 8, projectile.height || 8);
-            
-            // Trail effect
-            this.ctx.fillStyle = projectile.color || '#ffff00';
-            this.ctx.globalAlpha = 0.5;
             this.ctx.fillRect(
-                projectile.x - projectile.velocityX,
-                projectile.y - projectile.velocityY,
-                projectile.width || 8,
+                projectile.x, 
+                projectile.y, 
+                projectile.width || 8, 
                 projectile.height || 8
             );
-            this.ctx.globalAlpha = 1;
+            
+            // Enhanced trail effect for special projectiles
+            if (projectile.trail) {
+                this.ctx.fillStyle = projectile.color || '#ffff00';
+                this.ctx.globalAlpha = 0.6;
+                this.ctx.fillRect(
+                    projectile.x - projectile.velocityX * 0.5,
+                    projectile.y - projectile.velocityY * 0.5,
+                    projectile.width || 8,
+                    projectile.height || 8
+                );
+                this.ctx.globalAlpha = 0.3;
+                this.ctx.fillRect(
+                    projectile.x - projectile.velocityX,
+                    projectile.y - projectile.velocityY,
+                    projectile.width || 8,
+                    projectile.height || 8
+                );
+                this.ctx.globalAlpha = 1;
+            }
+            
+            // Glow effect for boss projectiles
+            if (projectile.type === 'enemy') {
+                this.ctx.fillStyle = projectile.color || '#ff6600';
+                this.ctx.globalAlpha = 0.4;
+                this.ctx.fillRect(
+                    projectile.x - 2, 
+                    projectile.y - 2, 
+                    (projectile.width || 8) + 4, 
+                    (projectile.height || 8) + 4
+                );
+                this.ctx.globalAlpha = 1;
+            }
         });
     }
     
