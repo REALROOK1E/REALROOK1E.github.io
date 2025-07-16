@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture Diagram Test</title>
+    <link rel="stylesheet" href="style-pixel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body style="padding: 2rem;">
+    <div class="featured-project-showcase">
+        <div class="project-terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-controls">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                </div>
+                <div class="terminal-title">
+                    <i class="fas fa-camera"></i> INSTAVERSE_ARCHITECTURE.sys - DISTRIBUTED_BLOG_PLATFORM
+                </div>
+            </div>
+            
+            <div class="architecture-main-display">
+                <!-- Project Overview -->
+                <div class="project-overview">
+                    <div class="project-meta">
+                        <h3><i class="fas fa-sitemap"></i> InstaVerse - Distributed Social Blog Platform</h3>
+                        <p class="project-desc">A high-performance distributed blog platform inspired by XiaoHongShu, supporting massive concurrent users with microservices architecture</p>
+                        <div class="role-badge">
+                            <i class="fas fa-user-cog"></i> Role: Java Backend Developer
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Architecture Diagram -->
+                <div class="architecture-diagram" id="architectureDiagram">
+                    <!-- User Layer -->
+                    <div class="architecture-layer user-layer">
+                        <div class="layer-title">
+                            <i class="fas fa-users"></i> USER LAYER
+                            <button class="layer-toggle" data-layer="user">▼</button>
+                        </div>
+                        <div class="layer-content" data-content="user">
+                            <div class="arch-node web-client">
+                                <i class="fas fa-laptop"></i>
+                                <span>Web Client</span>
+                            </div>
+                            <div class="arch-node mobile-app">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Mobile App</span>
+                            </div>
+                            <div class="arch-node admin-panel">
+                                <i class="fas fa-tools"></i>
+                                <span>Admin Panel</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Microservices Layer -->
+                    <div class="architecture-layer services-layer">
+                        <div class="layer-title">
+                            <i class="fas fa-cubes"></i> MICROSERVICES
+                            <button class="layer-toggle" data-layer="services">▼</button>
+                        </div>
+                        <div class="layer-content collapsed" data-content="services">
+                            <div class="services-grid">
+                                <div class="arch-node auth-service">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Auth Service</span>
+                                    <div class="node-detail">JWT + SMS + RBAC</div>
+                                </div>
+                                <div class="arch-node user-service">
+                                    <i class="fas fa-user-friends"></i>
+                                    <span>User Service</span>
+                                    <div class="node-detail">L2 Cache + BCrypt</div>
+                                </div>
+                                <div class="arch-node blog-service">
+                                    <i class="fas fa-blog"></i>
+                                    <span>Blog Service</span>
+                                    <div class="node-detail">CompletableFuture + Cache</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Metrics Dashboard -->
+                <div class="performance-dashboard">
+                    <div class="dashboard-title">
+                        <i class="fas fa-chart-line"></i> PERFORMANCE METRICS
+                    </div>
+                    <div class="metrics-row">
+                        <div class="metric-card">
+                            <div class="metric-value">22,000+</div>
+                            <div class="metric-label">TPS (ID Generator)</div>
+                            <div class="metric-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">4ms</div>
+                            <div class="metric-label">Avg Response Time</div>
+                            <div class="metric-icon"><i class="fas fa-clock"></i></div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1.9B+</div>
+                            <div class="metric-label">Daily ID Generation</div>
+                            <div class="metric-icon"><i class="fas fa-hashtag"></i></div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">99.9%</div>
+                            <div class="metric-label">Availability</div>
+                            <div class="metric-icon"><i class="fas fa-check-circle"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script-pixel.js"></script>
+    <script>
+        // Initialize architecture diagram
+        document.addEventListener('DOMContentLoaded', function() {
+            setupFeaturedProject();
+        });
+    </script>
+</body>
+</html>

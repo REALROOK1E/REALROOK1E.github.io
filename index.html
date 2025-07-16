@@ -33,14 +33,14 @@
         <div class="pixel-character">
             <div class="character-avatar"></div>
             <div class="character-stats">
-                <div class="stat-label">PLAYER: <span class="stat-value">ZeKai</span></div>
-                <div class="stat-label">CLASS: <span class="stat-value">Developer</span></div>
-                <div class="stat-label">LVL: <span class="stat-value">25</span></div>
-                <div class="stat-label">EXP: <span class="stat-value">9999+</span></div>
-                <div class="stat-label">SKILL: <span class="stat-value">Coding</span></div>
+                <div class="stat-label">PLAYER: <span class="stat-value">ZeKai Li</span></div>
+                <div class="stat-label">CLASS: <span class="stat-value">Software Engineer</span></div>
+                <div class="stat-label">DEGREE: <span class="stat-value">Master's CS</span></div>
+                <div class="stat-label">UNIVERSITY: <span class="stat-value">Linköping Uni</span></div>
                 <div class="stat-label">LOCATION: <span class="stat-value">Sweden</span></div>
-                <div class="stat-label">GUILD: <span class="stat-value">Linkoping Uni</span></div>
-                <div class="stat-label">QUESTS: <span class="stat-value">∞</span></div>
+                <div class="stat-label">EXP: <span class="stat-value">Java/Spring</span></div>
+                <div class="stat-label">SKILLS: <span class="stat-value">Full Stack</span></div>
+                <div class="stat-label">LANGUAGES: <span class="stat-value">CN/EN</span></div>
             </div>
         </div>
 
@@ -53,21 +53,29 @@
                     I am <span class="typing-text">ZeKai Li (REALROOK1E)</span>
                 </p>
                 <p style="color: var(--text-cyan); font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.6;">
-                    🎮 Software Engineer on an epic coding adventure<br>
-                    🚀 Former CASC Corporation Guild Member<br>
-                    🎓 Currently grinding at Linkoping University<br>
-                    🌟 Collecting achievements across 20+ cities worldwide
+                    � Master's in Computer Science at Linköping University<br>
+                    💻 Experienced Java Backend Developer with Spring ecosystem expertise<br>
+                    🚀 Former Software Engineer at China Aerospace Science and Technology Corporation<br>
+                    � Multilingual developer: Chinese, English<br>
+                    📍 Based in Sweden, exploring the Nordic tech landscape
                 </p>
                 
                 <!-- Mini Game Widget -->
-                <div class="mini-game-widget">
-                    <div class="game-header">
-                        <i class="fas fa-gamepad"></i> CYBER MATRIX GAME
-                        <button id="startGame" class="game-btn">START</button>
+                <div class="mini-game-widget">                <div class="game-header">
+                    <i class="fas fa-gamepad"></i> CYBER WARRIOR
+                    <button id="startGame" class="game-btn">START</button>
+                </div>
+                <div class="game-controls-info">
+                    <div class="control-hint">
+                        <i class="fas fa-keyboard"></i> Side-scrolling Action Game
                     </div>
+                </div>
                     <div class="game-board" id="gameBoard">
-                        <div class="game-score">Score: <span id="score">0</span></div>
-                        <canvas id="gameCanvas" width="300" height="200"></canvas>
+                        <div class="game-score">Score: <span id="score">0</span> | Lives: <span id="lives">3</span> | Level: <span id="level">1</span></div>
+                        <canvas id="gameCanvas" width="900" height="300"></canvas>
+                        <div class="game-controls">
+                            <div class="control-info">WASD: Move | J: Punch | K: Kick | L: Heavy | U: Special | I: Block | O: Grab</div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -93,15 +101,17 @@
                             <div class="cyber-exp-company">
                                 <i class="fas fa-rocket"></i> China Aerospace Science and Technology Corporation (CASC)
                             </div>
-                            <div class="cyber-exp-role">Software Engineer | Elite Development Unit</div>
+                            <div class="cyber-exp-role">Software Engineer | Backend Development Team</div>
                             <div class="cyber-exp-period">
                                 <i class="fas fa-calendar-alt"></i> 2023 - 2024 | STATUS: 
                                 <span class="status-complete">MISSION_COMPLETE</span>
                             </div>
                             <div class="cyber-exp-description">
-                                <i class="fas fa-code-branch"></i> Successfully integrated high-performance stream processing component into central codebase<br>
-                                <i class="fas fa-shield-alt"></i> Contributed to mission-critical aerospace software systems<br>
-                                <i class="fas fa-chart-line"></i> <span class="highlight-stat">+40% efficiency boost</span> achieved through optimization algorithms
+                                <i class="fas fa-server"></i> Developed distributed microservices architecture for aerospace applications<br>
+                                <i class="fas fa-database"></i> Optimized database performance and implemented caching strategies<br>
+                                <i class="fas fa-shield-alt"></i> Built secure authentication and authorization systems<br>
+                                <i class="fas fa-rocket"></i> Contributed to mission-critical space program software infrastructure<br>
+                                <i class="fas fa-chart-line"></i> <span class="highlight-stat">+40% performance improvement</span> through system optimization
                             </div>
                         </div>
 
@@ -110,17 +120,40 @@
                                 <i class="fas fa-university"></i> system@linkoping:~$ current_mission --status=active
                             </div>
                             <div class="cyber-exp-company">
-                                <i class="fas fa-graduation-cap"></i> Linkoping University
+                                <i class="fas fa-graduation-cap"></i> Linköping University, Sweden
                             </div>
-                            <div class="cyber-exp-role">Computer Science Student | Research Unit</div>
+                            <div class="cyber-exp-role">Master's Student | Computer Science Program</div>
                             <div class="cyber-exp-period">
                                 <i class="fas fa-calendar-alt"></i> 2024 - Present | STATUS: 
                                 <span class="status-active">MISSION_ACTIVE</span>
                             </div>
                             <div class="cyber-exp-description">
-                                <i class="fas fa-brain"></i> Mastering advanced computer science concepts and distributed systems<br>
-                                <i class="fas fa-users"></i> Collaborating with international research teams<br>
-                                <i class="fas fa-trophy"></i> <span class="highlight-stat">Excellent grades</span> maintained across all modules
+                                <i class="fas fa-brain"></i> Advancing knowledge in distributed systems and software architecture<br>
+                                <i class="fas fa-globe"></i> Immersed in international academic environment<br>
+                                <i class="fas fa-users"></i> Collaborating with diverse international research teams<br>
+                                <i class="fas fa-laptop-code"></i> Building advanced projects using modern technologies<br>
+                                <i class="fas fa-trophy"></i> <span class="highlight-stat">Excellent academic performance</span> across all coursework
+                            </div>
+                        </div>
+
+                        <div class="cyber-experience-item">
+                            <div class="cyber-prompt">
+                                <i class="fas fa-tools"></i> system@skills:~$ display_technical_arsenal
+                            </div>
+                            <div class="cyber-exp-company">
+                                <i class="fas fa-cogs"></i> Technical Skill Arsenal
+                            </div>
+                            <div class="cyber-exp-role">Full Stack Development | System Architecture</div>
+                            <div class="cyber-exp-period">
+                                <i class="fas fa-code"></i> CORE TECHNOLOGIES | STATUS: 
+                                <span class="status-active">CONTINUOUSLY_UPGRADING</span>
+                            </div>
+                            <div class="cyber-exp-description">
+                                <i class="fas fa-coffee"></i> <strong>Backend:</strong> Java, Spring Boot, Spring Cloud, MyBatis, Hibernate<br>
+                                <i class="fas fa-globe"></i> <strong>Frontend:</strong> Vue.js, React, HTML5, CSS3, JavaScript, TypeScript<br>
+                                <i class="fas fa-database"></i> <strong>Databases:</strong> MySQL, Redis, PostgreSQL, MongoDB<br>
+                                <i class="fas fa-server"></i> <strong>Infrastructure:</strong> Docker, Kubernetes, Linux, AWS, Git<br>
+                                <i class="fas fa-language"></i> <strong>Languages:</strong> Chinese (Native), English (Proficient)
                             </div>
                         </div>
                     </div>
@@ -130,41 +163,44 @@
             <!-- Quest Section (Projects) -->
             <section class="quest-section" id="quests">
                 <h2 class="section-title">ACTIVE QUESTS</h2>
+                
+                <!-- Quest Cards Grid -->
                 <div class="quest-grid">
                     <!-- Quest 1: InstaVerse -->
-                    <a href="https://github.com/REALROOK1E/Insta" target="_blank" class="quest-card">
+                    <a href="instaverse-details.html" class="quest-card">
                         <h3 class="quest-title">
                             <i class="fas fa-camera"></i> InstaVerse
                         </h3>
                         <p class="quest-description">
-                            🎯 <strong>MISSION:</strong> Build a social media platform with real-time photo sharing capabilities. Master the art of modern web development while creating something awesome!
+                            Enterprise-level microservices social blog platform with massive scalability. 
+                            Inspired by XiaoHongShu with distributed architecture supporting massive concurrent users.
                         </p>
-                        <div class="quest-reward">Advanced React & Node.js Skills + Community Building XP</div>
+                        <div class="quest-reward">Spring Cloud Alibaba · Microservices · High Concurrency · 22k+ TPS</div>
                         <div class="tech-badges">
-                            <span class="tech-badge">React</span>
-                            <span class="tech-badge">Node.js</span>
-                            <span class="tech-badge">MongoDB</span>
-                            <span class="tech-badge">Socket.io</span>
+                            <span class="tech-badge">Spring Cloud</span>
+                            <span class="tech-badge">MySQL</span>
+                            <span class="tech-badge">Redis</span>
+                            <span class="tech-badge">RocketMQ</span>
                         </div>
-                        <button class="quest-button">ACCEPT QUEST</button>
+                        <button class="quest-button">VIEW COMPLETE DETAILS →</button>
                     </a>
 
                     <!-- Quest 2: JAVAdventure -->
                     <a href="https://github.com/REALROOK1E/JAVAdventure" target="_blank" class="quest-card">
                         <h3 class="quest-title">
-                            <i class="fas fa-code"></i> JAVAdventure
+                            <i class="fas fa-microscope"></i> JAVAdventure
                         </h3>
                         <p class="quest-description">
-                            🎯 <strong>MISSION:</strong> Create an interactive Java learning platform that makes programming education fun and engaging. Transform boring tutorials into epic learning adventures!
+                            🎯 <strong>MISSION:</strong> Deep dive into Java ecosystem source code analysis. Hand-craft implementations and uncover the underlying principles of Spring, Netty, MyBatis and other core frameworks through meticulous code exploration.
                         </p>
-                        <div class="quest-reward">Educational Platform Mastery + Teaching Skill Unlock</div>
+                        <div class="quest-reward">Framework Mastery + Source Code Analysis Expertise</div>
                         <div class="tech-badges">
-                            <span class="tech-badge">Java</span>
-                            <span class="tech-badge">Spring Boot</span>
-                            <span class="tech-badge">Vue.js</span>
-                            <span class="tech-badge">MySQL</span>
+                            <span class="tech-badge">Spring Framework</span>
+                            <span class="tech-badge">Netty</span>
+                            <span class="tech-badge">MyBatis</span>
+                            <span class="tech-badge">Source Analysis</span>
                         </div>
-                        <button class="quest-button">CONTINUE QUEST</button>
+                        <button class="quest-button">EXPLORE SOURCE</button>
                     </a>
 
                     <!-- Quest 3: Algorithm Toolkit -->
@@ -241,19 +277,6 @@
                         <div class="achievement-stats">
                             <span class="stat-badge">Creativity: +80</span>
                             <span class="stat-badge">Team Harmony: +60</span>
-                        </div>
-                    </div>
-
-                    <div class="achievement-card">
-                        <img src="album/手撕.png" alt="Coding Achievement" class="achievement-image">
-                        <div class="achievement-title">⚡ CODE MASTER</div>
-                        <div class="achievement-desc">Algorithm and data structure mastery achieved through intensive training!</div>
-                        <div class="achievement-details">
-                            Through intensive training and countless practice sessions, unlocked the deepest secrets of computational thinking.
-                        </div>
-                        <div class="achievement-stats">
-                            <span class="stat-badge">Algorithm Mastery: MAX</span>
-                            <span class="stat-badge">Problem Solving: +150</span>
                         </div>
                     </div>
 
