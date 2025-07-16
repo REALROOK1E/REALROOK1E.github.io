@@ -21,8 +21,8 @@ class MoonWalkerGame {
     setupCanvas() {
         const baseWidth = 900;
         const baseHeight = 300;
-        const superSampleRatio = 2; // 降低�?x以提高性能
-        const dpr = window.devicePixelRatio || 1;
+        const superSampleRatio = 1.5; // 降低从2到1.5以减少内存使用
+        const dpr = Math.min(window.devicePixelRatio || 1, 2); // 限制最大DPR为2
         
         this.canvas.width = baseWidth * superSampleRatio * dpr;
         this.canvas.height = baseHeight * superSampleRatio * dpr;

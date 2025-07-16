@@ -553,11 +553,13 @@ body::before {
 .game-main {
     flex: 1;
     min-width: 0; /* Allow flex shrinkage */
+    max-width: 100%;
 }
 
 .game-sidebar {
     width: 300px;
     flex-shrink: 0;
+    min-width: 280px;
 }
 
 /* Responsive design for smaller screens */
@@ -573,6 +575,22 @@ body::before {
     
     .mini-game-widget {
         max-width: 950px;
+    }
+    
+    #gameCanvas {
+        max-width: 100%;
+    }
+}
+
+/* Additional responsive breakpoint for very small screens */
+@media (max-width: 480px) {
+    #gameCanvas {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .game-main {
+        padding: 0.5rem;
     }
 }
 
@@ -681,6 +699,7 @@ body::before {
 #gameCanvas {
     width: 100%;
     max-width: 900px;
+    height: auto;
     border: 1px solid var(--accent-cyan);
     border-radius: 5px;
     background: rgba(0, 0, 0, 0.8);
@@ -688,6 +707,8 @@ body::before {
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    display: block;
+    margin: 0 auto;
 }
 
 .game-controls {
