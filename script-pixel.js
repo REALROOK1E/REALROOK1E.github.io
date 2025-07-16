@@ -559,7 +559,7 @@ function initializeMiniGame() {
     let levelWidth = 3600; // 4x wider screen width for scrolling
     let renderScale = dpr; // Track render scale for calculations
     
-    // Player object with enhanced fighting system
+    // Player object with enhanced fighting system and animation states
     let player = {
         x: 50,
         y: 200,
@@ -575,25 +575,51 @@ function initializeMiniGame() {
         maxHealth: 100,
         mana: 50,
         maxMana: 50,
+        stamina: 100,
+        maxStamina: 100,
         
-        // Fighting system
+        // Fighting system with detailed animation states
         isAttacking: false,
         attackType: '',
         attackFrame: 0,
+        attackDuration: 0,
         attackCooldown: 0,
         combo: 0,
+        comboTimer: 0,
         
-        // Animation
+        // Animation system
         animFrame: 0,
         animTimer: 0,
-        state: 'idle', // idle, walking, jumping, attacking
+        animSpeed: 8, // frames per animation step
+        state: 'idle', // idle, walking, jumping, punching, kicking, heavy, special, blocking, hurt
+        
+        // Combat states
+        isBlocking: false,
+        canCombo: false,
+        invulnerable: 0,
+        hitstun: 0,
+        
+        // Movement abilities
+        canDoubleJump: true,
+        canWallJump: false,
+        dashCooldown: 0,
+        canDash: true,
         
         // Colors for detailed sprite
         skinColor: '#ffdbac',
         hairColor: '#8b4513',
         shirtColor: '#4169e1',
         pantsColor: '#2f2f2f',
-        shoeColor: '#654321'
+        shoeColor: '#654321',
+        
+        // Attack hitboxes and properties
+        attacks: {
+            punch: { duration: 12, damage: 15, range: 35, stamina: 8, mana: 0, knockback: 5 },
+            kick: { duration: 16, damage: 20, range: 40, stamina: 12, mana: 0, knockback: 8 },
+            heavy: { duration: 24, damage: 35, range: 45, stamina: 20, mana: 0, knockback: 15 },
+            special: { duration: 32, damage: 50, range: 60, stamina: 15, mana: 25, knockback: 25 },
+            grab: { duration: 20, damage: 25, range: 30, stamina: 10, mana: 0, knockback: 0 }
+        }
     };
     
     // Game objects arrays
