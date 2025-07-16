@@ -308,8 +308,12 @@ function setupAchievements() {
 
 // ====== TERMINAL EFFECTS ======
 function setupTerminalEffects() {
-    const terminal = document.querySelector('.experience-terminal');
-    const terminalLines = terminal.querySelectorAll('.experience-item');
+    const terminal = document.querySelector('.cyber-terminal-container');
+    if (!terminal) {
+        console.log('Terminal container not found');
+        return;
+    }
+    const terminalLines = terminal.querySelectorAll('.cyber-experience-item');
     
     // Animate terminal text like it's being typed
     terminalLines.forEach((line, index) => {
