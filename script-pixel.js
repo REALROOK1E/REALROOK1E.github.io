@@ -65,15 +65,23 @@ const soundManager = new PixelSoundManager();
 // Initialize Game on Load
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🎮 DOM Content Loaded - Starting initialization...');
-    initializePixelGame();
-    setupNavigationEffects();
-    setupTypingAnimation();
-    setupQuestCards();
-    setupAchievements();
-    setupTerminalEffects();
-    setupPixelCharacter();
-    setupFeaturedProject();
-    initializeMiniGame();
+    
+    // Add a small delay to ensure all elements are rendered
+    setTimeout(() => {
+        try {
+            initializePixelGame();
+            setupNavigationEffects();
+            setupTypingAnimation();
+            setupQuestCards();
+            setupAchievements();
+            setupTerminalEffects();
+            setupPixelCharacter();
+            setupFeaturedProject();
+            initializeMiniGame();
+        } catch (error) {
+            console.error('Error during initialization:', error);
+        }
+    }, 100);
 });
 
 // ====== PIXEL GAME INITIALIZATION ======
@@ -314,7 +322,12 @@ function setupTerminalEffects() {
         console.log('Terminal container not found');
         return;
     }
+    
     const terminalLines = terminal.querySelectorAll('.cyber-experience-item');
+    if (!terminalLines || terminalLines.length === 0) {
+        console.log('No terminal lines found');
+        return;
+    }
     
     // Animate terminal text like it's being typed
     terminalLines.forEach((line, index) => {
