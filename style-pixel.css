@@ -978,6 +978,140 @@ body::before {
     font-family: var(--font-pixel);
 }
 
+/* Simple Introduction Section Styles */
+.simple-intro-section {
+    margin: 3rem 0;
+    padding: 0 1rem;
+}
+
+.simple-intro-section .cyber-terminal-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.simple-intro-section .terminal-title {
+    color: var(--bg-dark);
+    font-family: var(--font-title);
+    font-weight: 900;
+    font-size: 1rem;
+}
+
+.simple-intro-section .terminal-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.control-btn {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--bg-dark);
+    cursor: pointer;
+}
+
+.control-btn.minimize { background: var(--accent-yellow); }
+.control-btn.maximize { background: var(--accent-cyan); }
+.control-btn.close { background: var(--accent-red); }
+
+.intro-text {
+    color: var(--text-cyan);
+    line-height: 1.8;
+}
+
+.intro-line {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.prompt {
+    color: var(--accent-cyan);
+    font-weight: bold;
+}
+
+.command {
+    color: var(--text-pink);
+    font-weight: bold;
+    margin-left: 0.5rem;
+}
+
+.intro-output {
+    margin-left: 0;
+    padding: 1rem 0;
+}
+
+.greeting {
+    font-size: 1.2rem;
+    color: var(--text-bright);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.greeting strong {
+    color: var(--accent-magenta);
+    text-shadow: 0 0 10px var(--accent-magenta);
+}
+
+.description {
+    color: var(--text-cyan);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.fun-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.fact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem;
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid var(--accent-cyan);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.fact-item:hover {
+    background: rgba(255, 20, 147, 0.1);
+    border-color: var(--accent-magenta);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 20, 147, 0.3);
+}
+
+.fact-item .icon {
+    font-size: 1.5rem;
+    min-width: 1.5rem;
+}
+
+.fact-item .text {
+    color: var(--text-bright);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.welcome-message {
+    color: var(--text-cyan);
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(235, 67, 151, 0.1);
+    border: 1px solid var(--accent-magenta);
+    border-radius: 10px;
+    line-height: 1.8;
+}
+
 .cyber-experience-item {
     margin-bottom: 2.5rem;
     padding: 1.5rem;
