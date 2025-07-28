@@ -492,7 +492,6 @@ body::before {
     background-clip: text;
     animation: gradientShift 4s ease-in-out infinite;
 }
-}
 
 @keyframes cyberpunkGlow {
     0% { 
@@ -3359,4 +3358,134 @@ body::before {
     color: var(--accent-cyan);
     text-shadow: 0 0 10px var(--accent-cyan);
     animation: pulse-glow 1.5s infinite;
+}
+
+/* ====== CYBERPUNK DOWNLOAD TAG ====== */
+.cyber-download-tag {
+    position: fixed;
+    right: -140px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    background: linear-gradient(45deg, var(--bg-ui), var(--bg-game));
+    border: 2px solid var(--accent-cyan);
+    border-right: none;
+    border-radius: 25px 0 0 25px;
+    padding: 15px 20px 15px 25px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: var(--shadow-cyan);
+    backdrop-filter: blur(10px);
+}
+
+.cyber-download-tag:hover {
+    right: 0;
+    box-shadow: 
+        var(--shadow-cyan),
+        inset 0 0 20px rgba(0, 255, 255, 0.1);
+}
+
+.cyber-download-tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 255, 0.1) 50%,
+        transparent
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.cyber-download-tag:hover::before {
+    transform: translateX(100%);
+}
+
+.download-tag-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-cyan);
+    font-family: var(--font-pixel);
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.download-tag-content i {
+    color: var(--accent-cyan);
+    font-size: 1.2rem;
+    animation: pulse-glow 2s infinite;
+}
+
+.download-text {
+    white-space: nowrap;
+    text-shadow: 0 0 10px var(--accent-cyan);
+}
+
+.download-btn {
+    display: block;
+    background: linear-gradient(45deg, var(--accent-cyan), var(--accent-magenta));
+    color: var(--bg-dark);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-family: var(--font-title);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.download-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+}
+
+.download-btn i {
+    margin-right: 5px;
+    color: var(--bg-dark);
+}
+
+/* Mobile responsiveness for download tag */
+@media (max-width: 768px) {
+    .cyber-download-tag {
+        right: -120px;
+        padding: 12px 18px 12px 22px;
+        border-radius: 20px 0 0 20px;
+    }
+    
+    .download-tag-content {
+        font-size: 0.8rem;
+        gap: 8px;
+    }
+    
+    .download-btn {
+        padding: 6px 10px;
+        font-size: 0.7rem;
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cyber-download-tag {
+        right: -100px;
+        padding: 10px 15px 10px 20px;
+    }
+    
+    .download-text {
+        font-size: 0.75rem;
+    }
 }
