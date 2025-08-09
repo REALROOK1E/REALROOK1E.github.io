@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh" data-lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +17,8 @@
     <!-- SEO and Meta -->
     <meta name="description" content="REALROOK1E's pixel-style gaming portfolio - Explore my programming adventure journey">
     <meta name="keywords" content="pixel style,gaming,personal website,programmer,portfolio,REALROOK1E">
+    <meta name="language" content="zh">
+    <meta name="alternate-language" content="en">
     
     <!-- Game-style Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
@@ -26,7 +28,7 @@
     <div class="cyber-download-tag">
         <div class="download-tag-content">
             <i class="fas fa-download"></i>
-            <span class="download-text">Download Flux 2.16.0！</span>
+            <span class="download-text" data-en="Download Flux 2.16.0！" data-zh="下载 Flux 2.16.0！">Download Flux 2.16.0！</span>
         </div>
         <a href="Flux 2.16.0.exe" class="download-btn" download="Flux-2.16.0.exe">
             <i class="fas fa-file-download"></i>
@@ -37,9 +39,14 @@
     <nav class="navbar">
         <a href="#home" class="nav-logo">REALROOK1E</a>
         <ul class="nav-links">
-            <li><a href="#quests" class="nav-link">QUESTS</a></li>
-            <li><a href="#experience" class="nav-link">EXP LOG</a></li>
-            <li><a href="#achievements" class="nav-link">ACHIEVEMENTS</a></li>
+            <li><a href="#quests" class="nav-link" data-en="PROJECTS" data-zh="项目">QUESTS</a></li>
+            <li><a href="#experience" class="nav-link" data-en="EXPERIENCE" data-zh="经验">EXP LOG</a></li>
+            <li><a href="#achievements" class="nav-link" data-en="ACHIEVEMENTS" data-zh="成就">ACHIEVEMENTS</a></li>
+            <li>
+                <button id="langToggle" class="lang-toggle-btn" aria-label="Language Switch">
+                    <span class="lang-text" data-en="中文" data-zh="EN">EN</span>
+                </button>
+            </li>
         </ul>
     </nav>
 
@@ -55,18 +62,18 @@
                 <div class="nav-level-1">
                     <div class="nav-level-1-header">
                         <i class="fas fa-briefcase"></i>
-                        <h3>Work Experience</h3>
+                        <h3 data-en="Work Experience" data-zh="工作经验">Work Experience</h3>
                     </div>
                     <div class="nav-level-1-content">
                         <a href="#experience" class="nav-level-2-item nav-link" data-target="casc-experience">
                             <i class="fas fa-rocket"></i>
-                            <h3>China Aerospace Science & Technology</h3>
-                            <div class="nav-item-desc">Software Engineer | 2023-2024</div>
+                            <h3 data-en="China Aerospace Science & Technology" data-zh="中国航天科技集团">China Aerospace Science & Technology</h3>
+                            <div class="nav-item-desc" data-en="Software Engineer | 2023-2024" data-zh="软件工程师 | 2023-2024">Software Engineer | 2023-2024</div>
                         </a>
                         <a href="#experience" class="nav-level-2-item nav-link" data-target="linkoping-experience">
                             <i class="fas fa-university"></i>
-                            <h3>Linköping University</h3>
-                            <div class="nav-item-desc">Master's Student | 2024-Present</div>
+                            <h3 data-en="Linköping University" data-zh="林雪平大学">Linköping University</h3>
+                            <div class="nav-item-desc" data-en="Master's Student | 2024-Present" data-zh="硕士生 | 2024-至今">Master's Student | 2024-Present</div>
                         </a>
                     </div>
                 </div>
@@ -75,40 +82,40 @@
                 <div class="nav-level-1">
                     <div class="nav-level-1-header">
                         <i class="fas fa-code"></i>
-                        <h3>Featured Projects</h3>
+                        <h3 data-en="Featured Projects" data-zh="项目">Featured Projects</h3>
                     </div>
                     <div class="nav-level-1-content">
-                        <a href="#quests" class="nav-level-2-item nav-link" data-target="instaverse-project">
-                            <i class="fas fa-camera"></i>
-                            <h3>InstaVerse - Microservices Social Platform</h3>
-                        </a>
                         <a href="#quests" class="nav-level-2-item nav-link" data-target="message-project">
                             <i class="fas fa-broadcast-tower"></i>
-                            <h3>Message Distribution Platform</h3>
+                            <h3 data-en="Whisper - Real-time Message Distribution" data-zh="Whisper - 轻语">Whisper - Real-time Message Distribution</h3>
+                        </a>
+                        <a href="#quests" class="nav-level-2-item nav-link" data-target="instaverse-project">
+                            <i class="fas fa-camera"></i>
+                            <h3 data-en="InstaVerse - Microservices Social Platform" data-zh="InstaVerse - 微服务社交平台">InstaVerse - Microservices Social Platform</h3>
                         </a>
                         <a href="#quests" class="nav-level-2-item nav-link" data-target="stream-project">
                             <i class="fas fa-stream"></i>
-                            <h3>Stream Processing Engine</h3>
+                            <h3 data-en="AreoMQ - Lightweight Message Queue" data-zh="AreoMQ - 轻量级消息队列">AreoMQ - Lightweight Message Queue</h3>
                         </a>
                         <a href="#quests" class="nav-level-2-item nav-link" data-target="ai-project">
                             <i class="fas fa-brain"></i>
-                            <h3>AI Intelligence Platform</h3>
+                            <h3 data-en="NeuralNexus - AI RAG Platform" data-zh="NeuralNexus - AI知识库">NeuralNexus - AI RAG Platform</h3>
                         </a>
                         <a href="#quests" class="nav-level-2-item nav-link" data-target="todolist-project">
                             <i class="fas fa-tasks"></i>
-                            <h3>Enterprise TodoList System</h3>
+                            <h3 data-en="Flux - Enterprise TodoList System" data-zh="Flux - 时间管理App">Flux - Enterprise TodoList System</h3>
                         </a>
                         <a href="#quests" class="nav-level-2-item nav-link" data-target="ecommerce-project">
                             <i class="fas fa-shopping-cart"></i>
-                            <h3>E-commerce Platform</h3>
+                            <h3 data-en="Agora - Smart E-commerce Platform" data-zh="Agora - 智能电商平台">Agora - Smart E-commerce Platform</h3>
                         </a>
                         <a href="#quests" class="nav-level-2-item nav-link" data-target="javadventure-project">
                             <i class="fas fa-search"></i>
-                            <h3>JAVAdventure - Framework Analysis</h3>
+                            <h3 data-en="JAVAdventure - Framework Analysis" data-zh="手撕代码">JAVAdventure - Framework Analysis</h3>
                         </a>
                         <a href="#quests" class="nav-level-2-item nav-link" data-target="algorithm-project">
                             <i class="fas fa-calculator"></i>
-                            <h3>Algorithm Toolkit</h3>
+                            <h3 data-en="Algorithm Toolkit" data-zh="算法日记">Algorithm Toolkit</h3>
                         </a>
                     </div>
                 </div>
@@ -117,28 +124,28 @@
                 <div class="nav-level-1">
                     <div class="nav-level-1-header">
                         <i class="fas fa-user"></i>
-                        <h3>About Me</h3>
+                        <h3 data-en="About Me" data-zh="关于我">About Me</h3>
                     </div>
                     <div class="nav-level-1-content">
                         <a href="#achievements" class="nav-level-2-item nav-link" data-target="graduation-achievement">
                             <i class="fas fa-graduation-cap"></i>
-                            <h3>Academic Achievements</h3>
+                            <h3 data-en="Academic Achievements" data-zh="学术成就">Academic Achievements</h3>
                         </a>
                         <a href="#achievements" class="nav-level-2-item nav-link" data-target="travel-achievement">
                             <i class="fas fa-globe"></i>
-                            <h3>World Explorer</h3>
+                            <h3 data-en="World Explorer" data-zh="世界探索者">World Explorer</h3>
                         </a>
                         <a href="#achievements" class="nav-level-2-item nav-link" data-target="speaker-achievement">
                             <i class="fas fa-microphone"></i>
-                            <h3>Tech Speaker</h3>
+                            <h3 data-en="Tech Speaker" data-zh="技术演讲者">Tech Speaker</h3>
                         </a>
                         <a href="#achievements" class="nav-level-2-item nav-link" data-target="music-achievement">
                             <i class="fas fa-music"></i>
-                            <h3>Music Creation</h3>
+                            <h3 data-en="Music Creation" data-zh="音乐创作">Music Creation</h3>
                         </a>
                         <a href="#achievements" class="nav-level-2-item nav-link" data-target="hobby-achievement">
                             <i class="fas fa-robot"></i>
-                            <h3>Transformers Expert</h3>
+                            <h3 data-en="Transformers Expert" data-zh="变形金刚专家">Transformers Expert</h3>
                         </a>
                     </div>
                 </div>
@@ -147,16 +154,16 @@
                 <div class="nav-level-1">
                     <div class="nav-level-1-header">
                         <i class="fas fa-gamepad"></i>
-                        <h3>Interactive Games</h3>
+                        <h3 data-en="Interactive Games" data-zh="互动游戏">Interactive Games</h3>
                     </div>
                     <div class="nav-level-1-content">
                         <a href="#games" class="nav-level-2-item nav-link" data-target="moonwalker-game">
                             <i class="fas fa-moon"></i>
-                            <h3>Moon Walker</h3>
+                            <h3 data-en="Moon Walker" data-zh="月球漫步者">Moon Walker</h3>
                         </a>
                         <a href="#games" class="nav-level-2-item nav-link" data-target="iwbtg-game">
                             <i class="fas fa-apple-alt"></i>
-                            <h3>I Wanna Be The Guy</h3>
+                            <h3 data-en="I Wanna Be The Guy" data-zh="我想成为那个家伙">I Wanna Be The Guy</h3>
                         </a>
                     </div>
                 </div>
@@ -186,11 +193,14 @@
                             <div class="hero-content">
                                 <h1 class="hero-title glitch fade-in-up" data-text="ernestli.site">ernestli.site</h1>
                                 <div class="hero-subtitle">
-                                    <span class="typing-text">ZeKai Li (Ernest)</span> • Software Developer
+                                    <span class="typing-text" data-en="ZeKai Li (Ernest)" data-zh="李泽楷 (Ernest)">ZeKai Li (Ernest)</span> • 
+                                    <span data-en="Software Developer" data-zh="软件开发者">Software Developer</span>
                                 </div>
                                 <div class="hero-location">
-                                    <i class="fas fa-map-marker-alt"></i> Sweden • 
-                                    <i class="fas fa-graduation-cap"></i> Master's CS @ Linköping University
+                                    <i class="fas fa-map-marker-alt"></i> 
+                                    <span data-en="Sweden" data-zh="瑞典">Sweden</span> • 
+                                    <i class="fas fa-graduation-cap"></i> 
+                                    <span data-en="Master's CS @ Linköping University" data-zh="林雪平大学计算机科学硕士">Master's CS @ Linköping University</span>
                                 </div>
                             </div>
                             
@@ -200,7 +210,7 @@
                                     <div class="tech-category-header">
                                         <div class="tech-header-content">
                                             <i class="fas fa-code"></i>
-                                            <span class="tech-title">TECH STACK</span>
+                                            <span class="tech-title" data-en="TECH STACK" data-zh="技术栈">TECH STACK</span>
                                         </div>
                                         <div class="tech-tags">
                                             <span class="tech-tag primary">Java</span>
@@ -218,7 +228,7 @@
                                     <div class="tech-category-header">
                                         <div class="tech-header-content">
                                             <i class="fas fa-server"></i>
-                                            <span class="tech-title">INFRASTRUCTURE</span>
+                                            <span class="tech-title" data-en="INFRASTRUCTURE" data-zh="基础设施">INFRASTRUCTURE</span>
                                         </div>
                                         <div class="tech-tags">
                                             <span class="tech-tag infra">Docker</span>
@@ -236,13 +246,13 @@
                                     <div class="tech-category-header">
                                         <div class="tech-header-content">
                                             <i class="fas fa-tools"></i>
-                                            <span class="tech-title">SPECIALTIES</span>
+                                            <span class="tech-title" data-en="SPECIALTIES" data-zh="专长">SPECIALTIES</span>
                                         </div>
                                         <div class="tech-tags">
-                                            <span class="tech-tag skill">Backend Development</span>
-                                            <span class="tech-tag skill">Full Stack</span>
-                                            <span class="tech-tag architecture">Domain-Driven Design</span>
-                                            <span class="tech-tag qa">Test Automation</span>
+                                            <span class="tech-tag skill" data-en="Backend Development" data-zh="后端开发">Backend Development</span>
+                                            <span class="tech-tag skill" data-en="Full Stack" data-zh="全栈开发">Full Stack</span>
+                                            <span class="tech-tag architecture" data-en="Domain-Driven Design" data-zh="领域驱动设计">Domain-Driven Design</span>
+                                            <span class="tech-tag qa" data-en="Test Automation" data-zh="测试自动化">Test Automation</span>
                                         </div>
                                     </div>
                                 </div>
@@ -251,12 +261,12 @@
                                     <div class="tech-category-header">
                                         <div class="tech-header-content">
                                             <i class="fas fa-language"></i>
-                                            <span class="tech-title">LANGUAGES</span>
+                                            <span class="tech-title" data-en="LANGUAGES" data-zh="语言">LANGUAGES</span>
                                         </div>
                                         <div class="tech-tags">
-                                            <span class="tech-tag lang native">Chinese (Native)</span>
-                                            <span class="tech-tag lang fluent">English (Fluent)</span>
-                                            <span class="tech-tag lang basic">Swedish (Basic)</span>
+                                            <span class="tech-tag lang native" data-en="Chinese (Native)" data-zh="中文 (母语)">Chinese (Native)</span>
+                                            <span class="tech-tag lang fluent" data-en="English (Fluent)" data-zh="英语 (流利)">English (Fluent)</span>
+                                            <span class="tech-tag lang basic" data-en="Swedish (Basic)" data-zh="瑞典语 (基础)">Swedish (Basic)</span>
                                         </div>
                                     </div>
                                 </div>
@@ -268,7 +278,7 @@
 
             <!-- Experience Log (Work History) - PRIORITY CONTENT -->
             <section class="cyber-experience-section" id="experience">
-                <h2 class="section-title fade-in-up">PROFESSIONAL EXPERIENCE</h2>
+                <h2 class="section-title fade-in-up" data-en="PROFESSIONAL EXPERIENCE" data-zh="专业经验">PROFESSIONAL EXPERIENCE</h2>
                 <div class="cyber-experience-row">
                     <!-- Terminal 1: CASC Experience -->
                     <div class="cyber-terminal-container terminal-animate">
@@ -279,36 +289,49 @@
                                 <span class="terminal-dot green"></span>
                             </div>
                             <div class="terminal-title">
-                                <i class="fas fa-terminal"></i> CAREER_DATA.EXE - PROFESSIONAL EXPERIENCE LOG
+                                <i class="fas fa-terminal"></i> 
+                                <span data-en="CAREER_DATA.EXE - PROFESSIONAL EXPERIENCE LOG" data-zh="职业数据.EXE - 专业经验日志">CAREER_DATA.EXE - PROFESSIONAL EXPERIENCE LOG</span>
                             </div>
                         </div>
                         <div class="cyber-terminal-content">
                             <div class="cyber-experience-item">
                                 <div class="cyber-prompt">
-                                    <i class="fas fa-rocket"></i> system@aerospace:~$ load_experience --priority=high
+                                    <i class="fas fa-rocket"></i> 
+                                    <span data-en="system@aerospace:~$ load_experience --priority=high" data-zh="system@aerospace:~$ 加载经验 --优先级=高">system@aerospace:~$ load_experience --priority=high</span>
                                 </div>
                                 <div class="cyber-exp-header">
                                     <div class="cyber-exp-company">
-                                        <i class="fas fa-satellite"></i> China Aerospace Science and Technology Corporation
+                                        <i class="fas fa-satellite"></i> 
+                                        <span data-en="China Aerospace Science and Technology Corporation" data-zh="中国航天科技集团有限公司">China Aerospace Science and Technology Corporation</span>
                                     </div>
-                                    <div class="cyber-exp-role">Software Engineer | Backend Development Team</div>
+                                    <div class="cyber-exp-role" data-en="Software Engineer | Backend Development Team" data-zh="软件工程师 | 后端开发团队">Software Engineer | Backend Development Team</div>
                                     <div class="cyber-exp-period">
                                         <i class="fas fa-calendar-alt"></i> 2023 - 2024 | 
-                                        <span class="status-complete">MISSION_COMPLETE</span>
+                                        <span class="status-complete" data-en="MISSION_COMPLETE" data-zh="任务完成">MISSION_COMPLETE</span>
                                     </div>
                                 </div>
                                 <div class="cyber-exp-description">
                                     <div class="exp-achievement">
-                                        <i class="fas fa-server"></i> <strong>Microservices Architecture:</strong> Designed & implemented distributed systems for aerospace applications
+                                        <i class="fas fa-server"></i> 
+                                        <strong data-en="Microservices Architecture:" data-zh="微服务架构：">Microservices Architecture:</strong> 
+                                        <span data-en="Designed & implemented distributed systems for aerospace applications" data-zh="设计并实现航空航天应用的分布式系统">Designed & implemented distributed systems for aerospace applications</span>
                                     </div>
                                     <div class="exp-achievement">
-                                        <i class="fas fa-database"></i> <strong>Performance Optimization:</strong> Achieved <span class="highlight-stat">+40% performance improvement</span> through database & caching strategies
+                                        <i class="fas fa-database"></i> 
+                                        <strong data-en="Performance Optimization:" data-zh="性能优化：">Performance Optimization:</strong> 
+                                        <span data-en="Achieved" data-zh="实现了">Achieved</span> 
+                                        <span class="highlight-stat">+40% performance improvement</span> 
+                                        <span data-en="through database & caching strategies" data-zh="通过数据库和缓存策略">through database & caching strategies</span>
                                     </div>
                                     <div class="exp-achievement">
-                                        <i class="fas fa-shield-alt"></i> <strong>Security Systems:</strong> Built enterprise-level authentication & authorization frameworks
+                                        <i class="fas fa-shield-alt"></i> 
+                                        <strong data-en="Security Systems:" data-zh="安全系统：">Security Systems:</strong> 
+                                        <span data-en="Built enterprise-level authentication & authorization frameworks" data-zh="构建企业级认证和授权框架">Built enterprise-level authentication & authorization frameworks</span>
                                     </div>
                                     <div class="exp-achievement">
-                                        <i class="fas fa-rocket"></i> <strong>Mission Critical:</strong> Contributed to space program software infrastructure serving national aerospace projects
+                                        <i class="fas fa-rocket"></i> 
+                                        <strong data-en="Mission Critical:" data-zh="关键任务：">Mission Critical:</strong> 
+                                        <span data-en="Contributed to space program software infrastructure serving national aerospace projects" data-zh="为国家航空航天项目贡献空间计划软件基础设施">Contributed to space program software infrastructure serving national aerospace projects</span>
                                     </div>
                                 </div>
                             </div>
@@ -324,36 +347,48 @@
                                 <span class="terminal-dot green"></span>
                             </div>
                             <div class="terminal-title">
-                                <i class="fas fa-terminal"></i> CAREER_DATA.EXE - PROFESSIONAL EXPERIENCE LOG
+                                <i class="fas fa-terminal"></i> 
+                                <span data-en="CAREER_DATA.EXE - PROFESSIONAL EXPERIENCE LOG" data-zh="职业数据.EXE - 专业经验日志">CAREER_DATA.EXE - PROFESSIONAL EXPERIENCE LOG</span>
                             </div>
                         </div>
                         <div class="cyber-terminal-content">
                             <div class="cyber-experience-item">
                                 <div class="cyber-prompt">
-                                    <i class="fas fa-graduation-cap"></i> system@linkoping:~$ current_mission --status=active
+                                    <i class="fas fa-graduation-cap"></i> 
+                                    <span data-en="system@linkoping:~$ current_mission --status=active" data-zh="system@linkoping:~$ 当前任务 --状态=活跃">system@linkoping:~$ current_mission --status=active</span>
                                 </div>
                                 <div class="cyber-exp-header">
                                     <div class="cyber-exp-company">
-                                        <i class="fas fa-university"></i> Linköping University, Sweden
+                                        <i class="fas fa-university"></i> 
+                                        <span data-en="Linköping University, Sweden" data-zh="林雪平大学，瑞典">Linköping University, Sweden</span>
                                     </div>
-                                    <div class="cyber-exp-role">Master's Student | Computer Science Program</div>
+                                    <div class="cyber-exp-role" data-en="Master's Student | Computer Science Program" data-zh="硕士生 | 计算机科学项目">Master's Student | Computer Science Program</div>
                                     <div class="cyber-exp-period">
                                         <i class="fas fa-calendar-alt"></i> 2024 - Present | 
-                                        <span class="status-active">MISSION_ACTIVE</span>
+                                        <span class="status-active" data-en="MISSION_ACTIVE" data-zh="任务进行中">MISSION_ACTIVE</span>
                                     </div>
                                 </div>
                                 <div class="cyber-exp-description">
                                     <div class="exp-achievement">
-                                        <i class="fas fa-brain"></i> <strong>Advanced Systems:</strong> Deep dive into distributed systems, software architecture & advanced algorithms
+                                        <i class="fas fa-brain"></i> 
+                                        <strong data-en="Advanced Systems:" data-zh="高级系统：">Advanced Systems:</strong> 
+                                        <span data-en="Deep dive into distributed systems, software architecture & advanced algorithms" data-zh="深入研究分布式系统、软件架构和高级算法">Deep dive into distributed systems, software architecture & advanced algorithms</span>
                                     </div>
                                     <div class="exp-achievement">
-                                        <i class="fas fa-globe"></i> <strong>International Environment:</strong> Collaborating with diverse research teams from 20+ countries
+                                        <i class="fas fa-globe"></i> 
+                                        <strong data-en="International Environment:" data-zh="国际环境：">International Environment:</strong> 
+                                        <span data-en="Collaborating with diverse research teams from 20+ countries" data-zh="与来自20多个国家的多元化研究团队合作">Collaborating with diverse research teams from 20+ countries</span>
                                     </div>
                                     <div class="exp-achievement">
-                                        <i class="fas fa-laptop-code"></i> <strong>Modern Tech Stack:</strong> Building cutting-edge projects with latest technologies & frameworks
+                                        <i class="fas fa-laptop-code"></i> 
+                                        <strong data-en="Modern Tech Stack:" data-zh="现代技术栈：">Modern Tech Stack:</strong> 
+                                        <span data-en="Building cutting-edge projects with latest technologies & frameworks" data-zh="使用最新技术和框架构建前沿项目">Building cutting-edge projects with latest technologies & frameworks</span>
                                     </div>
                                     <div class="exp-achievement">
-                                        <i class="fas fa-trophy"></i> <strong>Academic Excellence:</strong> <span class="highlight-stat">Outstanding performance</span> across all coursework & research projects
+                                        <i class="fas fa-trophy"></i> 
+                                        <strong data-en="Academic Excellence:" data-zh="学术卓越：">Academic Excellence:</strong> 
+                                        <span class="highlight-stat" data-en="Outstanding performance" data-zh="出色表现">Outstanding performance</span> 
+                                        <span data-en="across all coursework & research projects" data-zh="在所有课程和研究项目中">across all coursework & research projects</span>
                                     </div>
                                 </div>
                             </div>
@@ -364,14 +399,14 @@
 
             <!-- Featured Projects Section - PRIORITY CONTENT -->
             <section class="quest-section" id="quests">
-                <h2 class="section-title fade-in-up">FEATURED PROJECTS</h2>
+                <h2 class="section-title fade-in-up" data-en="FEATURED PROJECTS" data-zh="精选项目">FEATURED PROJECTS</h2>
                 
                 <!-- Enterprise Projects Theme -->
                 <div class="quest-theme-section">
                     <h3 class="quest-theme-title">
                         <span class="theme-icon">🏢</span>
-                        <span class="theme-text">ENTERPRISE PROJECTS</span>
-                        <span class="theme-subtitle">Large-scale Production Systems</span>
+                        <span class="theme-text" data-en="ENTERPRISE PROJECTS" data-zh="企业项目">ENTERPRISE PROJECTS</span>
+                        <span class="theme-subtitle" data-en="Large-scale Production Systems" data-zh="大规模生产系统">Large-scale Production Systems</span>
                     </h3>
                     
                     <div class="quest-grid enterprise-grid">
@@ -379,14 +414,14 @@
                         <a href="instaverse-details.html" class="quest-card enterprise-card">
                             <h3 class="quest-title stylized-title">
                                 <span class="title-icon"><i class="fas fa-camera"></i></span>
-                                <span class="title-text">InstaVerse</span>
+                                <span class="title-text" data-en="InstaVerse" data-zh="InstaVerse">InstaVerse</span>
                                 <span class="title-glow"></span>
                             </h3>
-                            <p class="quest-description">
+                            <p class="quest-description" data-en="Enterprise-level microservices social blog platform with massive scalability. Inspired by XiaoHongShu with distributed architecture supporting massive concurrent users." data-zh="企业级微服务社交博客平台，具有大规模可扩展性。受小红书启发，采用分布式架构支持海量并发用户。">
                                 Enterprise-level microservices social blog platform with massive scalability. 
                                 Inspired by XiaoHongShu with distributed architecture supporting massive concurrent users.
                             </p>
-                            <div class="quest-reward">Spring Cloud Alibaba · Microservices · High Concurrency · 22k+ TPS</div>
+                            <div class="quest-reward" data-en="Spring Cloud Alibaba · Microservices · High Concurrency · 22k+ TPS" data-zh="Spring Cloud Alibaba · 微服务 · 高并发 · 22k+ TPS">Spring Cloud Alibaba · Microservices · High Concurrency · 22k+ TPS</div>
                             <div class="tech-badges">
                                 <span class="tech-badge">Spring Boot 3.x</span>
                                 <span class="tech-badge">JDK 17</span>
@@ -397,20 +432,23 @@
                                 <span class="tech-badge">Nacos</span>
                                 <span class="tech-badge">Gateway</span>
                             </div>
-                            <button class="quest-button">VIEW COMPLETE DETAILS →</button>
+                            <button class="quest-button" data-en="VIEW COMPLETE DETAILS →" data-zh="查看完整详情 →">VIEW COMPLETE DETAILS →</button>
                         </a>
 
                         <!-- Enterprise Quest 2: Real-time Message Distribution Platform -->
                         <a href="project-message-distribution.html" class="quest-card enterprise-card">
                             <h3 class="quest-title stylized-title">
                                 <span class="title-icon"><i class="fas fa-broadcast-tower"></i></span>
-                                <span class="title-text">Real-time Message Distribution Platform</span>
+                                <span class="title-text" data-en="Whisper - Real-time Message Distribution" data-zh="Whisper - 轻语">Whisper - Real-time Message Distribution</span>
                                 <span class="title-glow"></span>
                             </h3>
                             <p class="quest-description">
-                                🎯 <strong>MISSION:</strong> High-performance message streaming and distribution system with real-time computation, intelligent routing, and multi-protocol support. Handles millions of concurrent connections with sub-millisecond latency.
+                                🎯 <strong data-en="MISSION:" data-zh="任务：">MISSION:</strong> 
+                                <span data-en="High-performance message streaming and distribution system with real-time computation, intelligent routing, and multi-protocol support. Handles millions of concurrent connections with sub-millisecond latency." data-zh="高性能消息流和分发系统，具有实时计算、智能路由和多协议支持。处理数百万并发连接，延迟低于毫秒级。">
+                                    High-performance message streaming and distribution system with real-time computation, intelligent routing, and multi-protocol support. Handles millions of concurrent connections with sub-millisecond latency.
+                                </span>
                             </p>
-                            <div class="quest-reward">Real-time Computing + Message Queue + Distributed Systems</div>
+                            <div class="quest-reward" data-en="Real-time Computing + Message Queue + Distributed Systems" data-zh="实时计算 + 消息队列 + 分布式系统">Real-time Computing + Message Queue + Distributed Systems</div>
                             <div class="tech-badges">
                                 <span class="tech-badge">Apache Pulsar</span>
                                 <span class="tech-badge">Redis Streams</span>
@@ -421,20 +459,23 @@
                                 <span class="tech-badge">NATS</span>
                                 <span class="tech-badge">etcd</span>
                             </div>
-                            <button class="quest-button">EXPLORE ARCHITECTURE →</button>
+                            <button class="quest-button" data-en="EXPLORE ARCHITECTURE →" data-zh="探索架构 →">EXPLORE ARCHITECTURE →</button>
                         </a>
 
                         <!-- Enterprise Quest 3: Real-time Stream Processing -->
                         <a href="AreoMQ\index.html" class="quest-card enterprise-card">
                             <h3 class="quest-title stylized-title">
                                 <span class="title-icon"><i class="fas fa-stream"></i></span>
-                                <span class="title-text">Stream Processing Engine</span>
+                                <span class="title-text" data-en="AreoMQ - Lightweight Message Queue" data-zh="AreoMQ - 轻量级消息队列">AreoMQ - Lightweight Message Queue</span>
                                 <span class="title-glow"></span>
                             </h3>
                             <p class="quest-description">
-                                🎯 <strong>MISSION:</strong> High-throughput real-time data streaming platform with Apache Kafka ecosystem. Processes millions of events per second with fault-tolerant architecture, exactly-once semantics, and complex event processing capabilities.
+                                🎯 <strong data-en="MISSION:" data-zh="任务：">MISSION:</strong> 
+                                <span data-en="High-throughput real-time data streaming platform with Apache Kafka ecosystem. Processes millions of events per second with fault-tolerant architecture, exactly-once semantics, and complex event processing capabilities." data-zh="基于Apache Kafka生态系统的高吞吐量实时数据流平台。每秒处理数百万事件，具有容错架构、精确一次语义和复杂事件处理能力。">
+                                    High-throughput real-time data streaming platform with Apache Kafka ecosystem. Processes millions of events per second with fault-tolerant architecture, exactly-once semantics, and complex event processing capabilities.
+                                </span>
                             </p>
-                            <div class="quest-reward">Real-time Processing + Event-driven Architecture + Big Data</div>
+                            <div class="quest-reward" data-en="Real-time Processing + Event-driven Architecture + Big Data" data-zh="实时处理 + 事件驱动架构 + 大数据">Real-time Processing + Event-driven Architecture + Big Data</div>
                             <div class="tech-badges">
                                 <span class="tech-badge">Apache Kafka</span>
                                 <span class="tech-badge">Kafka Streams</span>
@@ -445,20 +486,23 @@
                                 <span class="tech-badge">Grafana</span>
                                 <span class="tech-badge">Kubernetes</span>
                             </div>
-                            <button class="quest-button">VIEW STREAM ARCHITECTURE →</button>
+                            <button class="quest-button" data-en="VIEW STREAM ARCHITECTURE →" data-zh="查看流架构 →">VIEW STREAM ARCHITECTURE →</button>
                         </a>
 
                         <!-- Enterprise Quest 4: AI Intelligence Platform -->
                         <a href="project-ai.html" class="quest-card enterprise-card">
                             <h3 class="quest-title stylized-title">
                                 <span class="title-icon"><i class="fas fa-brain"></i></span>
-                                <span class="title-text">AI Intelligence Platform</span>
+                                <span class="title-text" data-en="NeuralNexus - AI RAG Platform" data-zh="NeuralNexus - AI知识库">NeuralNexus - AI RAG Platform</span>
                                 <span class="title-glow"></span>
                             </h3>
                             <p class="quest-description">
-                                🎯 <strong>MISSION:</strong> Enterprise AI platform integrating LLM models, vector databases, and RAG architecture. Features real-time model inference, intelligent document processing, and multi-modal AI capabilities for business automation.
+                                🎯 <strong data-en="MISSION:" data-zh="任务：">MISSION:</strong> 
+                                <span data-en="Enterprise AI platform integrating LLM models, vector databases, and RAG architecture. Features real-time model inference, intelligent document processing, and multi-modal AI capabilities for business automation." data-zh="集成LLM模型、向量数据库和RAG架构的企业AI平台。具有实时模型推理、智能文档处理和多模态AI能力，用于业务自动化。">
+                                    Enterprise AI platform integrating LLM models, vector databases, and RAG architecture. Features real-time model inference, intelligent document processing, and multi-modal AI capabilities for business automation.
+                                </span>
                             </p>
-                            <div class="quest-reward">AI/ML Mastery + Vector Search + Model Optimization + RAG</div>
+                            <div class="quest-reward" data-en="AI/ML Mastery + Vector Search + Model Optimization + RAG" data-zh="AI/ML精通 + 向量搜索 + 模型优化 + RAG">AI/ML Mastery + Vector Search + Model Optimization + RAG</div>
                             <div class="tech-badges">
                                 <span class="tech-badge">PyTorch</span>
                                 <span class="tech-badge">LangChain</span>
@@ -469,20 +513,23 @@
                                 <span class="tech-badge">CUDA</span>
                                 <span class="tech-badge">Docker</span>
                             </div>
-                            <button class="quest-button">EXPLORE AI ARCHITECTURE →</button>
+                            <button class="quest-button" data-en="EXPLORE AI ARCHITECTURE →" data-zh="探索AI架构 →">EXPLORE AI ARCHITECTURE →</button>
                         </a>
 
                         <!-- Enterprise Quest 5: Flux 2.16.0 Application -->
                         <a href="Flux\landing.html" class="quest-card enterprise-card">
                             <h3 class="quest-title stylized-title">
                                 <span class="title-icon"><i class="fas fa-magic"></i></span>
-                                <span class="title-text">Flux</span>
+                                <span class="title-text" data-en="Flux - Enterprise TodoList System" data-zh="Flux - 时间管理App">Flux - Enterprise TodoList System</span>
                                 <span class="title-glow"></span>
                             </h3>
                             <p class="quest-description">
-                                🎯 <strong>MISSION:</strong> Advanced AI-powered image generation tool with cutting-edge diffusion models. Features real-time rendering, customizable parameters, and professional-grade output quality for creative professionals.
+                                🎯 <strong data-en="MISSION:" data-zh="任务：">MISSION:</strong> 
+                                <span data-en="Advanced AI-powered image generation tool with cutting-edge diffusion models. Features real-time rendering, customizable parameters, and professional-grade output quality for creative professionals." data-zh="基于前沿扩散模型的高级AI图像生成工具。具有实时渲染、可定制参数和专业级输出质量，适用于创意专业人士。">
+                                    Advanced AI-powered image generation tool with cutting-edge diffusion models. Features real-time rendering, customizable parameters, and professional-grade output quality for creative professionals.
+                                </span>
                             </p>
-                            <div class="quest-reward">AI Image Generation + Diffusion Models + Professional Tools</div>
+                            <div class="quest-reward" data-en="AI Image Generation + Diffusion Models + Professional Tools" data-zh="AI图像生成 + 扩散模型 + 专业工具">AI Image Generation + Diffusion Models + Professional Tools</div>
                             <div class="tech-badges">
                                 <span class="tech-badge">PyTorch</span>
                                 <span class="tech-badge">CUDA</span>
@@ -493,27 +540,30 @@
                                 <span class="tech-badge">Transformers</span>
                                 <span class="tech-badge">TensorFlow</span>
                             </div>
-                            <button class="quest-button">DOWNLOAD FLUX 2.16.0 →</button>
+                            <button class="quest-button" data-en="DOWNLOAD FLUX 2.16.0 →" data-zh="下载FLUX 2.16.0 →">DOWNLOAD FLUX 2.16.0 →</button>
                         </a>
 
                         <!-- Enterprise Quest 6: E-commerce Platform -->
                         <a href="project-ecommerce.html" class="quest-card enterprise-card">
                             <h3 class="quest-title stylized-title">
                                 <span class="title-icon"><i class="fas fa-shopping-cart"></i></span>
-                                <span class="title-text">Enterprise E-commerce Platform</span>
+                                <span class="title-text" data-en="Agora - Smart E-commerce Platform" data-zh="Agora - 智能电商平台">Agora - Smart E-commerce Platform</span>
                                 <span class="title-glow"></span>
                             </h3>
                             <p class="quest-description">
-                                🎯 <strong>MISSION:</strong> Build an enterprise-level e-commerce platform based on Next.js 15 + TypeScript. Adopting micro-frontend architecture, React Server Components and streaming SSR to achieve zero JavaScript first-screen rendering and ultimate performance optimization.
+                                🎯 <strong data-en="MISSION:" data-zh="任务：">MISSION:</strong> 
+                                <span data-en="Build an enterprise-level e-commerce platform based on Next.js 15 + TypeScript. Adopting micro-frontend architecture, React Server Components and streaming SSR to achieve zero JavaScript first-screen rendering and ultimate performance optimization." data-zh="基于Next.js 15 + TypeScript构建企业级电商平台。采用微前端架构、React服务器组件和流式SSR，实现零JavaScript首屏渲染和终极性能优化。">
+                                    Build an enterprise-level e-commerce platform based on Next.js 15 + TypeScript. Adopting micro-frontend architecture, React Server Components and streaming SSR to achieve zero JavaScript first-screen rendering and ultimate performance optimization.
+                                </span>
                             </p>
-                            <div class="quest-reward">Full Stack Mastery + Performance Engineering + Type Safety</div>
+                            <div class="quest-reward" data-en="Full Stack Mastery + Performance Engineering + Type Safety" data-zh="全栈精通 + 性能工程 + 类型安全">Full Stack Mastery + Performance Engineering + Type Safety</div>
                             <div class="tech-badges">
                                 <span class="tech-badge">Next.js 15</span>
                                 <span class="tech-badge">TypeScript</span>
                                 <span class="tech-badge">React Query</span>
                                 <span class="tech-badge">Micro Frontend</span>
                             </div>
-                            <button class="quest-button">EXPLORE ARCHITECTURE →</button>
+                            <button class="quest-button" data-en="EXPLORE ARCHITECTURE →" data-zh="探索架构 →">EXPLORE ARCHITECTURE →</button>
                         </a>
                     </div>
                 </div>
@@ -522,8 +572,8 @@
                 <div class="quest-theme-section">
                     <h3 class="quest-theme-title">
                         <span class="theme-icon">🔬</span>
-                        <span class="theme-text">TECHNICAL DEEP DIVE</span>
-                        <span class="theme-subtitle">Research & Algorithmic Mastery</span>
+                        <span class="theme-text" data-en="TECHNICAL DEEP DIVE" data-zh="技术深度探索">TECHNICAL DEEP DIVE</span>
+                        <span class="theme-subtitle" data-en="Research & Algorithmic Mastery" data-zh="研究与算法精通">Research & Algorithmic Mastery</span>
                     </h3>
                     
                     <div class="quest-grid research-grid">
@@ -531,40 +581,46 @@
                         <a href="https://github.com/REALROOK1E/JAVAdventure" target="_blank" class="quest-card research-card">
                             <h3 class="quest-title stylized-title">
                                 <span class="title-icon"><i class="fas fa-microscope"></i></span>
-                                <span class="title-text">JAVAdventure</span>
+                                <span class="title-text" data-en="JAVAdventure" data-zh="JAVAdventure">JAVAdventure</span>
                                 <span class="title-glow"></span>
                             </h3>
                             <p class="quest-description">
-                                🎯 <strong>MISSION:</strong> Deep dive into Java ecosystem source code analysis. Hand-craft implementations and uncover the underlying principles of Spring, Netty, MyBatis and other core frameworks through meticulous code exploration.
+                                🎯 <strong data-en="MISSION:" data-zh="任务：">MISSION:</strong> 
+                                <span data-en="Deep dive into Java ecosystem source code analysis. Hand-craft implementations and uncover the underlying principles of Spring, Netty, MyBatis and other core frameworks through meticulous code exploration." data-zh="深入Java生态系统源代码分析。手工实现并通过对代码的细致探索揭示Spring、Netty、MyBatis等核心框架的底层原理。">
+                                    Deep dive into Java ecosystem source code analysis. Hand-craft implementations and uncover the underlying principles of Spring, Netty, MyBatis and other core frameworks through meticulous code exploration.
+                                </span>
                             </p>
-                            <div class="quest-reward">Framework Mastery + Source Code Analysis Expertise</div>
+                            <div class="quest-reward" data-en="Framework Mastery + Source Code Analysis Expertise" data-zh="框架精通 + 源代码分析专长">Framework Mastery + Source Code Analysis Expertise</div>
                             <div class="tech-badges">
                                 <span class="tech-badge">Spring Framework</span>
                                 <span class="tech-badge">Netty</span>
                                 <span class="tech-badge">MyBatis</span>
                                 <span class="tech-badge">Source Analysis</span>
                             </div>
-                            <button class="quest-button">EXPLORE SOURCE</button>
+                            <button class="quest-button" data-en="EXPLORE SOURCE" data-zh="探索源码">EXPLORE SOURCE</button>
                         </a>
 
                         <!-- Research Quest 2: Algorithm Toolkit -->
                         <a href="project-c.html" class="quest-card research-card">
                             <h3 class="quest-title stylized-title">
                                 <span class="title-icon"><i class="fas fa-brain"></i></span>
-                                <span class="title-text">Algorithm Toolkit</span>
+                                <span class="title-text" data-en="Algorithm Toolkit" data-zh="算法工具包">Algorithm Toolkit</span>
                                 <span class="title-glow"></span>
                             </h3>
                             <p class="quest-description">
-                                🎯 <strong>MISSION:</strong> Forge the ultimate collection of algorithm implementations and data structure visualizations. Become the master of computational problem-solving!
+                                🎯 <strong data-en="MISSION:" data-zh="任务：">MISSION:</strong> 
+                                <span data-en="Forge the ultimate collection of algorithm implementations and data structure visualizations. Become the master of computational problem-solving!" data-zh="打造算法实现和数据结构可视化的终极集合。成为计算问题解决的大师！">
+                                    Forge the ultimate collection of algorithm implementations and data structure visualizations. Become the master of computational problem-solving!
+                                </span>
                             </p>
-                            <div class="quest-reward">Algorithm Mastery + Interview Preparation Complete</div>
+                            <div class="quest-reward" data-en="Algorithm Mastery + Interview Preparation Complete" data-zh="算法精通 + 面试准备完成">Algorithm Mastery + Interview Preparation Complete</div>
                             <div class="tech-badges">
                                 <span class="tech-badge">Python</span>
                                 <span class="tech-badge">JavaScript</span>
                                 <span class="tech-badge">D3.js</span>
                                 <span class="tech-badge">TypeScript</span>
                             </div>
-                            <button class="quest-button">VIEW DETAILS</button>
+                            <button class="quest-button" data-en="VIEW DETAILS" data-zh="查看详情">VIEW DETAILS</button>
                         </a>
                     </div>
                 </div>
@@ -572,21 +628,21 @@
 
             <!-- Interactive Game Demo Section - MOVED TO BOTTOM -->
             <section class="game-demo-section" id="games">
-                <h2 class="section-title">INTERACTIVE GAME DEMOS</h2>
-                <p class="section-subtitle">Experience pixel-perfect gaming projects built with modern web technologies</p>
+                <h2 class="section-title" data-en="INTERACTIVE GAME DEMOS" data-zh="互动游戏演示">INTERACTIVE GAME DEMOS</h2>
+                <p class="section-subtitle" data-en="Experience pixel-perfect gaming projects built with modern web technologies" data-zh="体验使用现代网络技术构建的像素完美游戏项目">Experience pixel-perfect gaming projects built with modern web technologies</p>
                 
                 <!-- Mini Game Widget -->
                 <div class="mini-game-widget">
                     <div class="game-header">
                         <div class="game-selector">
                             <select id="gameSelector" class="game-select">
-                                <option value="moonwalker">🌙 MOON WALKER</option>
-                                <option value="iwbtg">🍎 I WANNA BE THE GUY</option>
+                                <option value="moonwalker" data-en="🌙 MOON WALKER" data-zh="🌙 月球漫步者">🌙 MOON WALKER</option>
+                                <option value="iwbtg" data-en="🍎 I WANNA BE THE GUY" data-zh="🍎 我想成为那个家伙">🍎 I WANNA BE THE GUY</option>
                             </select>
                         </div>
                         <div class="game-buttons">
-                            <button id="startGame" class="game-btn">START GAME</button>
-                            <button id="gameInfoToggle" class="game-btn">GAME INFO</button>
+                            <button id="startGame" class="game-btn" data-en="START GAME" data-zh="开始游戏">START GAME</button>
+                            <button id="gameInfoToggle" class="game-btn" data-en="GAME INFO" data-zh="游戏信息">GAME INFO</button>
                         </div>
                     </div>
                     
@@ -596,40 +652,45 @@
                         <div class="game-main">
                             <div class="game-controls-info">
                                 <div class="control-hint">
-                                    <i class="fas fa-keyboard"></i> Strategic Phase-Shifting Puzzle Platformer
+                                    <i class="fas fa-keyboard"></i> 
+                                    <span data-en="Strategic Phase-Shifting Puzzle Platformer" data-zh="战略性相位转换解谜平台游戏">Strategic Phase-Shifting Puzzle Platformer</span>
                                 </div>
                             </div>
                             <div class="game-board" id="gameBoard">
-                                <div class="game-score">Score: <span id="score">0</span> | Lives: <span id="lives">3</span> | Level: <span id="level">1</span></div>
+                                <div class="game-score">
+                                    <span data-en="Score:" data-zh="得分：">Score:</span> <span id="score">0</span> | 
+                                    <span data-en="Lives:" data-zh="生命：">Lives:</span> <span id="lives">3</span> | 
+                                    <span data-en="Level:" data-zh="等级：">Level:</span> <span id="level">1</span>
+                                </div>
                                 <canvas id="gameCanvas" width="900" height="300"></canvas>
                                 <div class="game-controls">
                                     <div id="moonwalkerControls" class="control-info">
-                                        <strong>🌙 MOON WALKER - Phase Exploration Game</strong><br>
+                                        <strong data-en="🌙 MOON WALKER - Phase Exploration Game" data-zh="🌙 月球漫步者 - 相位探索游戏">🌙 MOON WALKER - Phase Exploration Game</strong><br>
                                         <div class="controls-grid">
-                                            <span><strong>WASD:</strong> Move & Low-Gravity Jump</span> | 
-                                            <span><strong>E:</strong> Phase Shift</span> | 
-                                            <span><strong>Q:</strong> Energy Pulse</span><br>
-                                            <span><strong>Space:</strong> Space Jump</span> | 
-                                            <span><strong>R:</strong> Reset Phase</span> | 
-                                            <span><strong>F:</strong> Activate Devices</span>
+                                            <span data-en="WASD: Move & Low-Gravity Jump" data-zh="WASD：移动和低重力跳跃">WASD: Move & Low-Gravity Jump</span> | 
+                                            <span data-en="E: Phase Shift" data-zh="E：相位转换">E: Phase Shift</span> | 
+                                            <span data-en="Q: Energy Pulse" data-zh="Q：能量脉冲">Q: Energy Pulse</span><br>
+                                            <span data-en="Space: Space Jump" data-zh="空格：太空跳跃">Space: Space Jump</span> | 
+                                            <span data-en="R: Reset Phase" data-zh="R：重置相位">R: Reset Phase</span> | 
+                                            <span data-en="F: Activate Devices" data-zh="F：激活设备">F: Activate Devices</span>
                                         </div>
                                         <div class="game-features" style="margin-top: 10px; font-size: 0.9em;">
-                                            🌙 Lunar Environment | 🔄 Phase Switching | ⚡ Energy Puzzles | 🚀 Low Gravity Physics | 🌀 Teleportation | 🔮 Dimensional Exploration
+                                            <span data-en="🌙 Lunar Environment | 🔄 Phase Switching | ⚡ Energy Puzzles | 🚀 Low Gravity Physics | 🌀 Teleportation | 🔮 Dimensional Exploration" data-zh="🌙 月球环境 | 🔄 相位切换 | ⚡ 能量谜题 | 🚀 低重力物理 | 🌀 传送 | 🔮 维度探索">🌙 Lunar Environment | 🔄 Phase Switching | ⚡ Energy Puzzles | 🚀 Low Gravity Physics | 🌀 Teleportation | 🔮 Dimensional Exploration</span>
                                         </div>
                                     </div>
                                     
                                     <div id="iwbtgControls" class="control-info" style="display: none;">
-                                        <strong>🍎 I WANNA BE THE GUY - Extreme Challenge Platformer</strong><br>
+                                        <strong data-en="🍎 I WANNA BE THE GUY - Extreme Challenge Platformer" data-zh="🍎 我想成为那个家伙 - 极限挑战平台游戏">🍎 I WANNA BE THE GUY - Extreme Challenge Platformer</strong><br>
                                         <div class="controls-grid">
-                                            <span><strong>Arrow Keys:</strong> Move Left/Right</span> | 
-                                            <span><strong>Shift:</strong> Jump</span> | 
-                                            <span><strong>Z:</strong> Shoot</span><br>
-                                            <span><strong>R:</strong> Restart Level</span> | 
-                                            <span><strong>S:</strong> Save Game</span> | 
-                                            <span><strong>ESC:</strong> Pause Menu</span>
+                                            <span data-en="Arrow Keys: Move Left/Right" data-zh="方向键：左右移动">Arrow Keys: Move Left/Right</span> | 
+                                            <span data-en="Shift: Jump" data-zh="Shift：跳跃">Shift: Jump</span> | 
+                                            <span data-en="Z: Shoot" data-zh="Z：射击">Z: Shoot</span><br>
+                                            <span data-en="R: Restart Level" data-zh="R：重新开始关卡">R: Restart Level</span> | 
+                                            <span data-en="S: Save Game" data-zh="S：保存游戏">S: Save Game</span> | 
+                                            <span data-en="ESC: Pause Menu" data-zh="ESC：暂停菜单">ESC: Pause Menu</span>
                                         </div>
                                         <div class="game-features" style="margin-top: 10px; font-size: 0.9em;">
-                                            🍎 Falling Apples | 🔥 Surprise Traps | ⚡ Pixel Perfect Jumps | 💀 Countless Deaths | 🎯 Frame Perfect Timing | 😤 Rage Inducing Fun
+                                            <span data-en="🍎 Falling Apples | 🔥 Surprise Traps | ⚡ Pixel Perfect Jumps | 💀 Countless Deaths | 🎯 Frame Perfect Timing | 😤 Rage Inducing Fun" data-zh="🍎 掉落的苹果 | 🔥 惊喜陷阱 | ⚡ 像素完美跳跃 | 💀 无数次死亡 | 🎯 帧完美时机 | 😤 愤怒诱导乐趣">🍎 Falling Apples | 🔥 Surprise Traps | ⚡ Pixel Perfect Jumps | 💀 Countless Deaths | 🎯 Frame Perfect Timing | 😤 Rage Inducing Fun</span>
                                         </div>
                                     </div>
                                 </div>
@@ -642,59 +703,59 @@
                                 <!-- Moon Walker Game Info -->
                         <div id="moonwalkerInfo" class="game-specific-info">
                             <div class="game-info-header">
-                                <h3><i class="fas fa-moon"></i> MOON WALKER - Phase Exploration Game</h3>
+                                <h3><i class="fas fa-moon"></i> <span data-en="MOON WALKER - Phase Exploration Game" data-zh="月球漫步者 - 相位探索游戏">MOON WALKER - Phase Exploration Game</span></h3>
                                 <button id="closeGameInfo" class="close-btn">&times;</button>
                             </div>
                             
                             <div class="game-info-content">
                                 <div class="info-section">
-                                    <h4><i class="fas fa-gamepad"></i> Game Overview</h4>
-                                    <p>A unique phase-shifting puzzle platformer set in a mysterious lunar environment. Master the art of dimensional manipulation to navigate through complex mazes and solve intricate puzzles.</p>
+                                    <h4><i class="fas fa-gamepad"></i> <span data-en="Game Overview" data-zh="游戏概览">Game Overview</span></h4>
+                                    <p data-en="A unique phase-shifting puzzle platformer set in a mysterious lunar environment. Master the art of dimensional manipulation to navigate through complex mazes and solve intricate puzzles." data-zh="一个独特的相位转换解谜平台游戏，设定在神秘的月球环境中。掌握维度操纵的艺术，在复杂的迷宫中导航并解决复杂的谜题。">A unique phase-shifting puzzle platformer set in a mysterious lunar environment. Master the art of dimensional manipulation to navigate through complex mazes and solve intricate puzzles.</p>
                                 </div>
                                 
                                 <div class="info-section">
-                                    <h4><i class="fas fa-keyboard"></i> Controls</h4>
+                                    <h4><i class="fas fa-keyboard"></i> <span data-en="Controls" data-zh="控制">Controls</span></h4>
                                     <div class="controls-grid">
-                                        <div class="control-item"><strong>WASD:</strong> Move & Low-Gravity Jump</div>
-                                        <div class="control-item"><strong>E:</strong> Phase Shift Cycle</div>
-                                        <div class="control-item"><strong>Q:</strong> Energy Pulse</div>
-                                        <div class="control-item"><strong>F:</strong> Activate Devices</div>
-                                        <div class="control-item"><strong>R:</strong> Reset/Restart</div>
-                                        <div class="control-item"><strong>Space:</strong> Jump (Alternative)</div>
+                                        <div class="control-item"><strong>WASD:</strong> <span data-en="Move & Low-Gravity Jump" data-zh="移动和低重力跳跃">Move & Low-Gravity Jump</span></div>
+                                        <div class="control-item"><strong>E:</strong> <span data-en="Phase Shift Cycle" data-zh="相位转换循环">Phase Shift Cycle</span></div>
+                                        <div class="control-item"><strong>Q:</strong> <span data-en="Energy Pulse" data-zh="能量脉冲">Energy Pulse</span></div>
+                                        <div class="control-item"><strong>F:</strong> <span data-en="Activate Devices" data-zh="激活设备">Activate Devices</span></div>
+                                        <div class="control-item"><strong>R:</strong> <span data-en="Reset/Restart" data-zh="重置/重新开始">Reset/Restart</span></div>
+                                        <div class="control-item"><strong>Space:</strong> <span data-en="Jump (Alternative)" data-zh="跳跃（替代）">Jump (Alternative)</span></div>
                                     </div>
                                 </div>
                                 
                                 <div class="info-section">
-                                    <h4><i class="fas fa-trophy"></i> Victory Conditions</h4>
+                                    <h4><i class="fas fa-trophy"></i> <span data-en="Victory Conditions" data-zh="胜利条件">Victory Conditions</span></h4>
                                     <ul class="victory-list">
-                                        <li><i class="fas fa-flag-checkered"></i> Reach the final rainbow platform</li>
-                                        <li><i class="fas fa-key"></i> Collect Shadow Key & Energy Core</li>
-                                        <li><i class="fas fa-exchange-alt"></i> Master all 5+ teleporter networks</li>
-                                        <li><i class="fas fa-puzzle-piece"></i> Solve the main phase sequence puzzle</li>
-                                        <li><i class="fas fa-bolt"></i> Accumulate 300+ energy points</li>
+                                        <li><i class="fas fa-flag-checkered"></i> <span data-en="Reach the final rainbow platform" data-zh="到达最终的彩虹平台">Reach the final rainbow platform</span></li>
+                                        <li><i class="fas fa-key"></i> <span data-en="Collect Shadow Key & Energy Core" data-zh="收集暗影钥匙和能量核心">Collect Shadow Key & Energy Core</span></li>
+                                        <li><i class="fas fa-exchange-alt"></i> <span data-en="Master all 5+ teleporter networks" data-zh="掌握所有5+传送器网络">Master all 5+ teleporter networks</span></li>
+                                        <li><i class="fas fa-puzzle-piece"></i> <span data-en="Solve the main phase sequence puzzle" data-zh="解决主要相位序列谜题">Solve the main phase sequence puzzle</span></li>
+                                        <li><i class="fas fa-bolt"></i> <span data-en="Accumulate 300+ energy points" data-zh="累积300+能量点">Accumulate 300+ energy points</span></li>
                                     </ul>
                                 </div>
                                 
                                 <div class="info-section">
-                                    <h4><i class="fas fa-magic"></i> Game Features</h4>
+                                    <h4><i class="fas fa-magic"></i> <span data-en="Game Features" data-zh="游戏特色">Game Features</span></h4>
                                     <div class="features-grid">
-                                        <span><i class="fas fa-moon"></i> Lunar Environment</span>
-                                        <span><i class="fas fa-exchange-alt"></i> Phase Switching</span>
-                                        <span><i class="fas fa-bolt"></i> Energy Puzzles</span>
-                                        <span><i class="fas fa-feather-alt"></i> Low Gravity Physics</span>
-                                        <span><i class="fas fa-portal"></i> Teleportation Network</span>
-                                        <span><i class="fas fa-cube"></i> Dimensional Exploration</span>
+                                        <span><i class="fas fa-moon"></i> <span data-en="Lunar Environment" data-zh="月球环境">Lunar Environment</span></span>
+                                        <span><i class="fas fa-exchange-alt"></i> <span data-en="Phase Switching" data-zh="相位切换">Phase Switching</span></span>
+                                        <span><i class="fas fa-bolt"></i> <span data-en="Energy Puzzles" data-zh="能量谜题">Energy Puzzles</span></span>
+                                        <span><i class="fas fa-feather-alt"></i> <span data-en="Low Gravity Physics" data-zh="低重力物理">Low Gravity Physics</span></span>
+                                        <span><i class="fas fa-portal"></i> <span data-en="Teleportation Network" data-zh="传送网络">Teleportation Network</span></span>
+                                        <span><i class="fas fa-cube"></i> <span data-en="Dimensional Exploration" data-zh="维度探索">Dimensional Exploration</span></span>
                                     </div>
                                 </div>
                                 
                                 <div class="info-section">
-                                    <h4><i class="fas fa-lightbulb"></i> Strategy Tips</h4>
+                                    <h4><i class="fas fa-lightbulb"></i> <span data-en="Strategy Tips" data-zh="策略提示">Strategy Tips</span></h4>
                                     <ul class="tips-list">
-                                        <li>Different phases reveal different platforms - explore all dimensions</li>
-                                        <li>Energy pulse can activate distant devices and collect remote orbs</li>
-                                        <li>Teleporters require specific phases and energy costs - plan your route</li>
-                                        <li>The main puzzle requires precise phase sequence: Normal → Shadow → Energy → Shadow</li>
-                                        <li>Secret areas unlock with 100+ energy teleporter usage</li>
+                                        <li data-en="Different phases reveal different platforms - explore all dimensions" data-zh="不同相位揭示不同平台 - 探索所有维度">Different phases reveal different platforms - explore all dimensions</li>
+                                        <li data-en="Energy pulse can activate distant devices and collect remote orbs" data-zh="能量脉冲可以激活远程设备并收集远程球体">Energy pulse can activate distant devices and collect remote orbs</li>
+                                        <li data-en="Teleporters require specific phases and energy costs - plan your route" data-zh="传送器需要特定相位和能量成本 - 规划你的路线">Teleporters require specific phases and energy costs - plan your route</li>
+                                        <li data-en="The main puzzle requires precise phase sequence: Normal → Shadow → Energy → Shadow" data-zh="主要谜题需要精确的相位序列：正常 → 暗影 → 能量 → 暗影">The main puzzle requires precise phase sequence: Normal → Shadow → Energy → Shadow</li>
+                                        <li data-en="Secret areas unlock with 100+ energy teleporter usage" data-zh="秘密区域通过100+能量传送器使用解锁">Secret areas unlock with 100+ energy teleporter usage</li>
                                     </ul>
                                 </div>
                             </div>
@@ -703,151 +764,127 @@
                         <!-- I Wanna Be The Guy Game Info -->
                         <div id="iwbtgInfo" class="game-specific-info" style="display: none;">
                             <div class="game-info-header">
-                                <h3><i class="fas fa-apple-alt"></i> I WANNA BE THE GUY - Extreme Platformer</h3>
+                                <h3><i class="fas fa-apple-alt"></i> <span data-en="I WANNA BE THE GUY - Extreme Platformer" data-zh="我想成为那个家伙 - 极限平台游戏">I WANNA BE THE GUY - Extreme Platformer</span></h3>
                                 <button id="closeGameInfo" class="close-btn">&times;</button>
                             </div>
                             
                             <div class="game-info-content">
                                 <div class="info-section">
-                                    <h4><i class="fas fa-gamepad"></i> Game Overview</h4>
-                                    <p>An extremely challenging platformer inspired by the classic IWBTG. Expect surprise traps, pixel-perfect jumps, and countless deaths. This game will test your patience and skills to the limit!</p>
+                                    <h4><i class="fas fa-gamepad"></i> <span data-en="Game Overview" data-zh="游戏概览">Game Overview</span></h4>
+                                    <p data-en="An extremely challenging platformer inspired by the classic IWBTG. Expect surprise traps, pixel-perfect jumps, and countless deaths. This game will test your patience and skills to the limit!" data-zh="一个受经典IWBTG启发的极其具有挑战性的平台游戏。期待惊喜陷阱、像素完美跳跃和无数次死亡。这个游戏将考验你的耐心和技能到极限！">An extremely challenging platformer inspired by the classic IWBTG. Expect surprise traps, pixel-perfect jumps, and countless deaths. This game will test your patience and skills to the limit!</p>
                                 </div>
                                 
                                 <div class="info-section">
-                                    <h4><i class="fas fa-keyboard"></i> Controls</h4>
+                                    <h4><i class="fas fa-keyboard"></i> <span data-en="Controls" data-zh="控制">Controls</span></h4>
                                     <div class="controls-grid">
-                                        <div class="control-item"><strong>A/D:</strong> Move Left/Right</div>
-                                        <div class="control-item"><strong>W:</strong> Jump</div>
-                                        <div class="control-item"><strong>S:</strong> Double Jump</div>
-                                        <div class="control-item"><strong>R:</strong> Restart (You'll need this!)</div>
-                                        <div class="control-item"><strong>Space:</strong> Save State</div>
+                                        <div class="control-item"><strong>A/D:</strong> <span data-en="Move Left/Right" data-zh="左右移动">Move Left/Right</span></div>
+                                        <div class="control-item"><strong>W:</strong> <span data-en="Jump" data-zh="跳跃">Jump</span></div>
+                                        <div class="control-item"><strong>S:</strong> <span data-en="Double Jump" data-zh="二段跳">Double Jump</span></div>
+                                        <div class="control-item"><strong>R:</strong> <span data-en="Restart (You'll need this!)" data-zh="重新开始（你会需要这个！）">Restart (You'll need this!)</span></div>
+                                        <div class="control-item"><strong>Space:</strong> <span data-en="Save State" data-zh="保存状态">Save State</span></div>
                                     </div>
                                 </div>
                                 
                                 <div class="info-section">
-                                    <h4><i class="fas fa-skull"></i> Survival Tips</h4>
+                                    <h4><i class="fas fa-skull"></i> <span data-en="Survival Tips" data-zh="生存提示">Survival Tips</span></h4>
                                     <ul class="tips-list">
-                                        <li><strong>Death is Normal:</strong> You WILL die hundreds of times - that's the point!</li>
-                                        <li><strong>Trust Nothing:</strong> Apples fall, spikes appear, platforms disappear</li>
-                                        <li><strong>Save Often:</strong> Use save points wisely - they're your lifeline</li>
-                                        <li><strong>Pixel Perfect:</strong> Most jumps require frame-perfect timing</li>
-                                        <li><strong>Stay Calm:</strong> Rage quitting is part of the experience</li>
+                                        <li><strong data-en="Death is Normal:" data-zh="死亡是正常的：">Death is Normal:</strong> <span data-en="You WILL die hundreds of times - that's the point!" data-zh="你会死几百次 - 这就是重点！">You WILL die hundreds of times - that's the point!</span></li>
+                                        <li><strong data-en="Trust Nothing:" data-zh="不要相信任何东西：">Trust Nothing:</strong> <span data-en="Apples fall, spikes appear, platforms disappear" data-zh="苹果掉落，尖刺出现，平台消失">Apples fall, spikes appear, platforms disappear</span></li>
+                                        <li><strong data-en="Save Often:" data-zh="经常保存：">Save Often:</strong> <span data-en="Use save points wisely - they're your lifeline" data-zh="明智地使用保存点 - 它们是你的生命线">Use save points wisely - they're your lifeline</span></li>
+                                        <li><strong data-en="Pixel Perfect:" data-zh="像素完美：">Pixel Perfect:</strong> <span data-en="Most jumps require frame-perfect timing" data-zh="大多数跳跃需要帧完美时机">Most jumps require frame-perfect timing</span></li>
+                                        <li><strong data-en="Stay Calm:" data-zh="保持冷静：">Stay Calm:</strong> <span data-en="Rage quitting is part of the experience" data-zh="愤怒退出是体验的一部分">Rage quitting is part of the experience</span></li>
                                     </ul>
                                 </div>
                                 
                                 <div class="info-section">
-                                    <h4><i class="fas fa-trophy"></i> Victory Conditions</h4>
+                                    <h4><i class="fas fa-trophy"></i> <span data-en="Victory Conditions" data-zh="胜利条件">Victory Conditions</span></h4>
                                     <ul class="victory-list">
-                                        <li><i class="fas fa-crown"></i> Survive all the traps and reach the end</li>
-                                        <li><i class="fas fa-target"></i> Master the art of frame-perfect jumps</li>
-                                        <li><i class="fas fa-apple-alt"></i> Avoid falling apples and surprise spikes</li>
-                                        <li><i class="fas fa-heart"></i> Keep your sanity intact (optional)</li>
+                                        <li><i class="fas fa-crown"></i> <span data-en="Survive all the traps and reach the end" data-zh="生存所有陷阱并到达终点">Survive all the traps and reach the end</span></li>
+                                        <li><i class="fas fa-target"></i> <span data-en="Master the art of frame-perfect jumps" data-zh="掌握帧完美跳跃的艺术">Master the art of frame-perfect jumps</span></li>
+                                        <li><i class="fas fa-apple-alt"></i> <span data-en="Avoid falling apples and surprise spikes" data-zh="避开掉落的苹果和惊喜尖刺">Avoid falling apples and surprise spikes</span></li>
+                                        <li><i class="fas fa-heart"></i> <span data-en="Keep your sanity intact (optional)" data-zh="保持理智完整（可选）">Keep your sanity intact (optional)</span></li>
                                     </ul>
                                 </div>
                                 
                                 <div class="info-section">
-                                    <h4><i class="fas fa-exclamation-triangle"></i> Warning</h4>
-                                    <p style="color: #ff4444; font-weight: bold;">This game is intentionally frustrating and designed to be extremely difficult. Play at your own risk of controller-throwing rage!</p>
+                                    <h4><i class="fas fa-exclamation-triangle"></i> <span data-en="Warning" data-zh="警告">Warning</span></h4>
+                                    <p style="color: #ff4444; font-weight: bold;" data-en="This game is intentionally frustrating and designed to be extremely difficult. Play at your own risk of controller-throwing rage!" data-zh="这个游戏故意令人沮丧，设计得极其困难。玩这个游戏有扔控制器的风险！">This game is intentionally frustrating and designed to be extremely difficult. Play at your own risk of controller-throwing rage!</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="game-controls-info">
-                        <div class="control-hint">
-                            <i class="fas fa-keyboard"></i> Strategic Phase-Shifting Puzzle Platformer
-                        </div>
-                    </div>
-                    <div class="game-board" id="gameBoard">
-                        <div class="game-score">Score: <span id="score">0</span> | Lives: <span id="lives">3</span> | Level: <span id="level">1</span></div>
-                        <canvas id="gameCanvas" width="810" height="280"></canvas>
-                        <div class="game-controls">
-                            <div id="moonwalkerControls" class="control-info">
-                                <strong>🌙 MOON WALKER - Phase Exploration Game</strong><br>
-                                <div class="controls-grid">
-                                    <span><strong>WASD:</strong> Move & Low-Gravity Jump</span> | 
-                                    <span><strong>E:</strong> Phase Shift</span> | 
-                                    <span><strong>Q:</strong> Energy Pulse</span><br>
-                                    <span><strong>Space:</strong> Space Jump</span> | 
-                                    <span><strong>R:</strong> Reset Phase</span> | 
-                                    <span><strong>F:</strong> Activate Devices</span>
-                                </div>
-                                <div class="game-features" style="margin-top: 10px; font-size: 0.9em;">
-                                    🌙 Lunar Environment | 🔄 Phase Switching | ⚡ Energy Puzzles | 🚀 Low Gravity Physics | 🌀 Teleportation | 🔮 Dimensional Exploration
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </section>
 
             <!-- Achievements Gallery (Life Highlights) -->
             <section class="quest-section" id="achievements">
-                <h2 class="section-title fade-in-up">ACHIEVEMENT GALLERY</h2>
+                <h2 class="section-title fade-in-up" data-en="ACHIEVEMENT GALLERY" data-zh="成就画廊">ACHIEVEMENT GALLERY</h2>
                 <div class="achievements-grid">
                     <div class="achievement-card">
                         <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Graduation Achievement" class="achievement-image">
-                        <div class="achievement-title">🎓 GRADUATION MASTER</div>
-                        <div class="achievement-desc">Successfully completed 4-year software engineering campaign with honors!</div>
-                        <div class="achievement-details">
+                        <div class="achievement-title" data-en="🎓 GRADUATION MASTER" data-zh="🎓 毕业大师">🎓 GRADUATION MASTER</div>
+                        <div class="achievement-desc" data-en="Successfully completed 4-year software engineering campaign with honors!" data-zh="成功完成4年软件工程战役并获得荣誉！">Successfully completed 4-year software engineering campaign with honors!</div>
+                        <div class="achievement-details" data-en="After countless coding sessions, debugging marathons, and project deployments, mastered the fundamentals of software engineering." data-zh="经过无数次的编码会话、调试马拉松和项目部署，掌握了软件工程的基础知识。">
                             After countless coding sessions, debugging marathons, and project deployments, mastered the fundamentals of software engineering.
                         </div>
                         <div class="achievement-stats">
-                            <span class="stat-badge">Experience: +2000 XP</span>
-                            <span class="stat-badge">Skills: +50 Points</span>
+                            <span class="stat-badge" data-en="Experience: +2000 XP" data-zh="经验：+2000 XP">Experience: +2000 XP</span>
+                            <span class="stat-badge" data-en="Skills: +50 Points" data-zh="技能：+50 点">Skills: +50 Points</span>
                         </div>
                     </div>
 
                     <div class="achievement-card">
                         <img src="album/Insta.png" alt="Travel Achievement" class="achievement-image">
-                        <div class="achievement-title">🌍 WORLD EXPLORER</div>
-                        <div class="achievement-desc">Discovered 20+ cities across multiple continents. Epic adventure stories unlocked!</div>
-                        <div class="achievement-details">
+                        <div class="achievement-title" data-en="🌍 WORLD EXPLORER" data-zh="🌍 世界探索者">🌍 WORLD EXPLORER</div>
+                        <div class="achievement-desc" data-en="Discovered 20+ cities across multiple continents. Epic adventure stories unlocked!" data-zh="发现了跨越多个大洲的20多个城市。史诗般的冒险故事已解锁！">Discovered 20+ cities across multiple continents. Epic adventure stories unlocked!</div>
+                        <div class="achievement-details" data-en="From the northern lights of Sweden to bustling European capitals, travel adventures expanded worldview and cultural understanding." data-zh="从瑞典的北极光到繁华的欧洲首都，旅行冒险扩展了世界观和文化理解。">
                             From the northern lights of Sweden to bustling European capitals, travel adventures expanded worldview and cultural understanding.
                         </div>
                         <div class="achievement-stats">
-                            <span class="stat-badge">Cities: 20+</span>
-                            <span class="stat-badge">Countries: 8</span>
-                            <span class="stat-badge">Languages: Swedish +1</span>
+                            <span class="stat-badge" data-en="Cities: 20+" data-zh="城市：20+">Cities: 20+</span>
+                            <span class="stat-badge" data-en="Countries: 8" data-zh="国家：8">Countries: 8</span>
+                            <span class="stat-badge" data-en="Languages: Swedish +1" data-zh="语言：瑞典语 +1">Languages: Swedish +1</span>
                         </div>
                     </div>
 
                     <div class="achievement-card">
                         <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Tech Talk Achievement" class="achievement-image">
-                        <div class="achievement-title">🎤 TECH SPEAKER</div>
-                        <div class="achievement-desc">First public speaking quest completed! Knowledge sharing skill activated.</div>
-                        <div class="achievement-details">
+                        <div class="achievement-title" data-en="🎤 TECH SPEAKER" data-zh="🎤 技术演讲者">🎤 TECH SPEAKER</div>
+                        <div class="achievement-desc" data-en="First public speaking quest completed! Knowledge sharing skill activated." data-zh="首次公开演讲任务完成！知识分享技能已激活。">First public speaking quest completed! Knowledge sharing skill activated.</div>
+                        <div class="achievement-details" data-en="Stepped onto the stage and shared knowledge with fellow developers. Evolution from code consumer to knowledge creator." data-zh="登上舞台与同行开发者分享知识。从代码消费者到知识创造者的进化。">
                             Stepped onto the stage and shared knowledge with fellow developers. Evolution from code consumer to knowledge creator.
                         </div>
                         <div class="achievement-stats">
-                            <span class="stat-badge">Confidence: +100</span>
-                            <span class="stat-badge">Communication: +75</span>
+                            <span class="stat-badge" data-en="Confidence: +100" data-zh="自信：+100">Confidence: +100</span>
+                            <span class="stat-badge" data-en="Communication: +75" data-zh="沟通：+75">Communication: +75</span>
                         </div>
                     </div>
 
                     <div class="achievement-card">
                         <img src="album/ai.png" alt="Music Achievement" class="achievement-image">
-                        <div class="achievement-title">🎸 BAND MEMBER</div>
-                        <div class="achievement-desc">Former guitarist & keyboardist. Music creation abilities unlocked!</div>
-                        <div class="achievement-details">
+                        <div class="achievement-title" data-en="🎸 BAND MEMBER" data-zh="🎸 乐队成员">🎸 BAND MEMBER</div>
+                        <div class="achievement-desc" data-en="Former guitarist & keyboardist. Music creation abilities unlocked!" data-zh="前吉他手和键盘手。音乐创作能力已解锁！">Former guitarist & keyboardist. Music creation abilities unlocked!</div>
+                        <div class="achievement-details" data-en="Mastered the art of creating harmony in both music and code. Creative skills enhance problem-solving and team collaboration." data-zh="掌握了在音乐和代码中创造和谐的艺术。创意技能增强问题解决和团队协作能力。">
                             Mastered the art of creating harmony in both music and code. Creative skills enhance problem-solving and team collaboration.
                         </div>
                         <div class="achievement-stats">
-                            <span class="stat-badge">Creativity: +80</span>
-                            <span class="stat-badge">Team Harmony: +60</span>
+                            <span class="stat-badge" data-en="Creativity: +80" data-zh="创造力：+80">Creativity: +80</span>
+                            <span class="stat-badge" data-en="Team Harmony: +60" data-zh="团队和谐：+60">Team Harmony: +60</span>
                         </div>
                     </div>
 
                     <div class="achievement-card">
                         <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=400&q=80" alt="Transformers Achievement" class="achievement-image">
-                        <div class="achievement-title">🤖 TRANSFORMERS EXPERT</div>
-                        <div class="achievement-desc">Complete knowledge of Japanese Transformers series. Ultra Magnus pricing database included!</div>
-                        <div class="achievement-details">
+                        <div class="achievement-title" data-en="🤖 TRANSFORMERS EXPERT" data-zh="🤖 变形金刚专家">🤖 TRANSFORMERS EXPERT</div>
+                        <div class="achievement-desc" data-en="Complete knowledge of Japanese Transformers series. Ultra Magnus pricing database included!" data-zh="对日本变形金刚系列的完整知识。包含超能马格努斯定价数据库！">Complete knowledge of Japanese Transformers series. Ultra Magnus pricing database included!</div>
+                        <div class="achievement-details" data-en="Encyclopedic knowledge of The Headmasters and Super-God Masterforce series, including second-hand model pricing." data-zh="对头领战士和超神战士系列的百科全书式知识，包括二手模型定价。">
                             Encyclopedic knowledge of The Headmasters and Super-God Masterforce series, including second-hand model pricing.
                         </div>
                         <div class="achievement-stats">
-                            <span class="stat-badge">Attention to Detail: +200</span>
-                            <span class="stat-badge">Passion Index: MAX</span>
+                            <span class="stat-badge" data-en="Attention to Detail: +200" data-zh="细节关注：+200">Attention to Detail: +200</span>
+                            <span class="stat-badge" data-en="Passion Index: MAX" data-zh="热情指数：MAX">Passion Index: MAX</span>
                         </div>
                     </div>
                 </div>
@@ -859,8 +896,8 @@
     <footer class="game-footer">
         <div class="footer-text">
             © 2025 REALROOK1E DIGITAL REALM | 
-            GAME VERSION 2.0 | 
-            <a href="https://github.com/REALROOK1E" target="_blank">VIEW SOURCE CODE</a>
+            <span data-en="GAME VERSION 2.0" data-zh="游戏版本 2.0">GAME VERSION 2.0</span> | 
+            <a href="https://github.com/REALROOK1E" target="_blank" data-en="VIEW SOURCE CODE" data-zh="查看源代码">VIEW SOURCE CODE</a>
         </div>
     </footer>
 
@@ -868,6 +905,7 @@
     <script src="script-moon-walker.js"></script>
     <script src="script-iwbtg-style.js"></script>
     <script src="script-game-manager.js"></script>
+    <script src="script-pixel.js"></script>
     <script>
         // Game Manager will handle game initialization
         document.addEventListener('DOMContentLoaded', function() {
@@ -877,6 +915,9 @@
             
             // Initialize Fixed Side Navigation
             initializeFixedSideNavigation();
+            
+            // Language Manager is already initialized in script-pixel.js
+            console.log('🌐 Language Manager status:', typeof languageManager !== 'undefined' ? 'Ready' : 'Not found');
         });
 
         // Fixed Side Navigation Functionality
@@ -969,6 +1010,9 @@
 
             console.log('🧭 Fixed Side Navigation initialized successfully!');
         }
+
+        // Language switching is handled by script-pixel.js
+        // No need for duplicate event listeners here
     </script>
 </body>
 </html>

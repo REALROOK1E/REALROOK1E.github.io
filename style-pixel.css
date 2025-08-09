@@ -1938,6 +1938,8 @@ body::before {
 .achievement-title {
     color: var(--text-bright);
     font-weight: bold;
+    font-size: 1.2rem;
+    font-family: 'Inter', sans-serif;
     margin-bottom: 0.5rem;
     text-shadow: 
         2px 2px 0px var(--accent-cyan),
@@ -1949,6 +1951,10 @@ body::before {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: gradientShift 4s ease-in-out infinite;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
 }
 
 .achievement-desc {
@@ -4986,6 +4992,86 @@ body::before {
     }
     
     .download-text {
+        font-size: 0.75rem;
+    }
+}
+
+/* Language Toggle Button */
+.lang-toggle-btn {
+    background: #ffffff;
+    border: 2px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
+}
+
+.lang-toggle-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.lang-toggle-btn:hover::before {
+    left: 100%;
+}
+
+.lang-toggle-btn:hover {
+    background: var(--accent-cyan);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4);
+    border-color: var(--accent-cyan);
+}
+
+.lang-toggle-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(0, 255, 255, 0.3);
+}
+
+.lang-toggle-btn .lang-text {
+    position: relative;
+    z-index: 1;
+    font-weight: 700;
+}
+
+/* Language-specific animations */
+.lang-toggle-btn[data-lang="zh"] {
+    background: linear-gradient(135deg, var(--accent-red), var(--accent-yellow));
+    border-color: var(--accent-red);
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+}
+
+.lang-toggle-btn[data-lang="zh"]:hover {
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+    border-color: var(--accent-yellow);
+}
+
+/* Responsive design for language toggle */
+@media (max-width: 768px) {
+    .lang-toggle-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .lang-toggle-btn {
+        padding: 5px 10px;
         font-size: 0.75rem;
     }
 }
