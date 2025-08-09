@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyTodo - 像素风格时间管理软件 | 让你的努力有记录、有回应、有成就感</title>
+    <meta name="description" content="一个真正能长期使用的时间管理工具。流式动态清单、正反馈设计、智能模板、实时统计 - 不是要让你完美计划，而是让你认识自己，真正改变。">
+    <meta name="keywords" content="时间管理,番茄工作法,待办清单,任务管理,效率工具,像素风格,桌面应用">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="MyTodo - 像素风格时间管理软件">
+    <meta property="og:description" content="看完100个时间管理视频后做出来的工具，让你对自己的努力有记录、有回应、有成就感。">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./assets/icon.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="./assets/icon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/icon.ico" type="image/x-icon">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./landing.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <img src="./assets/icon.png" alt="MyTodo" class="nav-logo">
+                <span class="nav-title">MyTodo</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features" class="nav-link">特性</a>
+                <a href="#workflow" class="nav-link">工作流程</a>
+                <a href="#download" class="nav-link">下载</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="main">
+        <!-- Hero 区域 -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        你有没有这种经历？
+                        <span class="highlight">效率焦虑</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        看了很多时间管理技巧，尝试过番茄钟、清单法、时间块……<br>
+                        但总是坚持不了几天，就又回到"效率焦虑"里。
+                    </p>
+                    <div class="hero-problem">
+                        <div class="problem-card">
+                            <div class="problem-icon">🍅</div>
+                            <div class="problem-text">
+                                <strong>番茄工作法的困扰</strong><br>
+                                5分钟休息时间，不刷手机就觉得白休了<br>
+                                但一旦打开，又很难马上切回去继续工作
+                            </div>
+                        </div>
+                    </div>
+                    <p class="hero-insight">
+                        这让我意识到：<br>
+                        <strong>我们不是不想专注，而是切换状态的成本太高了。</strong>
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#download" class="btn btn-primary btn-large">
+                            <span class="btn-icon">⚡</span>
+                            免费下载 MyTodo
+                        </a>
+                        <a href="#features" class="btn btn-secondary btn-large">
+                            <span class="btn-icon">👀</span>
+                            了解更多
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="app-preview">
+                        <div class="app-window">
+                            <div class="window-header">
+                                <div class="window-controls">
+                                    <span class="control control-close"></span>
+                                    <span class="control control-minimize"></span>
+                                    <span class="control control-maximize"></span>
+                                </div>
+                                <div class="window-title">MyTodo</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="checklist-preview">
+                                    <div class="checklist-header">
+                                        <h3>📚 今日学习计划</h3>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 75%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="task-list">
+                                        <div class="task-item completed">
+                                            <div class="task-checkbox checked">✓</div>
+                                            <div class="task-content">
+                                                <div class="task-title">数学学习</div>
+                                                <div class="task-timer">01:45:30</div>
+                                            </div>
+                                        </div>
+                                        <div class="task-item active">
+                                            <div class="task-checkbox"></div>
+                                            <div class="task-content">
+                                                <div class="task-title">英语阅读</div>
+                                                <div class="task-timer running">00:23:15</div>
+                                            </div>
+                                        </div>
+                                        <div class="task-item">
+                                            <div class="task-checkbox"></div>
+                                            <div class="task-content">
+                                                <div class="task-title">编程练习</div>
+                                                <div class="task-timer">00:00:00</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 解决方案 -->
+        <section class="solution">
+            <div class="solution-content">
+                <h2 class="solution-title">
+                    所以我做了这个工具
+                </h2>
+                <p class="solution-description">
+                    我干脆把 100 多个时间管理视频、博客、课程都刷了一遍，<br>
+                    提炼出真正能"<strong>长期用、少阻力</strong>"的策略，<br>
+                    然后——我亲手做了一个 To-Do 时间管理软件。
+                </p>
+                <div class="solution-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">时间管理资料研究</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">核心设计理念</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">切换状态成本</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 核心特性 -->
+        <section id="features" class="features">
+            <div class="features-content">
+                <h2 class="features-title">6 个最重要的设计</h2>
+                <div class="features-grid">
+                    <!-- 特性 1 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">🌊</div>
+                        <h3 class="feature-title">流式动态工作清单</h3>
+                        <p class="feature-description">
+                            不再被死板的日程表束缚。创建流式动态工作清单，可以根据心情随时开启、切换任何任务。
+                            错过第一个任务不会毁掉一天的计划，这种灵活度让你不用因为短时间的不在状态而陷入破窗效应。
+                        </p>
+                        <div class="feature-highlight">
+                            <strong>一键模板功能：</strong>
+                            设定每天固定环节（如学数学2小时、学英语2小时），直接一键添加到清单里，随时根据心情开始任何任务。
+                        </div>
+                    </div>
+
+                    <!-- 特性 2 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3 class="feature-title">正反馈设计</h3>
+                        <p class="feature-description">
+                            每个任务都要手动开始和暂停，这是一个小的开工仪式（心理学上叫心锚）。
+                            任务的时间进展实时统计，真正记录你的有效工作时间。
+                        </p>
+                        <div class="feature-highlight">
+                            <strong>实时反馈激励：</strong>
+                            看到自己做了多少，一目了然。这种实时反馈会激起"没完成就不甘心"的动力，
+                            让你不知不觉进入"把它做完"的节奏。
+                        </div>
+                    </div>
+
+                    <!-- 特性 3 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">⏱️</div>
+                        <h3 class="feature-title">正/倒计时双模式</h3>
+                        <p class="feature-description">
+                            支持正计时和倒计时，适合不同的工作状态和心理需求。
+                        </p>
+                        <div class="feature-modes">
+                            <div class="mode">
+                                <strong>正计时：</strong>慢慢推进，比如碎片时间看点资料
+                            </div>
+                            <div class="mode">
+                                <strong>倒计时：</strong>挑战自己，比如冲刺写一段报告
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 特性 4 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">🧩</div>
+                        <h3 class="feature-title">子任务拆解</h3>
+                        <p class="feature-description">
+                            一个任务如果太大，很多人会一直拖着不做。
+                            设计了快速添加子任务的功能，比如"写论文"可以拆成"查文献 / 列大纲 / 写引言 / 校对"。
+                        </p>
+                        <div class="feature-highlight">
+                            <strong>游戏化成就感：</strong>
+                            每完成一步就可以打勾划掉，获得清晰的成就感和"正在进展"的感觉，
+                            利用游戏的成瘾机制提供实时正反馈。
+                        </div>
+                    </div>
+
+                    <!-- 特性 5 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">✋</div>
+                        <h3 class="feature-title">手动控制 vs 自动打断</h3>
+                        <p class="feature-description">
+                            在别的软件里，时间到了任务就自动停止，那种"你失败了"的感觉会影响心态。
+                        </p>
+                        <div class="feature-highlight">
+                            <strong>人性化设计：</strong>
+                            任务永远由你手动结束。你可以提前完成，也可以延迟完成。
+                            只要你投入过、做完了，它就值得被记录。
+                        </div>
+                    </div>
+
+                    <!-- 特性 6 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3 class="feature-title">完整记录与复盘</h3>
+                        <p class="feature-description">
+                            所有明细保存，方便复盘。每当你完成一个清单，直接将它结束并存档。
+                        </p>
+                        <div class="feature-highlight">
+                            <strong>深度洞察：</strong>
+                            你可以看到一天的作为，也能回顾过去一周、一个月的时间都花在哪了。
+                            真正了解自己的时间使用模式。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 工作流程 -->
+        <section id="workflow" class="workflow">
+            <div class="workflow-content">
+                <h2 class="workflow-title">简单的工作流程</h2>
+                <div class="workflow-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>创建或选择模板</h3>
+                            <p>设置你的日常学习/工作模板，或者直接手动创建今日清单</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>选择任务开始</h3>
+                            <p>根据当前心情和状态，随时选择任何一个任务开始执行</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>专注执行</h3>
+                            <p>专注做事，随时可以暂停、继续，不用担心时间计算错误</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>完成归档</h3>
+                            <p>完成清单后存档，查看你的时间投入和效果统计</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 产品理念 -->
+        <section class="philosophy">
+            <div class="philosophy-content">
+                <h2 class="philosophy-title">设计理念</h2>
+                <div class="philosophy-grid">
+                    <div class="philosophy-item">
+                        <div class="philosophy-icon">❌</div>
+                        <h3>不是要帮你"完美计划"</h3>
+                        <p>放弃一个月自律改变人生的幻想</p>
+                    </div>
+                    <div class="philosophy-item">
+                        <div class="philosophy-icon">❌</div>
+                        <h3>不是让你变得"高效"</h3>
+                        <p>效率不是目的，认识自己才是</p>
+                    </div>
+                    <div class="philosophy-item">
+                        <div class="philosophy-icon">✅</div>
+                        <h3>让你对自己的努力</h3>
+                        <p><strong>有记录、有回应、有成就感</strong></p>
+                    </div>
+                    <div class="philosophy-item">
+                        <div class="philosophy-icon">✅</div>
+                        <h3>让你认识自己，真正改变</h3>
+                        <p>一点点做出真正的进步</p>
+                    </div>
+                </div>
+                <div class="philosophy-quote">
+                    <blockquote>
+                        "这就是我，看完100个时间管理视频之后，做出来的工具。<br>
+                        如果你也在找一个能让你<strong>长期使用、情绪稳定、节奏清晰</strong>的时间管理方式——<br>
+                        欢迎试试它。"
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- 下载区域 -->
+        <section id="download" class="download">
+            <div class="download-content">
+                <h2 class="download-title">开始使用 MyTodo</h2>
+                <p class="download-description">
+                    免费下载，支持 Windows、macOS 和 Linux 系统
+                </p>
+                <div class="download-buttons">
+                    <a href="#" class="download-btn" data-platform="windows">
+                        <div class="download-icon">🪟</div>
+                        <div class="download-text">
+                            <div class="download-platform">Windows</div>
+                            <div class="download-detail">支持 Windows 10/11</div>
+                        </div>
+                    </a>
+                    <a href="#" class="download-btn" data-platform="macos">
+                        <div class="download-icon">🍎</div>
+                        <div class="download-text">
+                            <div class="download-platform">macOS</div>
+                            <div class="download-detail">支持 macOS 10.15+</div>
+                        </div>
+                    </a>
+                    <a href="#" class="download-btn" data-platform="linux">
+                        <div class="download-icon">🐧</div>
+                        <div class="download-text">
+                            <div class="download-platform">Linux</div>
+                            <div class="download-detail">AppImage 格式</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="download-info">
+                    <p>📱 移动版本正在开发中，敬请期待</p>
+                    <p>⭐ 开源项目，欢迎在 GitHub 上查看源码和提出建议</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="./assets/icon.png" alt="MyTodo" class="footer-logo">
+                <span class="footer-title">MyTodo</span>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/REALROOK1E/Mytodo" target="_blank" class="footer-link">GitHub</a>
+                <a href="#" class="footer-link">文档</a>
+                <a href="#" class="footer-link">反馈</a>
+            </div>
+            <div class="footer-copy">
+                <p>&copy; 2025 MyTodo. Made with ❤️ by REALROOK1E</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/landing.js"></script>
+</body>
+</html>
