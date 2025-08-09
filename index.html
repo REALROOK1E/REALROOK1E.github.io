@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="style-pixel.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
+    <!-- Google Fonts - Inter for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <!-- SEO and Meta -->
     <meta name="description" content="REALROOK1E's pixel-style gaming portfolio - Explore my programming adventure journey">
     <meta name="keywords" content="pixel style,gaming,personal website,programmer,portfolio,REALROOK1E">
@@ -40,36 +45,535 @@
 
     <!-- Game World Container -->
     <div class="game-world">
-        <!-- Pixel Character Stats -->
-        <div class="pixel-character">
-            <div class="character-avatar"></div>
-            <div class="character-stats">
-                <div class="stat-label">PLAYER: <span class="stat-value">ZeKai Li</span></div>
-                <div class="stat-label">CLASS: <span class="stat-value">Software Engineer</span></div>
-                <div class="stat-label">DEGREE: <span class="stat-value">Master's CS</span></div>
-                <div class="stat-label">UNIVERSITY: <span class="stat-value">Linköping Uni</span></div>
-                <div class="stat-label">LOCATION: <span class="stat-value">Sweden</span></div>
-                <div class="stat-label">EXP: <span class="stat-value">Java/Spring</span></div>
-                <div class="stat-label">SKILLS: <span class="stat-value">Full Stack</span></div>
-                <div class="stat-label">LANGUAGES: <span class="stat-value">CN/EN</span></div>
+        <!-- Fixed Side Navigation - replacing personal info -->
+        <div class="side-navigation-fixed">
+
+            
+            <div class="nav-content">
+                <!-- Level 1: Personal Information -->
+                <!-- Level 1: Work Experience -->
+                <div class="nav-level-1">
+                    <div class="nav-level-1-header">
+                        <i class="fas fa-briefcase"></i>
+                        <h3>Work Experience</h3>
+                    </div>
+                    <div class="nav-level-1-content">
+                        <a href="#experience" class="nav-level-2-item nav-link" data-target="casc-experience">
+                            <i class="fas fa-rocket"></i>
+                            <h3>China Aerospace Science & Technology</h3>
+                            <div class="nav-item-desc">Software Engineer | 2023-2024</div>
+                        </a>
+                        <a href="#experience" class="nav-level-2-item nav-link" data-target="linkoping-experience">
+                            <i class="fas fa-university"></i>
+                            <h3>Linköping University</h3>
+                            <div class="nav-item-desc">Master's Student | 2024-Present</div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Level 1: Projects -->
+                <div class="nav-level-1">
+                    <div class="nav-level-1-header">
+                        <i class="fas fa-code"></i>
+                        <h3>Featured Projects</h3>
+                    </div>
+                    <div class="nav-level-1-content">
+                        <a href="#quests" class="nav-level-2-item nav-link" data-target="instaverse-project">
+                            <i class="fas fa-camera"></i>
+                            <h3>InstaVerse - Microservices Social Platform</h3>
+                        </a>
+                        <a href="#quests" class="nav-level-2-item nav-link" data-target="message-project">
+                            <i class="fas fa-broadcast-tower"></i>
+                            <h3>Message Distribution Platform</h3>
+                        </a>
+                        <a href="#quests" class="nav-level-2-item nav-link" data-target="stream-project">
+                            <i class="fas fa-stream"></i>
+                            <h3>Stream Processing Engine</h3>
+                        </a>
+                        <a href="#quests" class="nav-level-2-item nav-link" data-target="ai-project">
+                            <i class="fas fa-brain"></i>
+                            <h3>AI Intelligence Platform</h3>
+                        </a>
+                        <a href="#quests" class="nav-level-2-item nav-link" data-target="todolist-project">
+                            <i class="fas fa-tasks"></i>
+                            <h3>Enterprise TodoList System</h3>
+                        </a>
+                        <a href="#quests" class="nav-level-2-item nav-link" data-target="ecommerce-project">
+                            <i class="fas fa-shopping-cart"></i>
+                            <h3>E-commerce Platform</h3>
+                        </a>
+                        <a href="#quests" class="nav-level-2-item nav-link" data-target="javadventure-project">
+                            <i class="fas fa-search"></i>
+                            <h3>JAVAdventure - Framework Analysis</h3>
+                        </a>
+                        <a href="#quests" class="nav-level-2-item nav-link" data-target="algorithm-project">
+                            <i class="fas fa-calculator"></i>
+                            <h3>Algorithm Toolkit</h3>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Level 1: About Me -->
+                <div class="nav-level-1">
+                    <div class="nav-level-1-header">
+                        <i class="fas fa-user"></i>
+                        <h3>About Me</h3>
+                    </div>
+                    <div class="nav-level-1-content">
+                        <a href="#achievements" class="nav-level-2-item nav-link" data-target="graduation-achievement">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h3>Academic Achievements</h3>
+                        </a>
+                        <a href="#achievements" class="nav-level-2-item nav-link" data-target="travel-achievement">
+                            <i class="fas fa-globe"></i>
+                            <h3>World Explorer</h3>
+                        </a>
+                        <a href="#achievements" class="nav-level-2-item nav-link" data-target="speaker-achievement">
+                            <i class="fas fa-microphone"></i>
+                            <h3>Tech Speaker</h3>
+                        </a>
+                        <a href="#achievements" class="nav-level-2-item nav-link" data-target="music-achievement">
+                            <i class="fas fa-music"></i>
+                            <h3>Music Creation</h3>
+                        </a>
+                        <a href="#achievements" class="nav-level-2-item nav-link" data-target="hobby-achievement">
+                            <i class="fas fa-robot"></i>
+                            <h3>Transformers Expert</h3>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Level 1: Interactive Games -->
+                <div class="nav-level-1">
+                    <div class="nav-level-1-header">
+                        <i class="fas fa-gamepad"></i>
+                        <h3>Interactive Games</h3>
+                    </div>
+                    <div class="nav-level-1-content">
+                        <a href="#games" class="nav-level-2-item nav-link" data-target="moonwalker-game">
+                            <i class="fas fa-moon"></i>
+                            <h3>Moon Walker</h3>
+                        </a>
+                        <a href="#games" class="nav-level-2-item nav-link" data-target="iwbtg-game">
+                            <i class="fas fa-apple-alt"></i>
+                            <h3>I Wanna Be The Guy</h3>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Main Game Content -->
         <div class="main-content">
-            <!-- Hero/Intro Section -->
-            <section class="hero-section" id="home">
-                <h1 class="hero-title glitch" data-text="WELCOME TO MY DIGITAL REALM">WELCOME TO MY DIGITAL REALM</h1>
-                <p class="hero-subtitle">
-                    I am <span class="typing-text">ZeKai Li (REALROOK1E)</span>
-                </p>
-                <p style="color: var(--text-cyan); font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.6;">
-                    🎓 Master's in Computer Science at Linköping University<br>
-                    💻 Experienced Java Backend Developer with Spring ecosystem expertise<br>
-                    🚀 Former Software Engineer at China Aerospace Science and Technology Corporation<br>
-                    🌍 Multilingual developer: Chinese, English<br>
-                    📍 Based in Sweden, exploring the Nordic tech landscape
-                </p>
+            <!-- Personal Info Section - moved to top of main content -->
+            <section class="personal-info-section" id="personal-info">
+                <div class="cyber-terminal-container personal-info-terminal">
+                    <div class="cyber-terminal-header">
+                        <div class="terminal-controls">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                        </div>
+                        <div class="terminal-title">
+                            <i class="fas fa-user-circle"></i> PLAYER_PROFILE.EXE - PERSONAL INFORMATION
+                        </div>
+                    </div>
+                    <div class="cyber-terminal-content">
+                        <div class="personal-info-content">
+                   
+                            
+                            <!-- Hero Section -->
+                            <div class="hero-content">
+                                <h1 class="hero-title glitch fade-in-up" data-text="ernestli.site">ernestli.site</h1>
+                                <div class="hero-subtitle">
+                                    <span class="typing-text">ZeKai Li (Ernest)</span> • Software Developer
+                                </div>
+                                <div class="hero-location">
+                                    <i class="fas fa-map-marker-alt"></i> Sweden • 
+                                    <i class="fas fa-graduation-cap"></i> Master's CS @ Linköping University
+                                </div>
+                            </div>
+                            
+                            <!-- Enhanced Tech Stack Section -->
+                            <div class="tech-stack-section">
+                                <div class="tech-category tech-stack">
+                                    <div class="tech-category-header">
+                                        <div class="tech-header-content">
+                                            <i class="fas fa-code"></i>
+                                            <span class="tech-title">TECH STACK</span>
+                                        </div>
+                                        <div class="tech-tags">
+                                            <span class="tech-tag primary">Java</span>
+                                            <span class="tech-tag primary">Spring</span>
+                                            <span class="tech-tag frontend">Next.js</span>
+                                            <span class="tech-tag database">MySQL</span>
+                                            <span class="tech-tag frontend">TypeScript</span>
+                                            <span class="tech-tag frontend">React</span>
+                                            <span class="tech-tag database">MongoDB</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tech-category tech-infra">
+                                    <div class="tech-category-header">
+                                        <div class="tech-header-content">
+                                            <i class="fas fa-server"></i>
+                                            <span class="tech-title">INFRASTRUCTURE</span>
+                                        </div>
+                                        <div class="tech-tags">
+                                            <span class="tech-tag infra">Docker</span>
+                                            <span class="tech-tag infra">Kubernetes</span>
+                                            <span class="tech-tag cloud">AWS</span>
+                                            <span class="tech-tag architecture">Microservices</span>
+                                            <span class="tech-tag devops">Jenkins</span>
+                                            <span class="tech-tag devops">GitLab CI/CD</span>
+                                            <span class="tech-tag infra">Redis</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tech-category tech-skills">
+                                    <div class="tech-category-header">
+                                        <div class="tech-header-content">
+                                            <i class="fas fa-tools"></i>
+                                            <span class="tech-title">SPECIALTIES</span>
+                                        </div>
+                                        <div class="tech-tags">
+                                            <span class="tech-tag skill">Backend Development</span>
+                                            <span class="tech-tag skill">Full Stack</span>
+                                            <span class="tech-tag architecture">Domain-Driven Design</span>
+                                            <span class="tech-tag qa">Test Automation</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tech-category tech-languages">
+                                    <div class="tech-category-header">
+                                        <div class="tech-header-content">
+                                            <i class="fas fa-language"></i>
+                                            <span class="tech-title">LANGUAGES</span>
+                                        </div>
+                                        <div class="tech-tags">
+                                            <span class="tech-tag lang native">Chinese (Native)</span>
+                                            <span class="tech-tag lang fluent">English (Fluent)</span>
+                                            <span class="tech-tag lang basic">Swedish (Basic)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Log (Work History) - PRIORITY CONTENT -->
+            <section class="cyber-experience-section" id="experience">
+                <h2 class="section-title fade-in-up">PROFESSIONAL EXPERIENCE</h2>
+                <div class="cyber-experience-row">
+                    <!-- Terminal 1: CASC Experience -->
+                    <div class="cyber-terminal-container terminal-animate">
+                        <div class="cyber-terminal-header">
+                            <div class="terminal-controls">
+                                <span class="terminal-dot red"></span>
+                                <span class="terminal-dot yellow"></span>
+                                <span class="terminal-dot green"></span>
+                            </div>
+                            <div class="terminal-title">
+                                <i class="fas fa-terminal"></i> CAREER_DATA.EXE - PROFESSIONAL EXPERIENCE LOG
+                            </div>
+                        </div>
+                        <div class="cyber-terminal-content">
+                            <div class="cyber-experience-item">
+                                <div class="cyber-prompt">
+                                    <i class="fas fa-rocket"></i> system@aerospace:~$ load_experience --priority=high
+                                </div>
+                                <div class="cyber-exp-header">
+                                    <div class="cyber-exp-company">
+                                        <i class="fas fa-satellite"></i> China Aerospace Science and Technology Corporation
+                                    </div>
+                                    <div class="cyber-exp-role">Software Engineer | Backend Development Team</div>
+                                    <div class="cyber-exp-period">
+                                        <i class="fas fa-calendar-alt"></i> 2023 - 2024 | 
+                                        <span class="status-complete">MISSION_COMPLETE</span>
+                                    </div>
+                                </div>
+                                <div class="cyber-exp-description">
+                                    <div class="exp-achievement">
+                                        <i class="fas fa-server"></i> <strong>Microservices Architecture:</strong> Designed & implemented distributed systems for aerospace applications
+                                    </div>
+                                    <div class="exp-achievement">
+                                        <i class="fas fa-database"></i> <strong>Performance Optimization:</strong> Achieved <span class="highlight-stat">+40% performance improvement</span> through database & caching strategies
+                                    </div>
+                                    <div class="exp-achievement">
+                                        <i class="fas fa-shield-alt"></i> <strong>Security Systems:</strong> Built enterprise-level authentication & authorization frameworks
+                                    </div>
+                                    <div class="exp-achievement">
+                                        <i class="fas fa-rocket"></i> <strong>Mission Critical:</strong> Contributed to space program software infrastructure serving national aerospace projects
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terminal 2: Linköping University Experience -->
+                    <div class="cyber-terminal-container terminal-animate">
+                        <div class="cyber-terminal-header">
+                            <div class="terminal-controls">
+                                <span class="terminal-dot red"></span>
+                                <span class="terminal-dot yellow"></span>
+                                <span class="terminal-dot green"></span>
+                            </div>
+                            <div class="terminal-title">
+                                <i class="fas fa-terminal"></i> CAREER_DATA.EXE - PROFESSIONAL EXPERIENCE LOG
+                            </div>
+                        </div>
+                        <div class="cyber-terminal-content">
+                            <div class="cyber-experience-item">
+                                <div class="cyber-prompt">
+                                    <i class="fas fa-graduation-cap"></i> system@linkoping:~$ current_mission --status=active
+                                </div>
+                                <div class="cyber-exp-header">
+                                    <div class="cyber-exp-company">
+                                        <i class="fas fa-university"></i> Linköping University, Sweden
+                                    </div>
+                                    <div class="cyber-exp-role">Master's Student | Computer Science Program</div>
+                                    <div class="cyber-exp-period">
+                                        <i class="fas fa-calendar-alt"></i> 2024 - Present | 
+                                        <span class="status-active">MISSION_ACTIVE</span>
+                                    </div>
+                                </div>
+                                <div class="cyber-exp-description">
+                                    <div class="exp-achievement">
+                                        <i class="fas fa-brain"></i> <strong>Advanced Systems:</strong> Deep dive into distributed systems, software architecture & advanced algorithms
+                                    </div>
+                                    <div class="exp-achievement">
+                                        <i class="fas fa-globe"></i> <strong>International Environment:</strong> Collaborating with diverse research teams from 20+ countries
+                                    </div>
+                                    <div class="exp-achievement">
+                                        <i class="fas fa-laptop-code"></i> <strong>Modern Tech Stack:</strong> Building cutting-edge projects with latest technologies & frameworks
+                                    </div>
+                                    <div class="exp-achievement">
+                                        <i class="fas fa-trophy"></i> <strong>Academic Excellence:</strong> <span class="highlight-stat">Outstanding performance</span> across all coursework & research projects
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Projects Section - PRIORITY CONTENT -->
+            <section class="quest-section" id="quests">
+                <h2 class="section-title fade-in-up">FEATURED PROJECTS</h2>
+                
+                <!-- Enterprise Projects Theme -->
+                <div class="quest-theme-section">
+                    <h3 class="quest-theme-title">
+                        <span class="theme-icon">🏢</span>
+                        <span class="theme-text">ENTERPRISE PROJECTS</span>
+                        <span class="theme-subtitle">Large-scale Production Systems</span>
+                    </h3>
+                    
+                    <div class="quest-grid enterprise-grid">
+                        <!-- Enterprise Quest 1: InstaVerse -->
+                        <a href="instaverse-details.html" class="quest-card enterprise-card">
+                            <h3 class="quest-title stylized-title">
+                                <span class="title-icon"><i class="fas fa-camera"></i></span>
+                                <span class="title-text">InstaVerse</span>
+                                <span class="title-glow"></span>
+                            </h3>
+                            <p class="quest-description">
+                                Enterprise-level microservices social blog platform with massive scalability. 
+                                Inspired by XiaoHongShu with distributed architecture supporting massive concurrent users.
+                            </p>
+                            <div class="quest-reward">Spring Cloud Alibaba · Microservices · High Concurrency · 22k+ TPS</div>
+                            <div class="tech-badges">
+                                <span class="tech-badge">Spring Boot 3.x</span>
+                                <span class="tech-badge">JDK 17</span>
+                                <span class="tech-badge">Spring Cloud Alibaba</span>
+                                <span class="tech-badge">MySQL 8.0</span>
+                                <span class="tech-badge">Redis 7.x</span>
+                                <span class="tech-badge">Elasticsearch</span>
+                                <span class="tech-badge">Nacos</span>
+                                <span class="tech-badge">Gateway</span>
+                            </div>
+                            <button class="quest-button">VIEW COMPLETE DETAILS →</button>
+                        </a>
+
+                        <!-- Enterprise Quest 2: Real-time Message Distribution Platform -->
+                        <a href="project-message-distribution.html" class="quest-card enterprise-card">
+                            <h3 class="quest-title stylized-title">
+                                <span class="title-icon"><i class="fas fa-broadcast-tower"></i></span>
+                                <span class="title-text">Real-time Message Distribution Platform</span>
+                                <span class="title-glow"></span>
+                            </h3>
+                            <p class="quest-description">
+                                🎯 <strong>MISSION:</strong> High-performance message streaming and distribution system with real-time computation, intelligent routing, and multi-protocol support. Handles millions of concurrent connections with sub-millisecond latency.
+                            </p>
+                            <div class="quest-reward">Real-time Computing + Message Queue + Distributed Systems</div>
+                            <div class="tech-badges">
+                                <span class="tech-badge">Apache Pulsar</span>
+                                <span class="tech-badge">Redis Streams</span>
+                                <span class="tech-badge">WebRTC</span>
+                                <span class="tech-badge">Socket.IO</span>
+                                <span class="tech-badge">Go</span>
+                                <span class="tech-badge">gRPC</span>
+                                <span class="tech-badge">NATS</span>
+                                <span class="tech-badge">etcd</span>
+                            </div>
+                            <button class="quest-button">EXPLORE ARCHITECTURE →</button>
+                        </a>
+
+                        <!-- Enterprise Quest 3: Real-time Stream Processing -->
+                        <a href="project-stream.html" class="quest-card enterprise-card">
+                            <h3 class="quest-title stylized-title">
+                                <span class="title-icon"><i class="fas fa-stream"></i></span>
+                                <span class="title-text">Stream Processing Engine</span>
+                                <span class="title-glow"></span>
+                            </h3>
+                            <p class="quest-description">
+                                🎯 <strong>MISSION:</strong> High-throughput real-time data streaming platform with Apache Kafka ecosystem. Processes millions of events per second with fault-tolerant architecture, exactly-once semantics, and complex event processing capabilities.
+                            </p>
+                            <div class="quest-reward">Real-time Processing + Event-driven Architecture + Big Data</div>
+                            <div class="tech-badges">
+                                <span class="tech-badge">Apache Kafka</span>
+                                <span class="tech-badge">Kafka Streams</span>
+                                <span class="tech-badge">Apache Flink</span>
+                                <span class="tech-badge">Schema Registry</span>
+                                <span class="tech-badge">ClickHouse</span>
+                                <span class="tech-badge">Prometheus</span>
+                                <span class="tech-badge">Grafana</span>
+                                <span class="tech-badge">Kubernetes</span>
+                            </div>
+                            <button class="quest-button">VIEW STREAM ARCHITECTURE →</button>
+                        </a>
+
+                        <!-- Enterprise Quest 4: AI Intelligence Platform -->
+                        <a href="project-ai.html" class="quest-card enterprise-card">
+                            <h3 class="quest-title stylized-title">
+                                <span class="title-icon"><i class="fas fa-brain"></i></span>
+                                <span class="title-text">AI Intelligence Platform</span>
+                                <span class="title-glow"></span>
+                            </h3>
+                            <p class="quest-description">
+                                🎯 <strong>MISSION:</strong> Enterprise AI platform integrating LLM models, vector databases, and RAG architecture. Features real-time model inference, intelligent document processing, and multi-modal AI capabilities for business automation.
+                            </p>
+                            <div class="quest-reward">AI/ML Mastery + Vector Search + Model Optimization + RAG</div>
+                            <div class="tech-badges">
+                                <span class="tech-badge">PyTorch</span>
+                                <span class="tech-badge">LangChain</span>
+                                <span class="tech-badge">FastAPI</span>
+                                <span class="tech-badge">Pinecone</span>
+                                <span class="tech-badge">OpenAI GPT</span>
+                                <span class="tech-badge">Transformers</span>
+                                <span class="tech-badge">CUDA</span>
+                                <span class="tech-badge">Docker</span>
+                            </div>
+                            <button class="quest-button">EXPLORE AI ARCHITECTURE →</button>
+                        </a>
+
+                        <!-- Enterprise Quest 5: TodoList Application -->
+                        <a href="project-todolist.html" class="quest-card enterprise-card">
+                            <h3 class="quest-title stylized-title">
+                                <span class="title-icon"><i class="fas fa-tasks"></i></span>
+                                <span class="title-text">Enterprise TodoList System</span>
+                                <span class="title-glow"></span>
+                            </h3>
+                            <p class="quest-description">
+                                🎯 <strong>MISSION:</strong> Modern enterprise-grade task management application with real-time collaboration, advanced filtering, team workspaces, and cross-platform synchronization. Built for productivity at scale.
+                            </p>
+                            <div class="quest-reward">Productivity Engineering + Real-time Collaboration + Cross-platform</div>
+                            <div class="tech-badges">
+                                <span class="tech-badge">Electron</span>
+                                <span class="tech-badge">Vue 3</span>
+                                <span class="tech-badge">TypeScript</span>
+                                <span class="tech-badge">WebSocket</span>
+                                <span class="tech-badge">IndexedDB</span>
+                                <span class="tech-badge">PWA</span>
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">SQLite</span>
+                            </div>
+                            <button class="quest-button">DOWNLOAD APP →</button>
+                        </a>
+
+                        <!-- Enterprise Quest 6: E-commerce Platform -->
+                        <a href="project-ecommerce.html" class="quest-card enterprise-card">
+                            <h3 class="quest-title stylized-title">
+                                <span class="title-icon"><i class="fas fa-shopping-cart"></i></span>
+                                <span class="title-text">Enterprise E-commerce Platform</span>
+                                <span class="title-glow"></span>
+                            </h3>
+                            <p class="quest-description">
+                                🎯 <strong>MISSION:</strong> Build an enterprise-level e-commerce platform based on Next.js 15 + TypeScript. Adopting micro-frontend architecture, React Server Components and streaming SSR to achieve zero JavaScript first-screen rendering and ultimate performance optimization.
+                            </p>
+                            <div class="quest-reward">Full Stack Mastery + Performance Engineering + Type Safety</div>
+                            <div class="tech-badges">
+                                <span class="tech-badge">Next.js 15</span>
+                                <span class="tech-badge">TypeScript</span>
+                                <span class="tech-badge">React Query</span>
+                                <span class="tech-badge">Micro Frontend</span>
+                            </div>
+                            <button class="quest-button">EXPLORE ARCHITECTURE →</button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Technical Deep Dive Theme -->
+                <div class="quest-theme-section">
+                    <h3 class="quest-theme-title">
+                        <span class="theme-icon">🔬</span>
+                        <span class="theme-text">TECHNICAL DEEP DIVE</span>
+                        <span class="theme-subtitle">Research & Algorithmic Mastery</span>
+                    </h3>
+                    
+                    <div class="quest-grid research-grid">
+                        <!-- Research Quest 1: JAVAdventure -->
+                        <a href="https://github.com/REALROOK1E/JAVAdventure" target="_blank" class="quest-card research-card">
+                            <h3 class="quest-title stylized-title">
+                                <span class="title-icon"><i class="fas fa-microscope"></i></span>
+                                <span class="title-text">JAVAdventure</span>
+                                <span class="title-glow"></span>
+                            </h3>
+                            <p class="quest-description">
+                                🎯 <strong>MISSION:</strong> Deep dive into Java ecosystem source code analysis. Hand-craft implementations and uncover the underlying principles of Spring, Netty, MyBatis and other core frameworks through meticulous code exploration.
+                            </p>
+                            <div class="quest-reward">Framework Mastery + Source Code Analysis Expertise</div>
+                            <div class="tech-badges">
+                                <span class="tech-badge">Spring Framework</span>
+                                <span class="tech-badge">Netty</span>
+                                <span class="tech-badge">MyBatis</span>
+                                <span class="tech-badge">Source Analysis</span>
+                            </div>
+                            <button class="quest-button">EXPLORE SOURCE</button>
+                        </a>
+
+                        <!-- Research Quest 2: Algorithm Toolkit -->
+                        <a href="project-c.html" class="quest-card research-card">
+                            <h3 class="quest-title stylized-title">
+                                <span class="title-icon"><i class="fas fa-brain"></i></span>
+                                <span class="title-text">Algorithm Toolkit</span>
+                                <span class="title-glow"></span>
+                            </h3>
+                            <p class="quest-description">
+                                🎯 <strong>MISSION:</strong> Forge the ultimate collection of algorithm implementations and data structure visualizations. Become the master of computational problem-solving!
+                            </p>
+                            <div class="quest-reward">Algorithm Mastery + Interview Preparation Complete</div>
+                            <div class="tech-badges">
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">D3.js</span>
+                                <span class="tech-badge">TypeScript</span>
+                            </div>
+                            <button class="quest-button">VIEW DETAILS</button>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive Game Demo Section - MOVED TO BOTTOM -->
+            <section class="game-demo-section" id="games">
+                <h2 class="section-title">INTERACTIVE GAME DEMOS</h2>
+                <p class="section-subtitle">Experience pixel-perfect gaming projects built with modern web technologies</p>
                 
                 <!-- Mini Game Widget -->
                 <div class="mini-game-widget">
@@ -277,201 +781,9 @@
                 </div>
             </section>
 
-            <!-- Experience Log (Work History) - MOVED UP -->
-            <section class="cyber-experience-section" id="experience">
-                <div class="cyber-terminal-container">
-                    <div class="cyber-terminal-header">
-                        <div class="terminal-controls">
-                            <span class="terminal-dot red"></span>
-                            <span class="terminal-dot yellow"></span>
-                            <span class="terminal-dot green"></span>
-                        </div>
-                        <div class="terminal-title">
-                            <i class="fas fa-terminal"></i> NEURAL_LINK.EXE - CAREER_DATA
-                        </div>
-                    </div>
-                    <div class="cyber-terminal-content">
-                        <div class="cyber-experience-item">
-                            <div class="cyber-prompt">
-                                <i class="fas fa-satellite"></i> system@aerospace:~$ load_experience --priority=high
-                            </div>
-                            <div class="cyber-exp-company">
-                                <i class="fas fa-rocket"></i> China Aerospace Science and Technology Corporation (CASC)
-                            </div>
-                            <div class="cyber-exp-role">Software Engineer | Backend Development Team</div>
-                            <div class="cyber-exp-period">
-                                <i class="fas fa-calendar-alt"></i> 2023 - 2024 | STATUS: 
-                                <span class="status-complete">MISSION_COMPLETE</span>
-                            </div>
-                            <div class="cyber-exp-description">
-                                <i class="fas fa-server"></i> Developed distributed microservices architecture for aerospace applications<br>
-                                <i class="fas fa-database"></i> Optimized database performance and implemented caching strategies<br>
-                                <i class="fas fa-shield-alt"></i> Built secure authentication and authorization systems<br>
-                                <i class="fas fa-rocket"></i> Contributed to mission-critical space program software infrastructure<br>
-                                <i class="fas fa-chart-line"></i> <span class="highlight-stat">+40% performance improvement</span> through system optimization
-                            </div>
-                        </div>
-
-                        <div class="cyber-experience-item">
-                            <div class="cyber-prompt">
-                                <i class="fas fa-university"></i> system@linkoping:~$ current_mission --status=active
-                            </div>
-                            <div class="cyber-exp-company">
-                                <i class="fas fa-graduation-cap"></i> Linköping University, Sweden
-                            </div>
-                            <div class="cyber-exp-role">Master's Student | Computer Science Program</div>
-                            <div class="cyber-exp-period">
-                                <i class="fas fa-calendar-alt"></i> 2024 - Present | STATUS: 
-                                <span class="status-active">MISSION_ACTIVE</span>
-                            </div>
-                            <div class="cyber-exp-description">
-                                <i class="fas fa-brain"></i> Advancing knowledge in distributed systems and software architecture<br>
-                                <i class="fas fa-globe"></i> Immersed in international academic environment<br>
-                                <i class="fas fa-users"></i> Collaborating with diverse international research teams<br>
-                                <i class="fas fa-laptop-code"></i> Building advanced projects using modern technologies<br>
-                                <i class="fas fa-trophy"></i> <span class="highlight-stat">Excellent academic performance</span> across all coursework
-                            </div>
-                        </div>
-
-                        <div class="cyber-experience-item">
-                            <div class="cyber-prompt">
-                                <i class="fas fa-tools"></i> system@skills:~$ display_technical_arsenal
-                            </div>
-                            <div class="cyber-exp-company">
-                                <i class="fas fa-cogs"></i> Technical Skill Arsenal
-                            </div>
-                            <div class="cyber-exp-role">Full Stack Development | System Architecture</div>
-                            <div class="cyber-exp-period">
-                                <i class="fas fa-code"></i> CORE TECHNOLOGIES | STATUS: 
-                                <span class="status-active">CONTINUOUSLY_UPGRADING</span>
-                            </div>
-                            <div class="cyber-exp-description">
-                                <i class="fas fa-coffee"></i> <strong>Backend:</strong> Java, Spring Boot, Spring Cloud, MyBatis, Hibernate<br>
-                                <i class="fas fa-globe"></i> <strong>Frontend:</strong> Vue.js, React, HTML5, CSS3, JavaScript, TypeScript<br>
-                                <i class="fas fa-database"></i> <strong>Databases:</strong> MySQL, Redis, PostgreSQL, MongoDB<br>
-                                <i class="fas fa-server"></i> <strong>Infrastructure:</strong> Docker, Kubernetes, Linux, AWS, Git<br>
-                                <i class="fas fa-language"></i> <strong>Languages:</strong> Chinese (Native), English (Proficient)
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Quest Section (Projects) -->
-            <section class="quest-section" id="quests">
-                <h2 class="section-title">ACTIVE QUESTS</h2>
-                
-                <!-- Enterprise Projects Theme -->
-                <div class="quest-theme-section">
-                    <h3 class="quest-theme-title">
-                        <span class="theme-icon">🏢</span>
-                        <span class="theme-text">ENTERPRISE PROJECTS</span>
-                        <span class="theme-subtitle">Large-scale Production Systems</span>
-                    </h3>
-                    
-                    <div class="quest-grid enterprise-grid">
-                        <!-- Enterprise Quest 1: InstaVerse -->
-                        <a href="instaverse-details.html" class="quest-card enterprise-card">
-                            <h3 class="quest-title stylized-title">
-                                <span class="title-icon"><i class="fas fa-camera"></i></span>
-                                <span class="title-text">InstaVerse</span>
-                                <span class="title-glow"></span>
-                            </h3>
-                            <p class="quest-description">
-                                Enterprise-level microservices social blog platform with massive scalability. 
-                                Inspired by XiaoHongShu with distributed architecture supporting massive concurrent users.
-                            </p>
-                            <div class="quest-reward">Spring Cloud Alibaba · Microservices · High Concurrency · 22k+ TPS</div>
-                            <div class="tech-badges">
-                                <span class="tech-badge">Spring Boot 3.x</span>
-                                <span class="tech-badge">JDK 17</span>
-                                <span class="tech-badge">Spring Cloud Alibaba</span>
-                                <span class="tech-badge">MySQL 8.0</span>
-                                <span class="tech-badge">Redis 7.x</span>
-                                <span class="tech-badge">Elasticsearch</span>
-                                <span class="tech-badge">Nacos</span>
-                                <span class="tech-badge">Gateway</span>
-                            </div>
-                            <button class="quest-button">VIEW COMPLETE DETAILS →</button>
-                        </a>
-
-                        <!-- Enterprise Quest 2: E-commerce Platform -->
-                        <a href="project-ecommerce.html" class="quest-card enterprise-card">
-                            <h3 class="quest-title stylized-title">
-                                <span class="title-icon"><i class="fas fa-shopping-cart"></i></span>
-                                <span class="title-text">Enterprise E-commerce Platform</span>
-                                <span class="title-glow"></span>
-                            </h3>
-                            <p class="quest-description">
-                                🎯 <strong>MISSION:</strong> Build an enterprise-level e-commerce platform based on Next.js 15 + TypeScript. Adopting micro-frontend architecture, React Server Components and streaming SSR to achieve zero JavaScript first-screen rendering and ultimate performance optimization.
-                            </p>
-                            <div class="quest-reward">Full Stack Mastery + Performance Engineering + Type Safety</div>
-                            <div class="tech-badges">
-                                <span class="tech-badge">Next.js 15</span>
-                                <span class="tech-badge">TypeScript</span>
-                                <span class="tech-badge">React Query</span>
-                                <span class="tech-badge">Micro Frontend</span>
-                            </div>
-                            <button class="quest-button">EXPLORE ARCHITECTURE →</button>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Technical Deep Dive Theme -->
-                <div class="quest-theme-section">
-                    <h3 class="quest-theme-title">
-                        <span class="theme-icon">🔬</span>
-                        <span class="theme-text">TECHNICAL DEEP DIVE</span>
-                        <span class="theme-subtitle">Research & Algorithmic Mastery</span>
-                    </h3>
-                    
-                    <div class="quest-grid research-grid">
-                        <!-- Research Quest 1: JAVAdventure -->
-                        <a href="https://github.com/REALROOK1E/JAVAdventure" target="_blank" class="quest-card research-card">
-                            <h3 class="quest-title stylized-title">
-                                <span class="title-icon"><i class="fas fa-microscope"></i></span>
-                                <span class="title-text">JAVAdventure</span>
-                                <span class="title-glow"></span>
-                            </h3>
-                            <p class="quest-description">
-                                🎯 <strong>MISSION:</strong> Deep dive into Java ecosystem source code analysis. Hand-craft implementations and uncover the underlying principles of Spring, Netty, MyBatis and other core frameworks through meticulous code exploration.
-                            </p>
-                            <div class="quest-reward">Framework Mastery + Source Code Analysis Expertise</div>
-                            <div class="tech-badges">
-                                <span class="tech-badge">Spring Framework</span>
-                                <span class="tech-badge">Netty</span>
-                                <span class="tech-badge">MyBatis</span>
-                                <span class="tech-badge">Source Analysis</span>
-                            </div>
-                            <button class="quest-button">EXPLORE SOURCE</button>
-                        </a>
-
-                        <!-- Research Quest 2: Algorithm Toolkit -->
-                        <a href="project-c.html" class="quest-card research-card">
-                            <h3 class="quest-title stylized-title">
-                                <span class="title-icon"><i class="fas fa-brain"></i></span>
-                                <span class="title-text">Algorithm Toolkit</span>
-                                <span class="title-glow"></span>
-                            </h3>
-                            <p class="quest-description">
-                                🎯 <strong>MISSION:</strong> Forge the ultimate collection of algorithm implementations and data structure visualizations. Become the master of computational problem-solving!
-                            </p>
-                            <div class="quest-reward">Algorithm Mastery + Interview Preparation Complete</div>
-                            <div class="tech-badges">
-                                <span class="tech-badge">Python</span>
-                                <span class="tech-badge">JavaScript</span>
-                                <span class="tech-badge">D3.js</span>
-                                <span class="tech-badge">TypeScript</span>
-                            </div>
-                            <button class="quest-button">VIEW DETAILS</button>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
             <!-- Achievements Gallery (Life Highlights) -->
             <section class="quest-section" id="achievements">
-                <h2 class="section-title">ACHIEVEMENT GALLERY</h2>
+                <h2 class="section-title fade-in-up">ACHIEVEMENT GALLERY</h2>
                 <div class="achievements-grid">
                     <div class="achievement-card">
                         <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Graduation Achievement" class="achievement-image">
@@ -562,7 +874,101 @@
             console.log('🎮 Game Manager initialized!');
             console.log('Available games: Moon Walker, I Wanna Be The Guy');
             console.log('Use the selector to switch between games!');
+            
+            // Initialize Fixed Side Navigation
+            initializeFixedSideNavigation();
         });
+
+        // Fixed Side Navigation Functionality
+        function initializeFixedSideNavigation() {
+            const sectionHeaders = document.querySelectorAll('.side-navigation-fixed .nav-section-header');
+            const navItems = document.querySelectorAll('.side-navigation-fixed .nav-item');
+
+            // Section toggle functionality
+            sectionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const section = this.getAttribute('data-section');
+                    const content = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+
+                    // Close all other sections first
+                    sectionHeaders.forEach(h => {
+                        if (h !== this) {
+                            h.classList.remove('active');
+                            h.nextElementSibling.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle clicked section
+                    if (!isActive) {
+                        this.classList.add('active');
+                        content.classList.add('active');
+                    } else {
+                        this.classList.remove('active');
+                        content.classList.remove('active');
+                    }
+                });
+            });
+
+            // Navigation item click handling
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active from all items
+                    navItems.forEach(i => i.classList.remove('active'));
+                    
+                    // Add active to clicked item
+                    this.classList.add('active');
+                    
+                    // Get target section
+                    const target = this.getAttribute('href');
+                    const targetElement = document.querySelector(target);
+                    
+                    if (targetElement) {
+                        // Smooth scroll to target
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Auto-highlight based on scroll position
+            function highlightCurrentSection() {
+                const sections = document.querySelectorAll('section[id]');
+                const scrollPos = window.scrollY + 150;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        // Remove active from all nav items
+                        navItems.forEach(item => item.classList.remove('active'));
+                        
+                        // Add active to corresponding nav item
+                        const activeNavItem = document.querySelector(`.side-navigation-fixed a[href="#${sectionId}"]`);
+                        if (activeNavItem) {
+                            activeNavItem.classList.add('active');
+                        }
+                    }
+                });
+            }
+
+            // Throttled scroll listener
+            let scrollTimeout;
+            window.addEventListener('scroll', function() {
+                if (scrollTimeout) {
+                    clearTimeout(scrollTimeout);
+                }
+                scrollTimeout = setTimeout(highlightCurrentSection, 100);
+            });
+
+            console.log('🧭 Fixed Side Navigation initialized successfully!');
+        }
     </script>
 </body>
 </html>
