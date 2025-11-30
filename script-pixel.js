@@ -1,7 +1,7 @@
 // Language Manager - Handles Chinese/English translations
 class LanguageManager {
     constructor() {
-        this.currentLang = 'zh'; // Default to Chinese
+        this.currentLang = 'en'; // Default to English
         this.translations = {
             // Game-specific translations
             'moonwalker': {

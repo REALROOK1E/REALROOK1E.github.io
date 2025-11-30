@@ -1,176 +1,63 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algorithm Toolkit - REALROOK1E</title>
-    <link rel="stylesheet" href="style-modern.css">
+    <title>C Language Compiler - REALROOK1E</title>
+    <link rel="stylesheet" href="style-pixel.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <meta name="description" content="Algorithm Toolkit - A comprehensive collection of algorithm implementations and data structure visualizations">
 </head>
 <body>
-    <nav class="navbar" id="navbar">
-        <a href="index.html" class="nav-logo">
-            <i class="fa-solid fa-chess-rook"></i> 
-            <span>REALROOK1E</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html#projects" class="nav-link"><i class="fa-solid fa-layer-group"></i> <span>Projects</span></a></li>
-            <li><a href="index.html#experience" class="nav-link"><i class="fa-solid fa-briefcase"></i> <span>Experience</span></a></li>
-            <li><a href="index.html#notes" class="nav-link"><i class="fa-solid fa-book"></i> <span>Notes & Diary</span></a></li>
-            <li><a href="index.html#life" class="nav-link"><i class="fa-solid fa-star"></i> <span>Life Highlights</span></a></li>
-        </ul>
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">REALROOK1E</a>
+        <a href="index.html" class="nav-link">← BACK TO BASE</a>
     </nav>
 
-    <div class="main-content" style="margin-left: 0;">
-        <header>
-            <h1><i class="fa-solid fa-toolbox"></i>Algorithm Toolkit</h1>
-            <p class="subtitle">A comprehensive collection of algorithm implementations and data structure visualizations</p>
-        </header>
+    <div class="game-world" style="padding-top: 100px;">
+        <div class="main-content" style="margin: 0 auto; width: 100%; max-width: 1000px;">
+            <header class="hero-section" style="text-align: left; padding: 2rem; margin-bottom: 2rem;">
+                <div class="tech-badge" style="display: inline-block; margin-bottom: 1rem;">SYSTEMS PROGRAMMING</div>
+                <h1 class="hero-title" style="font-size: 3rem; margin-bottom: 1rem;">C Language Compiler</h1>
+                <p class="hero-subtitle">Custom Compiler Implementation</p>
+            </header>
 
-        <main>
-            <section class="about">
-                <h2><i class="fa-solid fa-info-circle"></i>Project Overview</h2>
-                <p>Algorithm Toolkit is an open-source project designed to help developers master data structures and algorithms through interactive visualizations and clean implementations. Perfect for technical interviews, competitive programming, and educational purposes.</p>
-                
-                <div class="tech-tags" style="justify-content: flex-start; margin-top: 2rem;">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">D3.js</span>
-                    <span class="tech-tag">TypeScript</span>
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">Node.js</span>
+            <div class="cyber-terminal-container">
+                <div class="cyber-terminal-header">
+                    <div class="terminal-controls">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                    </div>
+                    <div class="terminal-title">COMPILER.C</div>
                 </div>
-            </section>
-
-            <section class="works">
-                <h2><i class="fa-solid fa-star"></i>Key Features</h2>
-                <div class="feature-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
-                    <div class="feature-card" style="background: var(--bg-glass); padding: 2rem; border-radius: var(--radius-xl); border: 1px solid var(--border-primary);">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <i class="fa-solid fa-chart-line" style="font-size: 2rem; color: var(--accent-primary);"></i>
-                            <h3 style="margin: 0; color: var(--text-primary);">Algorithm Visualizations</h3>
-                        </div>
-                        <p style="color: var(--text-secondary); margin: 0;">Interactive visualizations for sorting algorithms, graph traversals, and dynamic programming solutions.</p>
-                    </div>
-                    
-                    <div class="feature-card" style="background: var(--bg-glass); padding: 2rem; border-radius: var(--radius-xl); border: 1px solid var(--border-primary);">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <i class="fa-solid fa-code" style="font-size: 2rem; color: var(--accent-secondary);"></i>
-                            <h3 style="margin: 0; color: var(--text-primary);">Clean Implementations</h3>
-                        </div>
-                        <p style="color: var(--text-secondary); margin: 0;">Well-documented, optimized implementations in multiple programming languages with complexity analysis.</p>
-                    </div>
-                    
-                    <div class="feature-card" style="background: var(--bg-glass); padding: 2rem; border-radius: var(--radius-xl); border: 1px solid var(--border-primary);">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <i class="fa-solid fa-graduation-cap" style="font-size: 2rem; color: var(--accent-tertiary);"></i>
-                            <h3 style="margin: 0; color: var(--text-primary);">Educational Resources</h3>
-                        </div>
-                        <p style="color: var(--text-secondary); margin: 0;">Step-by-step explanations, practice problems, and interview preparation materials.</p>
-                    </div>
-                    
-                    <div class="feature-card" style="background: var(--bg-glass); padding: 2rem; border-radius: var(--radius-xl); border: 1px solid var(--border-primary);">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <i class="fa-solid fa-users" style="font-size: 2rem; color: var(--accent-warm);"></i>
-                            <h3 style="margin: 0; color: var(--text-primary);">Community Driven</h3>
-                        </div>
-                        <p style="color: var(--text-secondary); margin: 0;">Open-source with contributions from developers worldwide. Join our growing community!</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="about">
-                <h2><i class="fa-solid fa-list"></i>Algorithm Categories</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-                    <div style="padding: 1.5rem; background: rgba(99, 102, 241, 0.1); border-radius: var(--radius-lg); border: 1px solid rgba(99, 102, 241, 0.2);">
-                        <h4 style="color: var(--accent-primary); margin: 0 0 1rem 0;"><i class="fa-solid fa-sort"></i> Sorting Algorithms</h4>
-                        <ul style="margin: 0; color: var(--text-secondary);">
-                            <li>Quick Sort</li>
-                            <li>Merge Sort</li>
-                            <li>Heap Sort</li>
-                            <li>Radix Sort</li>
-                        </ul>
-                    </div>
-                    
-                    <div style="padding: 1.5rem; background: rgba(139, 92, 246, 0.1); border-radius: var(--radius-lg); border: 1px solid rgba(139, 92, 246, 0.2);">
-                        <h4 style="color: var(--accent-secondary); margin: 0 0 1rem 0;"><i class="fa-solid fa-project-diagram"></i> Graph Algorithms</h4>
-                        <ul style="margin: 0; color: var(--text-secondary);">
-                            <li>DFS & BFS</li>
-                            <li>Dijkstra's Algorithm</li>
-                            <li>A* Search</li>
-                            <li>Minimum Spanning Tree</li>
-                        </ul>
-                    </div>
-                    
-                    <div style="padding: 1.5rem; background: rgba(6, 182, 212, 0.1); border-radius: var(--radius-lg); border: 1px solid rgba(6, 182, 212, 0.2);">
-                        <h4 style="color: var(--accent-tertiary); margin: 0 0 1rem 0;"><i class="fa-solid fa-calculator"></i> Dynamic Programming</h4>
-                        <ul style="margin: 0; color: var(--text-secondary);">
-                            <li>Fibonacci Optimization</li>
-                            <li>Knapsack Problem</li>
-                            <li>Longest Common Subsequence</li>
-                            <li>Edit Distance</li>
-                        </ul>
-                    </div>
-                    
-                    <div style="padding: 1.5rem; background: rgba(245, 158, 11, 0.1); border-radius: var(--radius-lg); border: 1px solid rgba(245, 158, 11, 0.2);">
-                        <h4 style="color: var(--accent-warm); margin: 0 0 1rem 0;"><i class="fa-solid fa-database"></i> Data Structures</h4>
-                        <ul style="margin: 0; color: var(--text-secondary);">
-                            <li>Binary Search Trees</li>
-                            <li>Hash Tables</li>
-                            <li>Heaps & Priority Queues</li>
-                            <li>Trie & Suffix Trees</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section class="works">
-                <h2><i class="fa-solid fa-rocket"></i>Getting Started</h2>
-                <div style="background: var(--bg-glass); padding: 2rem; border-radius: var(--radius-xl); border: 1px solid var(--border-primary); margin-top: 2rem;">
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
-                        <div style="text-align: center;">
-                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
-                                <i class="fa-solid fa-download" style="color: white; font-size: 1.5rem;"></i>
-                            </div>
-                            <h4 style="color: var(--text-primary); margin: 0 0 0.5rem 0;">1. Clone Repository</h4>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">git clone https://github.com/REALROOK1E/algorithm-toolkit</p>
-                        </div>
+                <div class="cyber-terminal-content">
+                    <div class="quest-description">
+                        <h2 style="color: var(--accent-cyan);">Mission Briefing</h2>
+                        <p>A fully functional compiler for a subset of the C programming language. Implements all stages of compilation from lexical analysis to code generation.</p>
                         
-                        <div style="text-align: center;">
-                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--accent-secondary), var(--accent-tertiary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
-                                <i class="fa-solid fa-play" style="color: white; font-size: 1.5rem;"></i>
-                            </div>
-                            <h4 style="color: var(--text-primary); margin: 0 0 0.5rem 0;">2. Install Dependencies</h4>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">npm install && pip install -r requirements.txt</p>
+                        <h2 style="color: var(--accent-magenta); margin-top: 2rem;">Tech Stack</h2>
+                        <div class="tech-badges">
+                            <span class="tech-badge">C</span>
+                            <span class="tech-badge">Lex</span>
+                            <span class="tech-badge">Yacc</span>
+                            <span class="tech-badge">LLVM</span>
                         </div>
+
+                        <h2 style="color: var(--accent-yellow); margin-top: 2rem;">Key Features</h2>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--accent-green); margin-right: 10px;"></i> <strong>Lexical Analysis:</strong> Tokenizes source code efficiently.</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--accent-green); margin-right: 10px;"></i> <strong>Parsing:</strong> Constructs abstract syntax trees (AST) for validation.</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--accent-green); margin-right: 10px;"></i> <strong>Optimization:</strong> Implements basic code optimization techniques.</li>
+                        </ul>
                         
-                        <div style="text-align: center;">
-                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--accent-tertiary), var(--accent-warm)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
-                                <i class="fa-solid fa-eye" style="color: white; font-size: 1.5rem;"></i>
-                            </div>
-                            <h4 style="color: var(--text-primary); margin: 0 0 0.5rem 0;">3. Start Exploring</h4>
-                            <p style="color: var(--text-secondary); margin: 0; font-size: 0.9rem;">npm start to launch the visualization platform</p>
+                        <div style="margin-top: 3rem; text-align: center;">
+                            <a href="#" class="quest-button" style="display: inline-block; text-decoration: none;">VIEW REPO</a>
                         </div>
                     </div>
                 </div>
-            </section>
-
-            <div style="text-align: center; margin: 3rem 0;">
-                <a href="index.html" class="card-btn" style="display: inline-block; margin-right: 1rem;">
-                    <span><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</span>
-                </a>
-                <a href="https://github.com/REALROOK1E" target="_blank" class="card-btn" style="display: inline-block; background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));">
-                    <span><i class="fa-brands fa-github"></i> View on GitHub</span>
-                </a>
             </div>
-        </main>
-
-        <footer>
-            <p>© 2025 REALROOK1E | Algorithm Toolkit Project | <a href="https://github.com/REALROOK1E">GitHub</a></p>
-        </footer>
+        </div>
     </div>
-
-    <script src="script-modern.js"></script>
+    <script src="script-effects.js"></script>
 </body>
-</html> 
+</html>
